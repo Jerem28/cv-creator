@@ -1,0 +1,46 @@
+{
+    "fullname": "",
+    "descriptionSentence": "",
+    "phone": "",
+    "personalLink": "",
+    "email": "",
+    "address": "",
+    "experiencesList": [
+        {
+            "experienceTitle": "",
+            "workPlace": "",
+            "workPlaceDescription": "",
+            "startDate": "",
+            "endDate": "",
+            "workAddress": "",
+            "items": []
+        }
+    ],
+    "educationsList": [
+        {
+            "educationTitle": "",
+            "workPlace": "",
+            "startDate": "",
+            "endDate": "",
+            "workAddress": ""
+        }
+    ],
+    "languagesList": [
+        {
+            "languageTitle": "",
+            "languageLevel": ""
+        }
+    ],
+    "skillsList": [
+        {
+            "skillTitle": "",
+            "items": []
+        }
+    ],
+    "hobbiesList": [
+        {
+            "hobbyTitle": "",
+            "hobbyDescription": ""
+        }
+    ]
+}

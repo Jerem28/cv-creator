@@ -1,0 +1,243 @@
+<mat-toolbar class="title" color="primary">
+    <span>Resume Generator</span>
+  </mat-toolbar>
+
+<div class="container resume">
+
+    <div>
+        <p>Resume form value</p>
+        <p>{{ resumeForm.value | json }}</p>
+    </div>
+    
+    <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
+
+    <form [formGroup]="resumeForm" (ngSubmit)="onSubmit(resumeForm.value)">
+
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar><mat-icon>home</mat-icon></div>
+                <mat-card-title>Header</mat-card-title>
+                <mat-card-subtitle>Header of your resume, with main informations about you</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+
+                <div class=row>
+
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label for="fullname">
+                                Fullname
+                            </mat-label>
+                            <input matInput type="text" id="fullname" formControlName="fullname" placeholder="Ex. Rakotoarisoa Jérémy">
+                        </mat-form-field>
+            
+                        <mat-form-field appearance="outline">
+                            <mat-label for="descriptionSentence">
+                                Description sentence
+                            </mat-label>
+                            <input matInput type="text" id="descriptionSentence" formControlName="descriptionSentence" placeholder="Ex. Curieux, motivé">
+                        </mat-form-field>
+                
+                        <div class=row>
+                            <div class="col-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label for="phone">
+                                        Phone number
+                                    </mat-label>
+                                    <input matInput type="text" id="phone" formControlName="phone" placeholder="Ex. +33 606060606">
+                                </mat-form-field>
+                        
+                                <mat-form-field appearance="outline">
+                                    <mat-label for="personalLink">
+                                        Personal link
+                                    </mat-label>
+                                    <input matInput type="text" id="personalLink" formControlName="personalLink" placeholder="https://linkedin">
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="col-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label for="email">
+                                        Email
+                                    </mat-label>
+                                    <input matInput type="text" id="email" formControlName="email" placeholder="jeromeduboisfake@gmail.com">
+                                </mat-form-field>
+                        
+                                <mat-form-field appearance="outline">
+                                    <mat-label for="address">
+                                        Address
+                                    </mat-label>
+                                    <input matInput type="text" id="address" formControlName="address" placeholder="Ex. 26 Rue des Marroniers, 38506 Jossencourt">
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-6">
+                        <div class="profilePictureContainer">
+                            <button mat-raised-button>
+                                <label id="labelProfilePicture" for="profilePicture" class="btn btn-default">
+                                    Choose a CV photo
+                                </label>
+                                <!--<input type="file" id="profilePicture" formControlName="profilePicture" style="display: none">-->
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <button mat-stroked-button color="primary" type="submit">Generate resume</button>
+
+            </mat-card-content>
+        </mat-card> 
+
+        <div class="row">
+            <div class="col-6">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar><mat-icon>rowing</mat-icon></div>
+                        <mat-card-title>Experience</mat-card-title>
+                        <mat-card-subtitle>Talk about your experiences, specific tasks in your previous jobs</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <button class="" mat-stroked-button color="primary" (click)="addInputExperience()">Add Experience</button>
+                        <div formArrayName="experiencesList">
+
+                            <div *ngFor="let experience of experiencesList.controls; let i = index" formGroupName="{{i}}">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label for="experienceTitle">
+                                            My experience
+                                        </mat-label>
+                                        <input matInput type="text" formControlName="experienceTitle" placeholder="Ex. Dirigeant Marketing">
+                                    </mat-form-field>
+                                    
+                                    <div class=row>
+                                        <div class="col-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="startDate">
+                                                    Start date
+                                                </mat-label>
+                                                <input matInput [matDatepicker]="experienceStartDatePicker" type="text" formControlName="startDate" placeholder="Choose a start date">
+                                                <mat-datepicker-toggle matSuffix [for]="experienceStartDatePicker"></mat-datepicker-toggle>
+                                                <mat-datepicker #experienceStartDatePicker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="endDate">
+                                                    End date
+                                                </mat-label>
+                                                <input matInput [matDatepicker]="experienceEndDatePicker" type="text" formControlName="endDate" placeholder="Choose an end date">
+                                                <mat-datepicker-toggle matSuffix [for]="experienceEndDatePicker"></mat-datepicker-toggle>
+                                                <mat-datepicker #experienceEndDatePicker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <mat-form-field appearance="standard">
+                                                <mat-label for="workPlace">
+                                                    Work place
+                                                </mat-label>
+                                                <input matInput type="text" formControlName="workPlace" placeholder="Ex. Carrefour">
+                                            </mat-form-field>
+                                            <mat-form-field appearance="standard">
+                                                <mat-label for="workPlaceDescription">
+                                                    Work place description
+                                                </mat-label>
+                                                <input matInput type="text" formControlName="workPlaceDescription" placeholder="Ex. Groupe français de grande distribution">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-6">
+                                            <mat-form-field appearance="standard">
+                                                <mat-label for="workAddress">
+                                                    Work address
+                                                </mat-label>
+                                                <input matInput type="text" formControlName="workAddress" placeholder="Ex. 54 Allée des Espadons">
+                                            </mat-form-field>
+                                        </div>
+                                    </div> 
+
+                                    <div formArrayName="items">
+                                        <button class="" mat-stroked-button color="primary" (click)="addItemToCategory('experiencesList',i, item)">Add item</button>
+                                        <ul>
+                                            <div *ngFor="let experienceItem of getExperienceItemList(i).controls; let j = index">
+                                                <li>
+                                                    <input matInput type="text" formControlName="{{j}}" placeholder="Ex. Rangement de rayon">
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                            </div>
+                            
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                
+            </div>
+
+            <div class="col-6">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar><mat-icon>grade</mat-icon></div>
+                        <mat-card-title>Education</mat-card-title>
+                        <mat-card-subtitle>Degrees, certifications, trainings you want to emphasize</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <button mat-stroked-button color="primary">Add Education</button>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar><mat-icon>language</mat-icon></div>
+                        <mat-card-title>Language</mat-card-title>
+                        <mat-card-subtitle>What are the languages you are able to talk ? For each of them, what is your true level ?</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <button mat-stroked-button color="primary">Add Language</button>
+                    </mat-card-content>
+                </mat-card>
+                
+            </div>
+
+            <div class="col-6">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar><mat-icon>pan_tool</mat-icon></div>
+                        <mat-card-title>Skills</mat-card-title>
+                        <mat-card-subtitle>You've build some skills on your journey, list them here !</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <button mat-stroked-button color="primary">Add Skill</button>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar><mat-icon>shop</mat-icon></div>
+                        <mat-card-title>Hobbies</mat-card-title>
+                        <mat-card-subtitle>You certainly have passions, share them with us ;)</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <button mat-stroked-button color="primary">Add Language</button>
+                    </mat-card-content>
+                </mat-card>
+                
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
