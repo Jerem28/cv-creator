@@ -29,35 +29,43 @@ export class ResumeComponent implements OnInit {
   }
 
   loadResumeForm(value) {
-    this.resumeForm = this.formBuilder.group({
-      fullname: [value && value.fullname] || '',
-      descriptionSentence: [value && value.descriptionSentence] || '',
-      phone: [value && value.phone] || '',
-      personalLink: [value && value.personalLink] || '',
-      email: [value && value.email] || '',
-      address: [value && value.address] || '',
-      experiencesList: this.formBuilder.array([]),
-      educationsList: [],
-      languagesList: [],
-      skillsList: [],
-      hobbiesList: []
-    });
 
-    /* It's mandatory to have same object structure in data saved before reload and in actual resumeForm,
-       that is why we push each blank object in this.resumeForm.get('experiencesList') and so on */
-    for (let experienceIndex = 0; experienceIndex < value.experiencesList.length; experienceIndex++){
-      this.experiencesList.push(this.experience);
-      console.log(value.experiencesList);
-      for (let itemIndex = 0; 
-        itemIndex < ((value.experiencesList as FormArray).at(experienceIndex).get('items') as FormArray).length; 
-        itemIndex++) {
-        this.getExperienceItemList(experienceIndex).push(this.item);
+      this.resumeForm = this.formBuilder.group({
+        fullname: [value && value.fullname] || '',
+        descriptionSentence: [value && value.descriptionSentence] || '',
+        phone: [value && value.phone] || '',
+        personalLink: [value && value.personalLink] || '',
+        email: [value && value.email] || '',
+        address: [value && value.address] || '',
+        experiencesList: this.formBuilder.array([]),
+        educationsList: this.formBuilder.array([]),
+        languagesList: this.formBuilder.array([]),
+        skillsList: this.formBuilder.array([]),
+        hobbiesList: this.formBuilder.array([])
+      });
+
+      // Only if we have value from a precedent resume form, we do the following
+      if (value) {
+
+      /* It's mandatory to have same object structure in data saved before reload and in actual resumeForm,
+        that is why we push each blank object in this.experiencesList and so on */
+
+      for (let experienceIndex = 0; experienceIndex < value.experiencesList.length; experienceIndex++){
+        this.experiencesList.push(this.experience);
+        if (value.experiencesList[experienceIndex].items.length > 0) {
+          const experienceItemNumber = value.experiencesList[experienceIndex].items.length;
+          for (let itemIndex = 0; itemIndex < experienceItemNumber; itemIndex++) {
+            console.log('Adding item [' + itemIndex + '] to experience [' + experienceIndex + ']');
+            this.getExperienceItemList(experienceIndex).push(this.item);
+          }
+        }
       }
+
+      console.log('On patch la valeur de experiencesList');
+      console.log(this.experiencesList.value);
+      this.resumeForm.patchValue(value);
+
     }
-
-    console.log('On patch la valeur de experiencesList');
-    this.resumeForm.patchValue(value);
-
   }
 
   onSubmit(resumeData){
