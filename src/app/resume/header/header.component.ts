@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
       reader.onload = (progressEvent: ProgressEvent) => {
         this.profilePictureUrl = (progressEvent.target as FileReader).result as string;
-        console.log('Patch Valueeeeeeee');
         this.resumeForm.patchValue({
           profilePicture: this.profilePictureUrl,
         });
@@ -36,8 +35,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
       // Get filename in base64 format
       reader.readAsDataURL(event.target.files[0]);
-      console.log('ONCHANGEEEEEEE');
-
     }
   }
 
