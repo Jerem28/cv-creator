@@ -4,25 +4,17 @@
     margin-bottom: 20px;
 }
 
-.mat-toolbar > span, .profilePictureContainer > button {
+.mat-toolbar > span {
     margin: auto;
 }
 
-.profilePictureContainer {
-    display: flex;
-}
-
-h1 {
+/*h1 {
     text-align: center;
     margin-bottom: 30px;
-}
+}*/
 
 .fullwidth {
     width: 100%;
-}
-
-.mat-form-field {
-    display:block;
 }
 
 #labelProfilePicture {
@@ -31,4 +23,62 @@ h1 {
 
 .mat-icon {
     font-size: 40px;
+}
+
+header {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .header__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3f51b5;
+    transform: skewY(-6deg);
+    transform-origin: top left;
+  }
+  
+  h1 {
+    padding-top: 40px;
+    font-family: Lobster, sans-serif;
+    font-size: 77px;
+    margin-left: 30px;
+  }
+
+  h2 {
+      font-family: Lobster, sans-serif;
+      margin-left: 70px;
+      margin-top: 30px;
+  }
+
+  header h1, header h2 {
+    position: relative;
+    color: white;
+  }
+
+/*footer {
+    position: relative;
+    bottom: 0;
+
+    p {
+        position: absolute;
+        left: 50%;
+        margin-top: 28%;
+        color: white;
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+    }
+}*/
+
+.defs-only {
+    height: 0;
 }
