@@ -44,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Implementation examples
+/src/app/file-value-accessor.directive.ts
