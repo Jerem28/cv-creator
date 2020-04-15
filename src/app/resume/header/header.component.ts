@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.profilePictureUrl = (this.resumeForm.get('profilePicture') as FormControl).value;
+
   }
 
   ngAfterViewInit(): void {
@@ -28,9 +28,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
       reader.onload = (progressEvent: ProgressEvent) => {
         this.profilePictureUrl = (progressEvent.target as FileReader).result as string;
-        this.resumeForm.patchValue({
-          profilePicture: this.profilePictureUrl,
-        });
       };
 
       // Get filename in base64 format
