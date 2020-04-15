@@ -3,6 +3,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .mat-card {
     margin-bottom: 20px;
+}
+
+// Only works in global CSS (cause we can't normally modify .mat-card-header-text style)
+.resume-content-card > .mat-card-header > .mat-card-header-text, .resume-card-title, 
+.resume-card-title > .mat-form-field,
+.header-form-field 
+{
+    width:100%;
+}
+
+.mat-card.mat-focus-indicator.resume-content-card {
+    background-color: #FAFAFA;
 }
