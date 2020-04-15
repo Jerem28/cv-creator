@@ -58,16 +58,10 @@
             </div>
 
             <div class="col-6">
-                <mat-card>
-                    <mat-card-header>
-                        <div mat-card-avatar><mat-icon>pan_tool</mat-icon></div>
-                        <mat-card-title>Skills</mat-card-title>
-                        <mat-card-subtitle>You've build some skills on your journey, list them here !</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <button mat-stroked-button color="primary">Add Skill</button>
-                    </mat-card-content>
-                </mat-card>
+                <app-skills
+                [formBuilder]="formBuilder"
+                [resumeForm]="resumeForm">
+                ></app-skills>
             </div>
         </div>
 

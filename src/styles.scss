@@ -19,3 +19,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-card.mat-focus-indicator.resume-content-card {
     background-color: #FAFAFA;
 }
+
+.skillsList > .ng-star-inserted {
+    display: inline-block;
+}

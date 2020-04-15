@@ -48,8 +48,7 @@ export class ExperienceComponent implements OnInit, OnChanges {
   }
 
   addInputExperience(){
-    const experienceFormGroup: FormGroup = this.experience;
-    this.experiencesList.push(experienceFormGroup);
+    this.experiencesList.push(this.experience);
   }
 
   removeExperience(experienceIndex: number){

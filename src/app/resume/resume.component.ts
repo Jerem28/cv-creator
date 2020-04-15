@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormArray, AbstractControl, FormControl } from 
 import { ExperienceComponent } from './experience/experience.component';
 import { HeaderComponent } from './header/header.component';
 import { EducationComponent } from './education/education.component';
+import { SkillsComponent } from './skills/skills.component';
 
 interface ResumeFormStructure {
   fullname: string;
@@ -29,9 +30,10 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   @ViewChild(ExperienceComponent)
   private experienceComponent: ExperienceComponent;
-
   @ViewChild(EducationComponent)
   private educationComponent: EducationComponent;
+  @ViewChild(SkillsComponent)
+  private skillComponent: SkillsComponent;
 
   resumeForm: FormGroup;
   formBuilder: FormBuilder;
@@ -101,6 +103,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
         this.experienceComponent.createExperience(value);
         this.educationComponent.createEducation(value);
+        this.skillComponent.createSkill(value);
         this.resumeForm.patchValue(value);
       }
   }
