@@ -56,7 +56,7 @@ export class ExperienceComponent implements OnInit, OnChanges {
     this.experiencesList.removeAt(experienceIndex);
   }
 
-  createExperience(data) {
+  createExperience(data: any) {
     console.log('Data for experience : ');
     console.log(data);
     console.log('Resume form state :');

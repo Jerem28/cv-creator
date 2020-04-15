@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, AbstractControl, FormControl } from '@angular/forms';
 import { ExperienceComponent } from './experience/experience.component';
 import { HeaderComponent } from './header/header.component';
+import { EducationComponent } from './education/education.component';
 
 interface ResumeFormStructure {
   fullname: string;
@@ -28,6 +29,9 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   @ViewChild(ExperienceComponent)
   private experienceComponent: ExperienceComponent;
+
+  @ViewChild(EducationComponent)
+  private educationComponent: EducationComponent;
 
   resumeForm: FormGroup;
   formBuilder: FormBuilder;
@@ -96,6 +100,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
         that is why we push each blank object in this.experiencesList and so on */
 
         this.experienceComponent.createExperience(value);
+        this.educationComponent.createEducation(value);
         this.resumeForm.patchValue(value);
       }
   }

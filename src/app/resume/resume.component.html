@@ -35,16 +35,9 @@
             </div>
 
             <div class="col-6">
-                <mat-card>
-                    <mat-card-header>
-                        <div mat-card-avatar><mat-icon>grade</mat-icon></div>
-                        <mat-card-title>Education</mat-card-title>
-                        <mat-card-subtitle>Degrees, certifications, trainings you want to emphasize</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <button mat-stroked-button color="primary">Add Education</button>
-                    </mat-card-content>
-                </mat-card>
+                <app-education
+                [formBuilder]="formBuilder"
+                [resumeForm]="resumeForm"></app-education>
             </div>
 
         </div>

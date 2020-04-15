@@ -1,1 +1,57 @@
-<p>education works!</p>
+<div [formGroup]="resumeForm">
+
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar><mat-icon>grade</mat-icon></div>
+            <mat-card-title>Education</mat-card-title>
+            <mat-card-subtitle>Degrees, certifications, trainings you want to emphasize</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div formArrayName="educationsList">
+        
+                <div *ngFor="let education of educationsList.controls; let i = index" formGroupName="{{i}}">
+                    <mat-card class="resume-content-card">
+    
+                        <mat-card-header>
+                            <mat-card-title class="resume-card-title">
+                                <mat-form-field appearance="standard">
+                                    <mat-label for="educationTitle">Education title</mat-label>
+                                    <input matInput type="text" formControlName="educationTitle" placeholder="Ex. Diplome d'Ingénieur en Biomécanique">
+                                </mat-form-field>
+                            </mat-card-title>
+                        </mat-card-header>
+    
+                        <mat-card-content>
+                            <div class=row>
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label for="startDate">Start date</mat-label>
+                                    <input matInput [matDatepicker]="experienceStartDatePicker" type="text" formControlName="startDate" placeholder="Choose a start date">
+                                    <mat-datepicker-toggle matSuffix [for]="experienceStartDatePicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #experienceStartDatePicker></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label for="endDate">End date</mat-label>
+                                    <input matInput [matDatepicker]="experienceEndDatePicker" type="text" formControlName="endDate" placeholder="Choose an end date">
+                                    <mat-datepicker-toggle matSuffix [for]="experienceEndDatePicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #experienceEndDatePicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field appeareance="outline" class="col-6">
+                                    <mat-label for="workPlace">Work Place</mat-label>
+                                    <input matInput type="text" formControlName="workPlace" placeholder="Ex. Ecole de la Biomécanique">
+                                </mat-form-field>
+                                <mat-form-field appeareance="outline" class="col-6">
+                                    <mat-label for="workAddress">Work Address</mat-label>
+                                    <input matInput type="text" formControlName="workAddress" placeholder="Ex. 26 Rue des Abresseurs">
+                                </mat-form-field>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" (click)="addInputEducation()"><mat-icon>add_circle</mat-icon></button>
+        </mat-card-content>
+    </mat-card>
+    
+</div>
