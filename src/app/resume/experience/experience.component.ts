@@ -29,12 +29,12 @@ export class ExperienceComponent implements OnInit, OnChanges {
 
   get experience(): FormGroup {
     return this.formBuilder.group({
-      experienceTitle: [''],
-      workPlace: [''],
-      workPlaceDescription: [''],
-      startDate: [''],
-      endDate: [''],
-      workAddress: [''],
+      experienceTitle: '',
+      workPlace: '',
+      workPlaceDescription: '',
+      startDate: '',
+      endDate: '',
+      workAddress: '',
       items: this.formBuilder.array([])
     });
   }
@@ -56,10 +56,6 @@ export class ExperienceComponent implements OnInit, OnChanges {
   }
 
   createExperience(data: any) {
-    console.log('Data for experience : ');
-    console.log(data);
-    console.log('Resume form state :');
-    console.log(this.resumeForm.value);
     for (let experienceIndex = 0; experienceIndex < data.experiencesList.length; experienceIndex++){
       console.log('Adding experience [' + experienceIndex + '] to experiencesList');
       this.experiencesList.push(this.experience);
