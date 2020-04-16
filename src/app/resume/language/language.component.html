@@ -1,1 +1,53 @@
-<p>language works!</p>
+<div [formGroup]="resumeForm">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar><mat-icon>language</mat-icon></div>
+                <mat-card-title>Language</mat-card-title>
+                <mat-card-subtitle>What are the languages you are able to talk ? For each of them, what is your true level ?</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div formArrayName="languagesList">
+                    <div *ngFor="let language of languagesList.controls; let i = index;" formGroupName="{{i}}">
+                        <mat-form-field appearance="standard">
+                            <mat-label for="languageTitle">Language title</mat-label>
+                            <input matInput type="text" formControlName="languageTitle" placeholder="Ex. Français">
+                        </mat-form-field>
+                            <div class="rating">
+                                  <label>
+                                    <input type="radio" formControlName="languageLevel" name="languageLevel" value="1" />
+                                    <span class="icon">★</span>
+                                  </label>
+                                  <label>
+                                    <input type="radio" formControlName="languageLevel" name="languageLevel" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                  </label>
+                                  <label>
+                                    <input type="radio" formControlName="languageLevel" name="languageLevel" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>   
+                                  </label>
+                                  <label>
+                                    <input type="radio" formControlName="languageLevel" name="languageLevel" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                  </label>
+                                  <label>
+                                    <input type="radio" formControlName="languageLevel" name="languageLevel" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                  </label>
+                            </div>
+                        <button mat-icon-button color="primary" (click)="removeLanguage(i)"><mat-icon>delete</mat-icon></button>
+                    </div>
+                    <button mat-raised-button color="primary" (click)="addInputLanguage()"><mat-icon>add_circle</mat-icon></button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+</div>

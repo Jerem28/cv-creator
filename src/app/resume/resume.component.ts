@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, AbstractControl, FormControl } from '@angular/forms';
 import { ExperienceComponent } from './experience/experience.component';
-import { HeaderComponent } from './header/header.component';
 import { EducationComponent } from './education/education.component';
 import { SkillsComponent } from './skills/skills.component';
+import { LanguageComponent } from './language/language.component';
 
 interface ResumeFormStructure {
   fullname: string;
@@ -34,6 +34,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   private educationComponent: EducationComponent;
   @ViewChild(SkillsComponent)
   private skillComponent: SkillsComponent;
+  @ViewChild(LanguageComponent)
+  private languageComponent: LanguageComponent;
 
   resumeForm: FormGroup;
   formBuilder: FormBuilder;
@@ -104,6 +106,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
         this.experienceComponent.createExperience(value);
         this.educationComponent.createEducation(value);
         this.skillComponent.createSkill(value);
+        this.languageComponent.createLanguage(value);
+
         this.resumeForm.patchValue(value);
       }
   }
