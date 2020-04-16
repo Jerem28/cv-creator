@@ -1,1 +1,30 @@
-<p>hobby works!</p>
+<div [formGroup]="resumeForm">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar><mat-icon>shop</mat-icon></div>
+            <mat-card-title>Hobbies</mat-card-title>
+            <mat-card-subtitle>You certainly have passions, share them with us ;)</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div formArrayName="hobbiesList">
+                <div *ngFor="let hobby of hobbiesList.controls; let i = index;" formGroupName="{{i}}">
+                    <mat-card class="resume-content-card">
+                        <mat-card-header>
+                            <mat-card-title class="resume-card-title">
+                                <mat-form-field appearance="standard">
+                                    <mat-label for="hobbyTitle">Hobby title</mat-label>
+                                    <input matInput type="text" formControlName="hobbyTitle" placeholder="Ex. Voitures">
+                                </mat-form-field>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-form-field appearance="standard">
+                            <mat-label for="hobbyDescription">Hobby description</mat-label>
+                            <textarea matInput type="text" formControlName="hobbyDescription" placeholder="Ex. Collectionneur de modèles réduits"></textarea>
+                        </mat-form-field>
+                    </mat-card>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" (click)="addInputHobby()"><mat-icon>add_circle</mat-icon></button>
+        </mat-card-content>
+    </mat-card>
+</div>

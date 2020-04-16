@@ -4,6 +4,7 @@ import { ExperienceComponent } from './experience/experience.component';
 import { EducationComponent } from './education/education.component';
 import { SkillsComponent } from './skills/skills.component';
 import { LanguageComponent } from './language/language.component';
+import { HobbyComponent } from './hobby/hobby.component';
 
 interface ResumeFormStructure {
   fullname: string;
@@ -36,6 +37,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   private skillComponent: SkillsComponent;
   @ViewChild(LanguageComponent)
   private languageComponent: LanguageComponent;
+  @ViewChild(HobbyComponent)
+  private hobbyComponent: HobbyComponent;
 
   resumeForm: FormGroup;
   formBuilder: FormBuilder;
@@ -107,6 +110,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
         this.educationComponent.createEducation(value);
         this.skillComponent.createSkill(value);
         this.languageComponent.createLanguage(value);
+        this.hobbyComponent.createHobby(value);
 
         this.resumeForm.patchValue(value);
       }
