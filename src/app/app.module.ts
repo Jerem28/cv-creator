@@ -23,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HobbyComponent,
     SkillsComponent,
     EducationComponent,
-    ResumeGeneratedComponent
+    ResumeGeneratedComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
