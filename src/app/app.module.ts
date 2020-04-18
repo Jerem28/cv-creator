@@ -10,6 +10,7 @@ import { LanguageComponent } from './resume/language/language.component';
 import { HobbyComponent } from './resume/hobby/hobby.component';
 import { SkillsComponent } from './resume/skills/skills.component';
 import { EducationComponent } from './resume/education/education.component';
+import { ResumeGeneratedComponent } from './resume-generated/resume-generated.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +33,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LanguageComponent,
     HobbyComponent,
     SkillsComponent,
-    EducationComponent
+    EducationComponent,
+    ResumeGeneratedComponent
   ],
   imports: [
     BrowserModule,

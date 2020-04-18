@@ -1,0 +1,102 @@
+@media print {
+    @page {
+        size: auto;
+    }
+}
+
+.wrapper {
+  height: 297mm;
+  width: 210mm;
+  font-size: 12px;
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 300;
+}
+
+.header-container {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    .header-container-one {
+        grid-template-rows: auto auto auto;
+    }
+
+    .header-container-two {
+        grid-template-rows: auto;
+    }
+}
+
+.main-photo-container {
+    border: black solid;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+}
+
+.main-photo {
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.underline {
+    width: 100%;
+    border-bottom: 3px solid black;
+    position: absolute;
+}
+
+.resume-section {
+    margin: 10px;
+}
+
+.resume-section-title > h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.fullname {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.resume-description {
+    font-size: 20px;
+}
+
+.useful-info-icon, .resume-description, .work-place {
+    color: cornflowerblue;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot.skilled {
+    background-color: cornflowerblue;
+}
+
+.experience-title, .formation-title, .skills-title {
+    font-weight: 400;
+}
+
+.skill-item {
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+.button {
+    background-color: cornflowerblue; /* Green */
+    border: none;
+    border-radius: 4%;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }

@@ -5,6 +5,7 @@ import { EducationComponent } from './education/education.component';
 import { SkillsComponent } from './skills/skills.component';
 import { LanguageComponent } from './language/language.component';
 import { HobbyComponent } from './hobby/hobby.component';
+import { Router } from '@angular/router';
 
 interface ResumeFormStructure {
   fullname: string;
@@ -44,7 +45,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   formBuilder: FormBuilder;
   resumeFormValue: ResumeFormStructure;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
       this.formBuilder = fb;
   }
 
@@ -116,8 +117,9 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       }
   }
 
-  onSubmit(resumeData){
-    console.log('Value of resume data :', resumeData);
+  onSubmit(){
+    console.warn('[Submit] Value of resume data :', this.resumeForm.value);
+    this.router.navigateByUrl('/generated-resume', { state: this.resumeForm.value });
   }
 
   addItemToCategory(event: Array<any>){

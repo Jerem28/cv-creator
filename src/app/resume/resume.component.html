@@ -1,7 +1,7 @@
 <header>
     <div class="header__bg"></div>
-    <h1>ResumeGen</h1>
-    <h2>Handle your skills, experiences and more with one unique tool !</h2>
+    <h1>ResumeBook</h1>
+    <h2>Handle your professional skills for your resumes with one tool !</h2>
 </header>
 
 <div class="container resume">
@@ -16,10 +16,10 @@
 
     <app-header 
         [formBuilder]="formBuilder"
-        [resumeForm]="resumeForm"
-        ></app-header>
+        [resumeForm]="resumeForm">
+    </app-header>
 
-    <form [formGroup]="resumeForm" (ngSubmit)="onSubmit(resumeForm.value)">
+    <form [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
 
         <div class="row">
             <div class="col-6">
@@ -34,7 +34,8 @@
             <div class="col-6">
                 <app-education
                 [formBuilder]="formBuilder"
-                [resumeForm]="resumeForm"></app-education>
+                [resumeForm]="resumeForm">
+                </app-education>
             </div>
 
         </div>
@@ -51,7 +52,7 @@
                 <app-skills
                 [formBuilder]="formBuilder"
                 [resumeForm]="resumeForm">
-                ></app-skills>
+                </app-skills>
             </div>
         </div>
 

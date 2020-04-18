@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
 
 .mat-card {
     margin-bottom: 20px;
@@ -22,4 +22,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .skillsList > .ng-star-inserted {
     display: inline-block;
+}
+
+.mat-expansion-panel-header {
+    height: 100px;
 }
