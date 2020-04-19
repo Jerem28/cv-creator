@@ -14,6 +14,15 @@
     <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
     -->
 
+    <div class="iframe-preview">
+        <iframe
+            class="generated-resume-iframe"
+            width="210mm"
+            height="297mm"
+            [src]= "generatedResumeUrl | safeUrl">
+        </iframe>
+    </div>
+
     <app-header 
         [formBuilder]="formBuilder"
         [resumeForm]="resumeForm">

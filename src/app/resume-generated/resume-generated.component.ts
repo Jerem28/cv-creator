@@ -1,6 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { StateService } from '../state.service';
+import { fromEvent } from 'rxjs';
+
+interface ResumeFormStructure {
+  fullname: string;
+  descriptionSentence: string;
+  phone: string;
+  personalLink: string;
+  email: string;
+  address: string;
+  profilePicture: string;
+  experiencesList: Array<any>;
+  educationsList: Array<any>;
+  languagesList: Array<any>;
+  skillsList: Array<any>;
+  hobbiesList: Array<any>;
+}
 
 @Component({
   selector: 'app-resume-generated',
@@ -10,12 +25,20 @@ import { FormGroup } from '@angular/forms';
 export class ResumeGeneratedComponent implements OnInit {
 
   resumeData;
+  resumeFormValue: ResumeFormStructure;
 
-  constructor(private router: Router) {
-    console.log("[ResumeGenerated] " + this.router.getCurrentNavigation().extras.state);
-    this.resumeData = this.router.getCurrentNavigation().extras.state;
+  constructor(private stateService: StateService) { }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('formValue') === '') {
+      this.resumeData = this.resumeFormValue;
+    } else {
+      this.resumeData = JSON.parse(localStorage.getItem('formValue'));
+    }
+
+    fromEvent(window, 'storage').subscribe((storageEvent) => {
+      this.resumeData = JSON.parse(localStorage.getItem('formValue'));
+    });
   }
-
-  ngOnInit(): void {}
 
 }

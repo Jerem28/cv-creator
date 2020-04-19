@@ -45,6 +45,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   formBuilder: FormBuilder;
   resumeFormValue: ResumeFormStructure;
 
+  generatedResumeUrl: string;
+
   constructor(private fb: FormBuilder, private router: Router) {
       this.formBuilder = fb;
   }
@@ -79,6 +81,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     this.resumeForm.valueChanges.subscribe(formValue => {
       localStorage.setItem('formValue', JSON.stringify(formValue));
     });
+
+    this.generatedResumeUrl = window.location.href + '/generated-resume';
 
   }
 
