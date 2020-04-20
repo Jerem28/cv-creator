@@ -16,10 +16,10 @@
                         <mat-label for="hobbyDescription">Hobby description</mat-label>
                         <textarea matInput type="text" formControlName="hobbyDescription" placeholder="Ex. Collectionneur de modèles réduits"></textarea>
                     </mat-form-field>
-                    <button mat-icon-button color="primary" (click)="removeHobby(i)"><mat-icon>delete</mat-icon></button>
+                    <button type="button" mat-icon-button color="primary" (click)="removeHobby(i)"><mat-icon>delete</mat-icon></button>
                 </div>
             </div>
-            <button mat-raised-button color="primary" (click)="addInputHobby()"><mat-icon>add_circle</mat-icon></button>
+            <button type="button" mat-raised-button color="primary" (click)="addInputHobby()"><mat-icon>add_circle</mat-icon></button>
         </mat-card-content>
     </mat-card>
 </div>

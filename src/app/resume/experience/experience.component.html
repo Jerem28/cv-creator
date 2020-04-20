@@ -62,13 +62,13 @@
                                                     <input matInput type="text" formControlName="{{j}}" placeholder="Ex. Rangement de rayon">
                                                 </div>
                                                 <div class="col-1">
-                                                    <button mat-icon-button color="primary" (click)="callParentItemRemoved(['experiencesList', i, j])"><mat-icon>clear</mat-icon></button>
+                                                    <button type="button" mat-icon-button color="primary" (click)="callParentItemRemoved(['experiencesList', i, j])"><mat-icon>clear</mat-icon></button>
                                                 </div>
                                             </div>
                                         </li>
                                     </div>
                                 </ul>
-                                <button mat-stroked-button color="primary" (click)="callParentItemAdded(['experiencesList',i, item])">Add item</button>
+                                <button type="button" mat-stroked-button color="primary" (click)="callParentItemAdded(['experiencesList',i, item])">Add item</button>
                             </div>
                         </mat-card-content>
 

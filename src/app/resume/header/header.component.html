@@ -64,7 +64,7 @@
                 <div class="col-6" style="margin: auto;">
                     <div class="profilePictureContainer">
                         <img *ngIf="profilePictureUrl" [src]="profilePictureUrl">
-                        <button class="header-photo-button" mat-raised-button>
+                        <button type="button" class="header-photo-button" mat-raised-button>
                             <label id="labelProfilePicture" for="profilePicture" class="btn btn-default">
                                 Choose a CV photo
                                 <input type="file" id="profilePicture" style="display: none;" (change)="readProfilePictureUrl($event)">
