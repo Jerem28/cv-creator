@@ -27,7 +27,7 @@ export class ResumeGeneratedComponent implements OnInit {
   resumeData;
   resumeFormValue: ResumeFormStructure;
 
-  constructor(private stateService: StateService) { }
+  constructor() { }
 
   ngOnInit(): void {
     if (localStorage.getItem('formValue') === '') {
