@@ -1,49 +1,42 @@
-<!--<p> {{ resumeData | json }} </p>-->
-
-            <div class="wrapper">
-
-                <div class="header-container">
-                    
-                    <div class="header-container-one">
-                        <h1 class="fullname">{{ resumeData.fullname }}</h1>
-                        <p class="resume-description">Curieux, motivé</p>
-                        <section class="useful-infos row">
-            
-                            <div class="header-useful-infos-one">
-                                <div class="useful-info-item">
-                                    <i class="useful-info-icon fas fa-phone-square-alt"></i>
-                                    <p class="useful-info-text">0606640975</p>
-                                </div>
-
-                                <div class="useful-info-item">
-                                    <i class="useful-info-icon fab fa-linkedin"></i>
-                                    <p class="useful-info-text">https://www.linkedin.com/in/jérémy-rakotoarisoa-aab1b1a8</p>
-                                </div>
-                            </div>
-                            
-                            <div class="header-useful-infos-two">
-                                <div class="useful-info-item">
-                                    <i class="useful-info-icon fas fa-at"></i>
-                                    <p class="useful-info-text">jeremy.rakotoarisoa@gmail.com</p>
-                                </div>
-                
-                                <div class="useful-info-item">
-                                    <i class="useful-info-icon fas fa-map-marked d-inline"></i>
-                                    <p class="useful-info-text d-inline">1 Rue Gabriel Péri, 38600 Fontaine</p>
-                                </div>
+    <div class="container-fluid wrapper">
+            <div class="row">
+                <div class="col-8">
+                    <h1 class="fullname">{{ resumeData.fullname }}</h1>
+                    <p class="resume-description">{{ resumeData.descriptionSentence }}</p>
+                    <section class="useful-infos row">
+        
+                        <div class="col-6">
+                            <div class="useful-info-item my-4">
+                                <i class="useful-info-icon fas fa-phone-square-alt d-inline"></i>
+                                <p class="useful-info-text d-inline">{{ resumeData.phone }}</p>
                             </div>
             
-                        </section>
-                    </div>                    
-            
-                    <div class="header-container-2">
-                        <div class="main-photo-container mx-auto">
-                            <img class="main-photo" src="./../../assets/img/avatar.png" alt="photo-cv">
+                            <div class="useful-info-item my-4">
+                                <i class="useful-info-icon fab fa-linkedin d-inline"></i>
+                                <p class="useful-info-text d-inline">{{ resumeData.personalLink }}</p>
+                            </div>
                         </div>
-                    </div>
-
+                        
+                        <div class="col-6">
+                            <div class="useful-info-item my-4">
+                                <i class="useful-info-icon fas fa-at d-inline"></i>
+                                <p class="useful-info-text d-inline">{{ resumeData.email }}</p>
+                            </div>
+            
+                            <div class="useful-info-item my-4">
+                                <i class="useful-info-icon fas fa-map-marked d-inline"></i>
+                                <p class="useful-info-text d-inline">{{ resumeData.address }}</p>
+                            </div>
+                        </div>
+        
+                    </section>
                 </div>
-
+            
+                <div class="col-4">
+                    <div class="main-photo-container mx-auto">
+                        <img class="main-photo" src="./../../assets/img/avatar.png" alt="photo-cv">
+                    </div>
+                </div>
             </div>
 
             <div class="resume-content row">
@@ -288,6 +281,7 @@
                 
 
             </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -5,24 +5,9 @@
 }
 
 .wrapper {
-  height: 297mm;
-  width: 210mm;
   font-size: 12px;
   font-family: 'Roboto Slab', sans-serif;
   font-weight: 300;
-}
-
-.header-container {
-    display: grid;
-    grid-template-columns: auto auto;
-
-    .header-container-one {
-        grid-template-rows: auto auto auto;
-    }
-
-    .header-container-two {
-        grid-template-rows: auto;
-    }
 }
 
 .main-photo-container {

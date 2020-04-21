@@ -47,7 +47,9 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   generatedResumeUrl: string;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  isSideResumePreviewOpened = false;
+
+  constructor(private fb: FormBuilder, private router: Router, private bpo: BreakpointObserver) {
       this.formBuilder = fb;
   }
 
@@ -148,6 +150,10 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       const category = this.resumeForm.get(categoryName) as FormArray;
       const categoryItems = category.at(categoryIndex).get('items') as FormArray;
       categoryItems.removeAt(itemIndex);
+  }
+
+  checkedSideResumePreviewOpened(){
+    this.isSideResumePreviewOpened = !this.isSideResumePreviewOpened;
   }
 
 }

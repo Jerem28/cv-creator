@@ -1,99 +1,89 @@
-<header>
-    <div class="header__bg"></div>
-    <h1>ResumeBook</h1>
-    <h2>Handle your professional skills for your resumes with one tool !</h2>
-</header>
+    <header [class.active]="isSideResumePreviewOpened">
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <h1>ResumeBook</h1>
+            </mat-toolbar-row>
+            <mat-toolbar-row>
+                <h2>Handle your professional skills for your resumes with one tool !</h2>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </header>
+    
+    <div class="container resume">
+    
+        <!--
+        <div>
+            <p>{{ resumeForm.value | json }}</p>
+        </div>
+    
+        <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
+        -->
 
-<div class="container resume">
+                <div [class.active]="isSideResumePreviewOpened" id="iframe-preview-container">
+                    <iframe
+                        id="generated-resume-iframe"
+                        [src]= "generatedResumeUrl | safeUrl">
+                    </iframe>
+                </div>
 
-    <!--
-    <div>
-        <p>{{ resumeForm.value | json }}</p>
+                <form [class.active]="isSideResumePreviewOpened" id="resume-form" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
+
+                    <button mat-button type="button" id="side-resume-preview-button" (click)="checkedSideResumePreviewOpened()">
+                        Preview
+                    </button>
+
+                    <app-header 
+                        [formBuilder]="formBuilder"
+                        [resumeForm]="resumeForm">
+                    </app-header>
+            
+                    <app-experience 
+                        [formBuilder]="formBuilder" 
+                        [resumeForm]="resumeForm" 
+                        (itemAddedEvent)="addItemToCategory($event)"
+                        (itemRemovedEvent)="removeItemFromCategory($event)">
+                    </app-experience>
+            
+                    <app-education
+                        [formBuilder]="formBuilder"
+                        [resumeForm]="resumeForm">
+                    </app-education>
+            
+            
+                    <app-language
+                        [formBuilder]="formBuilder"
+                        [resumeForm]="resumeForm">
+                    </app-language>
+            
+                    <app-skills
+                        [formBuilder]="formBuilder"
+                        [resumeForm]="resumeForm">
+                    </app-skills>
+            
+                    <app-hobby
+                        [formBuilder]="formBuilder"
+                        [resumeForm]="resumeForm">
+                    </app-hobby>
+            
+                    <button mat-stroked-button color="primary" type="submit">Generate resume</button>
+            
+                </form>
+    
     </div>
-
-    <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
-    -->
-
-    <div class="iframe-preview">
-        <iframe
-            class="generated-resume-iframe"
-            width="210mm"
-            height="297mm"
-            [src]= "generatedResumeUrl | safeUrl">
-        </iframe>
-    </div>
-
-    <app-header 
-        [formBuilder]="formBuilder"
-        [resumeForm]="resumeForm">
-    </app-header>
-
-    <form [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
-
-        <div class="row">
-            <div class="col-6">
-                <app-experience 
-                [formBuilder]="formBuilder" 
-                [resumeForm]="resumeForm" 
-                (itemAddedEvent)="addItemToCategory($event)"
-                (itemRemovedEvent)="removeItemFromCategory($event)">
-                </app-experience>
-            </div>
-
-            <div class="col-6">
-                <app-education
-                [formBuilder]="formBuilder"
-                [resumeForm]="resumeForm">
-                </app-education>
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <app-language
-                [formBuilder]="formBuilder"
-                [resumeForm]="resumeForm">
-                </app-language>
-            </div>
-
-            <div class="col-6">
-                <app-skills
-                [formBuilder]="formBuilder"
-                [resumeForm]="resumeForm">
-                </app-skills>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <app-hobby
-                [formBuilder]="formBuilder"
-                [resumeForm]="resumeForm">
-                </app-hobby>
-            </div>
-        </div>
-
-        <button mat-stroked-button color="primary" type="submit">Generate resume</button>
-
-    </form>
-
-</div>
-
-<footer>
-        <svg class="defs-only" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <symbol id="wave">
-              <svg viewBox="0 0 100 50" preserveAspectRatio="none" >
-                  <g>
-                    <path d="M100,30 Q70,40 50,30 T0,30 v20 h100Z" 
-                        style="fill:#3f51b5; stroke-linejoin:round; stroke:#ffffff" stroke-width="0"/>
-                  </g>
+    
+    <footer>
+            <svg class="defs-only" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <symbol id="wave">
+                  <svg viewBox="0 0 100 50" preserveAspectRatio="none" >
+                      <g>
+                        <path d="M100,30 Q70,40 50,30 T0,30 v20 h100Z" 
+                            style="fill:#3f51b5; stroke-linejoin:round; stroke:#ffffff" stroke-width="0"/>
+                      </g>
+                  </svg>
+                </symbol>
               </svg>
-            </symbol>
-          </svg>
-        <svg width="50" height="50" style="width: 100%; height: 350px;">
-            <use xlink:href="#wave"/>
-        </svg>
-        <!--<p>2020 © All rights reserved.</p>-->
-</footer>
-
+            <svg width="50" height="50" style="width: 100%; height: 350px;">
+                <use xlink:href="#wave"/>
+            </svg>
+            <!--<p>2020 © All rights reserved.</p>-->
+    </footer>
