@@ -34,245 +34,187 @@
             
                 <div class="col-4">
                     <div class="main-photo-container mx-auto">
-                        <img class="main-photo" src="./../../assets/img/avatar.png" alt="photo-cv">
+                        <img class="main-photo" src="../../assets/img/avatar.png" alt="photo-cv">
                     </div>
                 </div>
             </div>
 
             <div class="resume-content row">
+
                 <div class="col mr-5">
+
                     <section class="resume-section experience mr-20">
+    
+                        <div *ngIf="resumeData.experiencesList.length !== 0">
+                            <div class="resume-section-title">
+                                <h1>Expérience</h1>
+                                <div class="underline"></div>
+                            </div>
+                        </div>                
 
-                        <div class="resume-section-title">
-                            <h1>Expérience</h1>
-                            <div class="underline"></div>
+                        <div *ngFor="let experience of resumeData.experiencesList;">
+                            <article class="resume-article">
+                                <div class="experience-header">
+                                    <h2 class="experience-title mt-5">{{ experience.experienceTitle }}</h2>
+                                    <h3 class="work-place">{{ experience.workPlace }}</h3>
+                                    <div class="date-range d-inline">
+                                        <i class="useful-info-icon fas fa-calendar-alt"></i>
+                                        <span class="experience-date-start">{{ experience.startDate | date:'MM/y'}}</span>
+                                        <span class="date-separator">-</span>
+                                        <span class="experience-date-end">{{ experience.endDate | date:'MM/y'}}</span>
+                                    </div>
+                                    <div class="work-address d-inline">
+                                        <i class="useful-info-icon fas fa-map-marker-alt"></i>
+                                        <span class="experience-work-address">{{ experience.workAddress }}</span>
+                                    </div>
+                                    <p class="experience-work-place-description">{{ experience.workPlaceDescription }}</p>
+                                </div>
+                                <div class="experience-content">
+                                    <ul class="experience-bulletpoints" *ngFor="let item of experience.items">
+                                        <li class="experience-bulletpoint">{{ item }}</li>
+                                    </ul>
+                                </div>
+                            </article>
                         </div>
-                    
-                        <article class="resume-article">
-                            <div class="experience-header">
-                                <h2 class="experience-title mt-5">Développeur / Intégrateur Plateforme d'Intégration Continue</h2>
-                                <h3 class="work-place">INRIA</h3>
-                                <div class="date-range d-inline">
-                                    <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                    <span class="experience-date-start">03/2018</span>
-                                    <span class="date-separator">-</span>
-                                    <span class="experience-date-end">10/2019</span>
-                                </div>
-                                <div class="work-address d-inline">
-                                    <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                    <span class="experience-work-address">Montbonnot Saint-Martin, France</span>
-                                </div>
-                                <p class="experience-work-place-description">Institut de recherche</p>
-                            </div>
-                            <div class="experience-content">
-                                <ul class="experience-bulletpoints">
-                                    <li class="experience-bulletpoint">Maintenance et évolution du portail d'Intégration Continue</li>
-                                    <li class="experience-bulletpoint">Mise en place de tests unitaires et fonctionnels</li>
-                                    <li class="experience-bulletpoint">Développement d'une API générique Cloud</li>
-                                    <li class="experience-bulletpoint">Développement d'un Bundle Symfony Vmware pour l'Intégration Continue (API SOAP Vsphere)</li>
-                                    <li class="experience-bulletpoint">Intégration d'un Cloud Dispatcher (API REST Cloudstack)</li>
-                                    <li class="experience-bulletpoint">Patch du code source Cloudstack pour Mac OS</li>
-                                    <li class="experience-bulletpoint">Support du service Applications de la DSI</li>
-
-                                </ul>
-                            </div>
-                        </article>
-
-                        <article class="resume-article experience">
-                            <div class="experience-header">
-                                <h2 class="experience-title mt-5">Administrateur / Développeur Cloud</h2>
-                                <h3 class="work-place">Orange</h3>
-                                <div class="date-range d-inline">
-                                    <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                    <span class="experience-date-start">09/2014</span>
-                                    <span class="date-separator">-</span>
-                                    <span class="experience-date-end">08/2017</span>
-                                </div>
-                                <div class="work-address d-inline">
-                                    <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                    <span class="experience-work-address">Meylan, France</span>
-                                </div>
-                                <p class="work-place-description">Entreprise française de télécommunications</p>
-                            </div>
-                            <div class="experience-content">
-                                <ul class="experience-bulletpoints">
-                                    <li class="experience-bulletpoint">Administration d'une Platform-As-A-Service</li>
-                                    <li class="experience-bulletpoint">Intégration au sein d'une équipe Agile</li>
-                                    <li class="experience-bulletpoint">Travail en collaboration avec une division d'Orange Roumanie </li>
-                                    <li class="experience-bulletpoint">Développement d'un portail web de documentation Wordpress</li>
-                                    <li class="experience-bulletpoint">Mise en place d'une solution de datamining pour la plateforme (récupération de logs, filtrage des données, affichage graphique)</li>
-                                    <li class="experience-bulletpoint">Développement d'une solution de facturation en Django/Python</li>
-                                </ul>
-                            </div>
-                        </article>
-
+                            
                     </section>
 
                     <section class="resume-section">
 
-                        <div class="resume-section-title">
-                            <h1>Formation</h1>
-                            <div class="underline"></div>
+                        <div *ngIf="resumeData.educationsList.length !== 0">
+                            <div class="resume-section-title">
+                                <h1>Formation</h1>
+                                <div class="underline"></div>
+                            </div>
                         </div>
 
-                        <article class="resume-article formation">
-                            <div class="formation-header">
-                                <h2 class="formation-title mt-5">Certification Javascript Algorithms & Data Structures</h2>
-                                <h3 class="work-place"></h3>
-                                <div class="date-range d-inline">
-                                    <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                    <span class="formation-date-start">01/2020</span>
-                                    <span class="date-separator">-</span>
-                                    <span class="formation-date-end">03/2020</span>
-                                </div>
-                                <div class="work-address d-inline">
-                                    <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                    <span class="formation-work-address">FreeCodeCamp, France</span>
-                                </div>
-                            </div>  
-                        </article>
-
-                        <article class="resume-article formation">
-                            <div class="formation-header">
-                                <h2 class="formation-title mt-5">Diplôme d'ingénieur en Informatique et Mathématiques Appliquées</h2>
-                                <h3 class="work-place">ENSIMAG</h3>
-                                <div class="date-range d-inline">
-                                    <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                    <span class="formation-date-start">09/2014</span>
-                                    <span class="date-separator">-</span>
-                                    <span class="formation-date-end">08/2017</span>
-                                </div>
-                                <div class="work-address d-inline">
-                                    <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                    <span class="formation-work-address">Saint-Martin d'Hères, France</span>
-                                </div>
-                            </div>  
-                        </article>
-
-                        <article class="resume-article formation">
-                            <div class="formation-header">
-                                <h2 class="formation-title mt-5">Diplôme universitaire de Technologie Informatique</h2>
-                                <h3 class="work-place">IUT2</h3>
-                                <div class="date-range d-inline">
-                                    <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                    <span class="formation-date-start">09/2012</span>
-                                    <span class="date-separator">-</span>
-                                    <span class="formation-date-end">08/2014</span>
-                                </div>
-                                <div class="work-address d-inline">
-                                    <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                    <span class="formation-work-address">Grenoble, France</span>
-                                </div>
-                            </div>  
-                        </article>
-
+                        <div *ngFor="let education of resumeData.educationsList;">
+                            <article class="resume-article formation">
+                                <div class="formation-header">
+                                    <h2 class="formation-title mt-5">{{ education.educationTitle }}</h2>
+                                    <h3 class="work-place"></h3>
+                                    <div class="date-range d-inline">
+                                        <i class="useful-info-icon fas fa-calendar-alt"></i>
+                                        <span class="formation-date-start">{{ education.startDate | date:'MM/y'}}</span>
+                                        <span class="date-separator">-</span>
+                                        <span class="formation-date-end">{{ education.endDate | date:'MM/y'}}</span>
+                                    </div>
+                                    <div class="work-address d-inline">
+                                        <i class="useful-info-icon fas fa-map-marker-alt"></i>
+                                        <span class="formation-work-address">{{ education.workAdress }}</span>
+                                    </div>
+                                </div>  
+                            </article>
+    
+                        </div>
+                        
                     </section>
                 </div>
 
                 <div class="col mr-5">
                     <section class="resume-section">
                         
-                        <div class="resume-section-title mb-5">
-                            <h1>Langues</h1>
-                            <div class="underline"></div>
+                        <div *ngIf="resumeData.languagesList.length !== 0">
+                            <div class="resume-section-title mb-5">
+                                <h1>Langues</h1>
+                                <div class="underline"></div>
+                            </div>
                         </div>
 
-                        <div class="resume-article languages d-inline">
-                            <span class="language-name">Francais</span>
-                            <span class="dot skilled"></span>
-                            <span class="dot skilled"></span>
-                            <span class="dot skilled"></span>
-                            <span class="dot skilled"></span>
-                            <span class="dot skilled"></span>
-                        </div>
+                        <div *ngFor="let language of resumeData.languagesList;">
+                            <div class="resume-article languages d-inline">
+                                <span class="language-name">{{ language.languageTitle }}</span>
+                                <div [ngSwitch]="language.languageLevel">
+                                    <div *ngSwitchCase="1">
+                                        <span class="dot skilled"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
 
-                        <div class="resume-article languages d-inline">
-                            <span class="language-name">Anglais</span>
-                            <span class="dot skilled"></span>
-                            <span class="dot skilled"></span>
-                            <span class="dot skilled"></span>
-                            <span class="dot skilled"></span>
-                            <span class="dot"></span>
-                        </div>
+                                    <div *ngSwitchCase="2">
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
 
-                    </section>
-        
-                    <section class="resume-section">
-                        <div class="resume-section-title">
-                            <h1>Compétences</h1>
-                            <div class="underline"></div>
-                        </div>
-                        
-                        <div class="resume-article">
-                            <h2 class="skills-title mt-5">Cloud, Conteneur et Serveur</h2>
-                            <ul class="skill-list list-inline">
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Jenkins</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Docker</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Cloudstack</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Vmware Vsphere</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">NodeJS</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Apache</button></li>
-                            </ul>
-                        </div>
-        
-                        <div class="resume-article">
-                            <h2 class="skills-title mt-5">Base de données</h2>
-                            <ul class="skill-list list-inline">
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">MySQL</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">PostgreSQL</button></li>
-                            </ul>
-                        </div>
-        
-                        <div class="resume-article">
-                            <h2 class="skills-title mt-5">Languages & Frameworks</h2>
-                            <ul class="skill-list list-inline">
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Symfony/PHP</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Bash</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">C#</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Angular 8</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Angular 8</button></li>
-                            </ul>
-                        </div>
+                                    <div *ngSwitchCase="3">
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
 
-                        <div class="resume-article">
-                            <h2 class="skills-title">Outils de développement</h2>
-                            <ul class="skill-list list-inline">
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Git</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">VSCode</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">Jetbrains IDE</button></li>
-                                <li class="skill-item list-inline-item"><button class="btn btn-primary">TDD</button></li>
-                            </ul>
+                                    <div *ngSwitchCase="4">
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot"></span>
+                                    </div>
+
+                                    <div *ngSwitchCase="5">
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                        <span class="dot skilled"></span>
+                                    </div>
+
+                                    <div *ngSwitchDefault>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
                         </div>
 
                     </section>
         
                     <section class="resume-section">
-        
-                        <div class="resume-section-title mb-5">
-                            <h1>Passions</h1>
-                            <div class="underline"></div>
+
+                        <div *ngIf="resumeData.skillsList.length !== 0">
+                            <div class="resume-section-title">
+                                <h1>Compétences</h1>
+                                <div class="underline"></div>
+                            </div>
                         </div>
                         
-                        <div class="row">
-                            <article class="resume-article col-6">
-                                <h2 class="passion-title">Musique</h2>
-                                <p class="passion-description">Choriste/soliste, pianiste, guitariste (Summum 2019 - Concert Franklin & Black Legends)</p>
-                            </article>
-            
-                            <article class="resume-article col-6">
-                                <h2 class="passion-title">Physiologie & Alimentation</h2>
-                                <p class="passion-description"></p>
-                            </article>
+                        <div *ngFor="let skill of resumeData.skillsList;">
+                            <div class="resume-article">
+                                <h2 class="skills-category-title mt-5">{{ skill.skillCategoryTitle }}</h2>
+                                <ul class="skill-list list-inline">
+                                    <div *ngFor="let item of skill.items">
+                                        <li class="skill-item list-inline-item"><button class="btn btn-primary">{{ item }}</button></li>
+                                    </div>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="row">
-                            <article class="resume-article col-6">
-                                <h2 class="passion-title">Voyages</h2>
-                                <p class="passion-description">Saint-Jacques de Compostelle</p>
-                            </article>
-            
-                            <article class="resume-article col-6">
-                                <h2 class="passion-title">Développement personnel</h2>
-                                <p class="passion-description">Féru de découvertes du domaine !</p>
+
+                    </section>
+        
+                    <section class="resume-section">
+        
+                        <div *ngIf="resumeData.hobbiesList.length !== 0">
+                            <div class="resume-section-title mb-5">
+                                <h1>Passions</h1>
+                                <div class="underline"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="hobbies-list" *ngFor="let hobby of resumeData.hobbiesList;">
+                            <article class="resume-article">
+                                <h2 class="passion-title">{{ hobby.hobbyTitle }}</h2>
+                                <p class="passion-description">{{ hobby.hobbyDescription }}</p>
                             </article>
                         </div>
                         
