@@ -49,7 +49,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   isSideResumePreviewOpened = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private bpo: BreakpointObserver) {
+  constructor(private fb: FormBuilder, private router: Router) {
       this.formBuilder = fb;
   }
 
