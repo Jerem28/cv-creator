@@ -57,7 +57,9 @@
             
                     <app-skills
                         [formBuilder]="formBuilder"
-                        [resumeForm]="resumeForm">
+                        [resumeForm]="resumeForm"
+                        (itemAddedEvent)="addItemToCategory($event)"
+                        (itemRemovedEvent)="removeItemFromCategory($event)">
                     </app-skills>
             
                     <app-hobby

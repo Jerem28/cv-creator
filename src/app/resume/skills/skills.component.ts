@@ -11,6 +11,9 @@ export class SkillsComponent implements OnInit {
   @Input() formBuilder: FormBuilder;
   @Input() resumeForm: FormGroup;
 
+  @Output() itemAddedEvent = new EventEmitter<Array<any>>();
+  @Output() itemRemovedEvent = new EventEmitter<Array<any>>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -18,12 +21,19 @@ export class SkillsComponent implements OnInit {
     console.log(this.resumeForm.value);
   }
 
-  get skill(): FormControl {
-    return this.formBuilder.control('');
+  get skill(): FormGroup {
+    return this.formBuilder.group({
+      skillCategoryTitle: '',
+      items: this.formBuilder.array([]),
+    });
   }
 
   get skillsList(): FormArray {
     return this.resumeForm.get('skillsList') as FormArray;
+  }
+
+  getSkillItemList(skillIndex: number): FormArray {
+    return this.skillsList.at(skillIndex).get('items') as FormArray;
   }
 
   addInputSkill(){
@@ -38,7 +48,26 @@ export class SkillsComponent implements OnInit {
     for (let skillIndex = 0; skillIndex < data.skillsList.length; skillIndex++) {
       console.log('Adding skill [' + skillIndex + '] to skillsList');
       this.skillsList.push(this.skill);
+      if (data.skillsList[skillIndex].items.length > 0) {
+        const skillItemNumber = data.experiencesList[skillIndex].items.length;
+        for (let itemIndex = 0; itemIndex < skillItemNumber; itemIndex++) {
+          console.log('Adding item [' + itemIndex + '] to experience [' + skillIndex + ']');
+          this.getSkillItemList(skillIndex).push(this.item);
+        }
+      }
     }
+  }
+
+  get item(): FormControl {
+    return this.formBuilder.control('');
+  }
+
+  callParentItemAdded(argumentsArray) {
+    this.itemAddedEvent.next(argumentsArray);
+  }
+
+  callParentItemRemoved(argumentsArray) {
+    this.itemRemovedEvent.next(argumentsArray);
   }
 
 }

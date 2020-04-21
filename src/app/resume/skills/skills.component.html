@@ -6,19 +6,46 @@
             <mat-card-subtitle>You've build some skills on your journey, list them here !</mat-card-subtitle>
         </mat-card-header>
 
-        <div formArrayName="skillsList">
-            <ul style="display: inline-block; list-style: none;" class="skillsList">
-                <div *ngFor="let skill of skillsList.controls; let i = index">
-                    <li>
-                        <mat-form-field appearance="out" class="skill-item">
-                            <mat-label>Skill title</mat-label>
-                            <input matInput type="text" formControlName="{{i}}" placeholder="Ex. Management d'équipe">
-                        </mat-form-field>
-                        <button mat-icon-button color="primary" (click)="removeSkill(i)"><mat-icon>delete</mat-icon></button>
-                    </li>
+        <mat-card-content>
+            <div formArrayName="skillsList">
+                <div *ngFor="let skill of skillsList.controls; let i = index" formGroupName="{{i}}">
+
+                    <mat-card class="resume-content-card">
+                        
+                        <mat-card-title class="resume-card-title">
+                            <mat-form-field appearance="standard">
+                                <mat-label for="skillCategoryTitle">Skill category title</mat-label>
+                                <input matInput type="text" formControlName="skillCategoryTitle" placeholder="Ex. Compétences managériales">
+                            </mat-form-field>
+                        </mat-card-title>
+
+                        <mat-card-content>
+                            <div formArrayName="items">
+                                <ul style="display: inline-block; list-style: none;" class="skillsList">
+                                    <div *ngFor="let skillItem of getSkillItemList(i).controls; let j = index">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <input matInput type="text" formControlName="{{j}}" placeholder="Ex. Management d'équipe">
+                                                </div>
+                                                <div class="col-1">
+                                                    <button type="button" mat-icon-button color="primary" (click)="callParentItemRemoved(['skillsList', i, j])"><mat-icon>clear</mat-icon></button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </ul>
+                                <button type="button" mat-stroked-button color="primary" (click)="callParentItemAdded(['skillsList',i, item])">Add item</button>
+                            </div>
+                        </mat-card-content>
+
+                        <mat-card-footer>
+                            <button type="button" mat-icon-button color="primary" (click)="removeSkill(i)"><mat-icon>delete</mat-icon></button>
+                        </mat-card-footer>
+                    </mat-card>
                 </div>
-            </ul>
-        </div>
+            </div>
+        </mat-card-content>
 
         <button type="button" mat-raised-button color="primary" (click)="addInputSkill()"><mat-icon>add_circle</mat-icon></button>
 
