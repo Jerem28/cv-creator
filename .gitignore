@@ -47,3 +47,5 @@ Thumbs.db
 
 # Implementation examples
 /src/app/file-value-accessor.directive.ts
+/src/app/state.service.spec.ts
+/src/app/state.service.ts
