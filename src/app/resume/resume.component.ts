@@ -44,6 +44,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   resumeForm: FormGroup;
   formBuilder: FormBuilder;
   resumeFormValue: ResumeFormStructure;
+  jsonFileURL: string;
 
   generatedResumeUrl: string;
 
@@ -99,6 +100,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     // We use setTimeout to delay update of form values on another JS VM runtime, until all child views have been created
     // so it updates ASYNCHRONOUSLY and we can use @ViewChild components (otherwise they are undefined)
     setTimeout( () => this.loadResumeForm(value), 0 );
+
   }
 
   resetForm() {
@@ -154,6 +156,12 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   checkedSideResumePreviewOpened(){
     this.isSideResumePreviewOpened = !this.isSideResumePreviewOpened;
+  }
+
+  downloadResumeAsJSON(){
+    const jsonContent = JSON.stringify(JSON.parse(localStorage.getItem('formValue')), null, 2);
+    const data = new Blob([jsonContent], { type: 'text/json' });
+    this.jsonFileURL = window.URL.createObjectURL(new File([data], 'resume.json', { type: 'text/json'}));
   }
 
 }
