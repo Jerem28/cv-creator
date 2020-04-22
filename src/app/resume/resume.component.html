@@ -19,6 +19,14 @@
         <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
         -->
 
+                <button [class.active]="isSideResumePreviewOpened" 
+                        mat-mini-fab
+                        color="primary" 
+                        type="button" 
+                        id="side-resume-preview-button" 
+                        (click)="checkedSideResumePreviewOpened()">
+                    <mat-icon>remove_red_eye</mat-icon>
+                </button>
                 <div [class.active]="isSideResumePreviewOpened" id="iframe-preview-container">
                     <iframe
                         id="generated-resume-iframe"
@@ -34,10 +42,6 @@
                 </button>
 
                 <form [class.active]="isSideResumePreviewOpened" id="resume-form" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
-
-                    <button mat-button type="button" id="side-resume-preview-button" (click)="checkedSideResumePreviewOpened()">
-                        Preview
-                    </button>
 
                     <app-header 
                         [formBuilder]="formBuilder"

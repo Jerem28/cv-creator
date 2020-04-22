@@ -12,10 +12,6 @@
     padding-top:15px;
 }
 
-.mat-icon {
-    font-size: 40px;
-}
-
 header {
     position: relative;
     height: 200px;
@@ -44,6 +40,13 @@ header {
     height: 0;
 }
 
+#side-resume-preview-button {
+    position: fixed;
+    top: 50%;
+    right: 500px;
+    transition: all 0.2s;
+}
+
 #iframe-preview-container {
     min-width: 500px;
     max-width: 768px;
@@ -55,20 +58,20 @@ header {
     z-index: 999;
     background: #7386D5;
     color: #fff;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
-#iframe-preview-container.active {
+#iframe-preview-container.active, #side-resume-preview-button.active {
     margin-right: -500px;
 }
 
 #resume-form.active, header.active {
-    transition: all 0.3s;
+    transition: all 0.2s;
     margin-right: 0;
 }
 
 #resume-form, header {
-    transition: all 0.3s;
+    transition: all 0.2s;
     margin-right: 500px;
 }
 
