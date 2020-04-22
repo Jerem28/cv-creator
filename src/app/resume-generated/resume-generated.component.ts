@@ -30,8 +30,8 @@ export class ResumeGeneratedComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('formValue') === '') {
-      this.resumeData = this.resumeFormValue;
+    if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
+      this.resumeData = this.initializeResumeData();
     } else {
       this.resumeData = JSON.parse(localStorage.getItem('formValue'));
     }
@@ -39,6 +39,23 @@ export class ResumeGeneratedComponent implements OnInit {
     fromEvent(window, 'storage').subscribe((storageEvent) => {
       this.resumeData = JSON.parse(localStorage.getItem('formValue'));
     });
+  }
+
+  initializeResumeData() {
+    return {
+      fullname: '',
+      descriptionSentence: '',
+      phone: '',
+      personalLink: '',
+      email: '',
+      address: '',
+      profilePicture: '',
+      experiencesList: [],
+      educationsList: [],
+      languagesList: [],
+      skillsList: [],
+      hobbiesList: []
+    };
   }
 
 }

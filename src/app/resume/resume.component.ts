@@ -42,7 +42,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   private hobbyComponent: HobbyComponent;
 
   resumeForm: FormGroup;
-  formBuilder: FormBuilder;
   resumeFormValue: ResumeFormStructure;
   jsonFileURL: string;
 
@@ -50,9 +49,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   isSideResumePreviewOpened = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
-      this.formBuilder = fb;
-  }
+  constructor(public formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -60,12 +57,82 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
     let value: any;
 
-    if (localStorage.getItem('formValue') === '') {
+    if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
       value = this.resumeFormValue;
     } else {
       value = JSON.parse(localStorage.getItem('formValue'));
     }
 
+    this.initializeResumeForm(value);
+
+    this.resumeForm.valueChanges.subscribe(formValue => {
+      localStorage.setItem('formValue', JSON.stringify(formValue));
+    });
+
+    this.generatedResumeUrl = window.location.href + '/generated-resume';
+
+  }
+
+  ngAfterViewInit(){
+    let value: object;
+
+    if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
+      value = this.resumeFormValue;
+    } else {
+      value = JSON.parse(localStorage.getItem('formValue'));
+    }
+    // We use setTimeout to delay update of form values on another JS VM runtime, until all child views have been created
+    // so it updates ASYNCHRONOUSLY and we can use @ViewChild components (otherwise they are undefined)
+    setTimeout( () => this.loadResumeForm(value), 0 );
+
+  }
+
+  initializeResumeFormArrays() {
+    this.experienceComponent.experiencesList.clear();
+    this.educationComponent.educationsList.clear();
+    this.languageComponent.languagesList.clear();
+    this.skillComponent.skillsList.clear();
+    this.hobbyComponent.hobbiesList.clear();
+  }
+
+  resetForm() {
+    this.resumeForm.reset(); // Only set value of all formGroup to null, but keep data structure
+    this.initializeResumeFormArrays(); // Clean all FormArrays, so they are empty
+  }
+
+  loadResumeForm(value) {
+
+      this.resetForm();
+
+      // Only if we have value from a precedent resume form, we do the following
+      if (value && Object.keys(value).length > 0) {
+        console.log('Patch with old form value');
+      /* It's mandatory to have same object structure in data saved before reload and in actual resumeForm,
+        that is why we push each blank object in this.experiencesList and so on */
+
+        this.resetForm(); 
+        console.log('[ResumeComponent] ');
+        console.log(this.resumeForm.value);
+
+        console.log('[ResumeComponent] Creating resumeForm with following value data :');
+        console.log(value);
+
+        this.experienceComponent.createExperience(value);
+        this.educationComponent.createEducation(value);
+        this.skillComponent.createSkill(value);
+        this.languageComponent.createLanguage(value);
+        this.hobbyComponent.createHobby(value);
+
+        console.log('[ResumeComponent] Actual Resume form structure :');
+        console.log(this.resumeForm.value);
+
+        this.resumeForm.patchValue(value);
+
+      }
+
+  }
+
+  initializeResumeForm(value) {
     this.resumeForm = this.formBuilder.group({
       fullname: [value && value.fullname] || '',
       descriptionSentence: [value && value.descriptionSentence] || '',
@@ -80,49 +147,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       skillsList: this.formBuilder.array([]),
       hobbiesList: this.formBuilder.array([])
     });
-
-    this.resumeForm.valueChanges.subscribe(formValue => {
-      localStorage.setItem('formValue', JSON.stringify(formValue));
-    });
-
-    this.generatedResumeUrl = window.location.href + '/generated-resume';
-
-  }
-
-  ngAfterViewInit(){
-    let value: object;
-
-    if (localStorage.getItem('formValue') === '') {
-      value = this.resumeFormValue;
-    } else {
-      value = JSON.parse(localStorage.getItem('formValue'));
-    }
-    // We use setTimeout to delay update of form values on another JS VM runtime, until all child views have been created
-    // so it updates ASYNCHRONOUSLY and we can use @ViewChild components (otherwise they are undefined)
-    setTimeout( () => this.loadResumeForm(value), 0 );
-
-  }
-
-  resetForm() {
-    this.resumeForm.reset();
-  }
-
-  loadResumeForm(value) {
-
-      // Only if we have value from a precedent resume form, we do the following
-      if (value && Object.keys(value).length > 0) {
-        console.log('Patch with old form value');
-      /* It's mandatory to have same object structure in data saved before reload and in actual resumeForm,
-        that is why we push each blank object in this.experiencesList and so on */
-
-        this.experienceComponent.createExperience(value);
-        this.educationComponent.createEducation(value);
-        this.skillComponent.createSkill(value);
-        this.languageComponent.createLanguage(value);
-        this.hobbyComponent.createHobby(value);
-
-        this.resumeForm.patchValue(value);
-      }
   }
 
   onSubmit(){
@@ -164,4 +188,20 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     this.jsonFileURL = window.URL.createObjectURL(new File([data], 'resume.json', { type: 'text/json'}));
   }
 
+  importJSON(event: any){
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      const file = event.target.files[0];
+      console.log(file);
+
+      let jsonContent: string | ArrayBuffer;
+
+      reader.onloadend = (event) => {
+        jsonContent = JSON.parse(reader.result as string);
+        this.loadResumeForm(jsonContent as object);
+      };
+
+      reader.readAsText(file);
+    }
+  }
 }

@@ -49,7 +49,7 @@ export class SkillsComponent implements OnInit {
       console.log('Adding skill [' + skillIndex + '] to skillsList');
       this.skillsList.push(this.skill);
       if (data.skillsList[skillIndex].items.length > 0) {
-        const skillItemNumber = data.experiencesList[skillIndex].items.length;
+        const skillItemNumber = data.skillsList[skillIndex].items.length;
         for (let itemIndex = 0; itemIndex < skillItemNumber; itemIndex++) {
           console.log('Adding item [' + itemIndex + '] to experience [' + skillIndex + ']');
           this.getSkillItemList(skillIndex).push(this.item);

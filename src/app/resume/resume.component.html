@@ -26,6 +26,13 @@
                     </iframe>
                 </div>
 
+                <button type="button" mat-stroked-button color="primary">
+                    <label id="labelImportJSON" for="importJSON" class="btn btn-default">
+                        Import JSON
+                        <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
+                    </label>
+                </button>
+
                 <form [class.active]="isSideResumePreviewOpened" id="resume-form" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
 
                     <button mat-button type="button" id="side-resume-preview-button" (click)="checkedSideResumePreviewOpened()">
