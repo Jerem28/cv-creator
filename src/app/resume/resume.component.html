@@ -35,11 +35,13 @@
                 </div>
 
                 <button type="button" mat-stroked-button color="primary">
-                    <label id="labelImportJSON" for="importJSON" class="btn btn-default">
+                    <label id="labelImportJSON" for="importJSON" style="margin: auto">
                         Import JSON
                         <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
                     </label>
                 </button>
+
+                <button type="button" mat-stroked-button color="primary" (click)="resetForm()">Clear resume</button>
 
                 <form [class.active]="isSideResumePreviewOpened" id="resume-form" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
 
