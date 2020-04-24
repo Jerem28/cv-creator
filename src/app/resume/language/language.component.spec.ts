@@ -1,25 +1,51 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, TestBed } from '@angular/core/testing';
 import { LanguageComponent } from './language.component';
+import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('LanguageComponent', () => {
-  let component: LanguageComponent;
-  let fixture: ComponentFixture<LanguageComponent>;
+  const languageComponent = new LanguageComponent();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatIconModule
+      ],
       declarations: [ LanguageComponent ]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LanguageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(languageComponent).toBeTruthy();
+  });
+
+  it('should construct a languages list', () => {
+    const formBuilder: FormBuilder = new FormBuilder();
+    languageComponent.formBuilder = formBuilder;
+    const resumeFormData =
+    {
+      languagesList: [],
+    };
+    const resumeForm: FormGroup = languageComponent.formBuilder.group(resumeFormData);
+    languageComponent.resumeForm = resumeForm;
+
+    console.log('[TEST]');
+    console.log(languageComponent.languagesList);
+
+    expect(languageComponent.languagesList).not.toBe(null);
+
   });
 });

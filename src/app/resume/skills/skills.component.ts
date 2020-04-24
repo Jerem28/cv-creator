@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { Skill } from 'src/app/resume-interfaces';
 
 @Component({
   selector: 'app-skills',
@@ -22,10 +23,12 @@ export class SkillsComponent implements OnInit {
   }
 
   get skill(): FormGroup {
-    return this.formBuilder.group({
+    const skill: Skill =
+    {
       skillCategoryTitle: '',
-      items: this.formBuilder.array([]),
-    });
+      items: this.formBuilder.array([])
+    };
+    return this.formBuilder.group(skill);
   }
 
   get skillsList(): FormArray {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { Experience } from '../../resume-interfaces';
 
 @Component({
   selector: 'app-experience',
@@ -28,7 +29,8 @@ export class ExperienceComponent implements OnInit, OnChanges {
   }
 
   get experience(): FormGroup {
-    return this.formBuilder.group({
+    const experience: Experience =
+    {
       experienceTitle: '',
       workPlace: '',
       workPlaceDescription: '',
@@ -36,7 +38,8 @@ export class ExperienceComponent implements OnInit, OnChanges {
       endDate: '',
       workAddress: '',
       items: this.formBuilder.array([])
-    });
+    };
+    return this.formBuilder.group(experience);
   }
 
   get experiencesList(): FormArray {

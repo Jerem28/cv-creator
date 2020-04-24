@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Education } from 'src/app/resume-interfaces';
 
 @Component({
   selector: 'app-education',
@@ -23,13 +24,15 @@ export class EducationComponent implements OnInit {
   }
 
   get education(): FormGroup {
-    return this.formBuilder.group({
+    const education: Education =
+    {
       educationTitle: '',
       startDate: '',
       endDate: '',
       workPlace: '',
       workAddress: ''
-    });
+    };
+    return this.formBuilder.group(education);
   }
 
   addInputEducation(){

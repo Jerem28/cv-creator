@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Language } from 'src/app/resume-interfaces';
 
 @Component({
   selector: 'app-language',
@@ -17,10 +18,12 @@ export class LanguageComponent implements OnInit {
   }
 
   get language(): FormGroup {
-    return this.formBuilder.group({
+    const language: Language =
+    {
       languageTitle: '',
       languageLevel: ''
-    });
+    };
+    return this.formBuilder.group(language);
   }
 
   get languagesList(): FormArray {

@@ -1,21 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StateService } from '../state.service';
 import { fromEvent } from 'rxjs';
-
-interface ResumeFormStructure {
-  fullname: string;
-  descriptionSentence: string;
-  phone: string;
-  personalLink: string;
-  email: string;
-  address: string;
-  profilePicture: string;
-  experiencesList: Array<any>;
-  educationsList: Array<any>;
-  languagesList: Array<any>;
-  skillsList: Array<any>;
-  hobbiesList: Array<any>;
-}
+import { ResumeFormStructure } from '../resume-interfaces';
 
 @Component({
   selector: 'app-resume-generated',
@@ -25,7 +10,6 @@ interface ResumeFormStructure {
 export class ResumeGeneratedComponent implements OnInit {
 
   resumeData;
-  resumeFormValue: ResumeFormStructure;
 
   constructor() { }
 
@@ -41,7 +25,7 @@ export class ResumeGeneratedComponent implements OnInit {
     });
   }
 
-  initializeResumeData() {
+  initializeResumeData(): ResumeFormStructure {
     return {
       fullname: '',
       descriptionSentence: '',

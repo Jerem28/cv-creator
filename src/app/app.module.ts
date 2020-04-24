@@ -53,7 +53,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
     MatNativeDateModule,
     MatExpansionModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [ MatDatepickerModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

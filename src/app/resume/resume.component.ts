@@ -6,21 +6,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { LanguageComponent } from './language/language.component';
 import { HobbyComponent } from './hobby/hobby.component';
 import { Router } from '@angular/router';
-
-interface ResumeFormStructure {
-  fullname: string;
-  descriptionSentence: string;
-  phone: string;
-  personalLink: string;
-  email: string;
-  address: string;
-  profilePicture: string;
-  experiencesList: Array<any>;
-  educationsList: Array<any>;
-  languagesList: Array<any>;
-  skillsList: Array<any>;
-  hobbiesList: Array<any>;
-}
+import { ResumeFormStructure, Experience, Education, Hobby, Skill } from '../resume-interfaces';
 
 @Component({
   selector: 'app-resume',
@@ -34,12 +20,12 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   private experienceComponent: ExperienceComponent;
   @ViewChild(EducationComponent)
   private educationComponent: EducationComponent;
-  @ViewChild(SkillsComponent)
-  private skillComponent: SkillsComponent;
-  @ViewChild(LanguageComponent)
-  private languageComponent: LanguageComponent;
   @ViewChild(HobbyComponent)
   private hobbyComponent: HobbyComponent;
+  @ViewChild(LanguageComponent)
+  private languageComponent: LanguageComponent;
+  @ViewChild(SkillsComponent)
+  private skillComponent: SkillsComponent;
 
   resumeForm: FormGroup;
   resumeFormValue: ResumeFormStructure;
@@ -50,6 +36,46 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   isSideResumePreviewOpened = false;
 
   constructor(public formBuilder: FormBuilder, private router: Router) { }
+
+  get experienceComponentChild(): ExperienceComponent {
+    return this.experienceComponent;
+  }
+
+  set experienceComponentChild(experienceComponent: ExperienceComponent) {
+    this.experienceComponent = experienceComponent;
+  }
+
+  get educationComponentChild(): EducationComponent {
+    return this.educationComponent;
+  }
+
+  set educationComponentChild(educationComponent: EducationComponent) {
+    this.educationComponent = educationComponent;
+  }
+
+  get hobbyComponentChild(): HobbyComponent {
+    return this.hobbyComponent;
+  }
+
+  set hobbyComponentChild(hobbyComponent: HobbyComponent) {
+    this.hobbyComponent = hobbyComponent;
+  }
+
+  get languageComponentChild(): LanguageComponent {
+    return this.languageComponent;
+  }
+
+  set languageComponentChild(languageComponent: LanguageComponent) {
+    this.languageComponent = languageComponent;
+  }
+
+  get skillComponentChild(): SkillsComponent {
+    return this.skillComponent;
+  }
+
+  set skillComponentChild(skillComponent: SkillsComponent) {
+    this.skillComponent = skillComponent;
+  }
 
   ngOnInit(): void {
 
@@ -103,16 +129,14 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   loadResumeForm(value) {
 
       this.resetForm();
+      console.log('[ResumeComponent] ');
+      console.log(this.resumeForm.value);
 
       // Only if we have value from a precedent resume form, we do the following
       if (value && Object.keys(value).length > 0) {
         console.log('Patch with old form value');
       /* It's mandatory to have same object structure in data saved before reload and in actual resumeForm,
         that is why we push each blank object in this.experiencesList and so on */
-
-        this.resetForm(); 
-        console.log('[ResumeComponent] ');
-        console.log(this.resumeForm.value);
 
         console.log('[ResumeComponent] Creating resumeForm with following value data :');
         console.log(value);

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { Hobby } from 'src/app/resume-interfaces';
 
 @Component({
   selector: 'app-hobby',
@@ -17,10 +18,12 @@ export class HobbyComponent implements OnInit {
   }
 
   get hobby(): FormGroup {
-    return this.formBuilder.group({
+    const hobby: Hobby =
+    {
       hobbyTitle: '',
       hobbyDescription: ''
-    });
+    };
+    return this.formBuilder.group(hobby);
   }
 
   get hobbiesList(): FormArray {

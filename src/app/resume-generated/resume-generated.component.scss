@@ -89,3 +89,13 @@
 .hobbies-list {
     display: inline;
 }
+
+.skill-list {
+    display: inline-block;
+}
+
+
+.skill-list > div {
+    margin-left: 5px;
+    margin-right: 5px;
+}
