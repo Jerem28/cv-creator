@@ -45,54 +45,48 @@
 
                     <section class="resume-section experience mr-20">
     
-                        <div *ngIf="resumeData.experiencesList.length !== 0">
-                            <div class="resume-section-title">
-                                <h1>Expérience</h1>
-                                <div class="underline"></div>
-                            </div>
-                        </div>                
-
-                        <div *ngFor="let experience of resumeData.experiencesList;">
-                            <article class="resume-article">
-                                <div class="experience-header">
-                                    <h2 class="experience-title mt-5">{{ experience.experienceTitle }}</h2>
-                                    <h3 class="work-place">{{ experience.workPlace }}</h3>
-                                    <div class="date-range d-inline">
-                                        <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                        <span class="experience-date-start">{{ experience.startDate | date:'MM/y'}}</span>
-                                        <span class="date-separator">-</span>
-                                        <span class="experience-date-end">{{ experience.endDate | date:'MM/y'}}</span>
-                                    </div>
-                                    <div class="work-address d-inline">
-                                        <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                        <span class="experience-work-address">{{ experience.workAddress }}</span>
-                                    </div>
-                                    <p class="experience-work-place-description">{{ experience.workPlaceDescription }}</p>
-                                </div>
-                                <div class="experience-content">
-                                    <ul class="experience-bulletpoints" *ngFor="let item of experience.items">
-                                        <li class="experience-bulletpoint">{{ item }}</li>
-                                    </ul>
-                                </div>
-                            </article>
+                        <div class="resume-section-title" *ngIf="resumeData.experiencesList.length !== 0">
+                            <h1>Expérience</h1>
+                            <div class="underline"></div>
                         </div>
+
+                        <article class="resume-article" *ngFor="let experience of resumeData.experiencesList;">
+                            <div class="experience-header">
+                                <h2 class="experience-title mt-5">{{ experience.experienceTitle }}</h2>
+                                <h3 class="work-place">{{ experience.workPlace }}</h3>
+                                <div class="date-range d-inline">
+                                    <i class="useful-info-icon fas fa-calendar-alt"></i>
+                                    <span class="experience-date-start">{{ experience.startDate | date:'MM/y'}}</span>
+                                    <span class="date-separator">-</span>
+                                    <span class="experience-date-end">{{ experience.endDate | date:'MM/y'}}</span>
+                                </div>
+                                <div class="work-address d-inline">
+                                    <i class="useful-info-icon fas fa-map-marker-alt"></i>
+                                    <span class="experience-work-address">{{ experience.workAddress }}</span>
+                                </div>
+                                <p class="experience-work-place-description">{{ experience.workPlaceDescription }}</p>
+                            </div>
+                            <div class="experience-content">
+                                <ul class="experience-bulletpoints">
+                                    <li class="experience-bulletpoint" *ngFor="let item of experience.items">{{ item }}</li>
+                                </ul>
+                            </div>
+                        </article>
                             
                     </section>
 
                     <section class="resume-section">
 
-                        <div *ngIf="resumeData.educationsList.length !== 0">
-                            <div class="resume-section-title">
-                                <h1>Formation</h1>
-                                <div class="underline"></div>
-                            </div>
+                        <div class="resume-section-title" *ngIf="resumeData.educationsList.length !== 0">
+                            <h1>Formation</h1>
+                            <div class="underline"></div>
                         </div>
 
-                        <div *ngFor="let education of resumeData.educationsList;">
-                            <article class="resume-article formation">
+                        <div class="educations-list">
+                            <article class="resume-article formation" *ngFor="let education of resumeData.educationsList;">
                                 <div class="formation-header">
                                     <h2 class="formation-title mt-5">{{ education.educationTitle }}</h2>
-                                    <h3 class="work-place"></h3>
+                                    <h3 class="work-place">{{ education.workPlace }}</h3>
                                     <div class="date-range d-inline">
                                         <i class="useful-info-icon fas fa-calendar-alt"></i>
                                         <span class="formation-date-start">{{ education.startDate | date:'MM/y'}}</span>
@@ -101,118 +95,107 @@
                                     </div>
                                     <div class="work-address d-inline">
                                         <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                        <span class="formation-work-address">{{ education.workAdress }}</span>
+                                        <span class="formation-work-address">{{ education.workAddress }}</span>
                                     </div>
                                 </div>  
                             </article>
-    
                         </div>
-                        
+                            
                     </section>
                 </div>
 
                 <div class="col mr-5">
                     <section class="resume-section">
                         
-                        <div *ngIf="resumeData.languagesList.length !== 0">
-                            <div class="resume-section-title mb-5">
-                                <h1>Langues</h1>
-                                <div class="underline"></div>
-                            </div>
+                        <div class="resume-section-title mb-5" *ngIf="resumeData.languagesList.length !== 0">
+                            <h1>Langues</h1>
+                            <div class="underline"></div>
                         </div>
 
-                        <div *ngFor="let language of resumeData.languagesList;">
-                            <div class="resume-article languages d-inline">
-                                <span class="language-name">{{ language.languageTitle }}</span>
-                                <div [ngSwitch]="language.languageLevel">
-                                    <div *ngSwitchCase="1" style="">
-                                        <span class="dot skilled"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                    </div>
-
-                                    <div *ngSwitchCase="2">
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                    </div>
-
-                                    <div *ngSwitchCase="3">
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                    </div>
-
-                                    <div *ngSwitchCase="4">
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot"></span>
-                                    </div>
-
-                                    <div *ngSwitchCase="5">
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                        <span class="dot skilled"></span>
-                                    </div>
-
-                                    <div *ngSwitchDefault>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                    </div>
-
+                        <div class="resume-article languages-list d-inline" *ngFor="let language of resumeData.languagesList;">
+                            <span class="language-name">{{ language.languageTitle }}</span>
+                            <div [ngSwitch]="language.languageLevel">
+                                <div *ngSwitchCase="1">
+                                    <span class="dot skilled"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
                                 </div>
-                                
+
+                                <div *ngSwitchCase="2">
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+
+                                <div *ngSwitchCase="3">
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+
+                                <div *ngSwitchCase="4">
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot"></span>
+                                </div>
+
+                                <div *ngSwitchCase="5">
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                    <span class="dot skilled"></span>
+                                </div>
+
+                                <div *ngSwitchDefault>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+
                             </div>
+                            
                         </div>
 
                     </section>
         
                     <section class="resume-section">
 
-                        <div *ngIf="resumeData.skillsList.length !== 0">
-                            <div class="resume-section-title">
-                                <h1>Compétences</h1>
-                                <div class="underline"></div>
-                            </div>
+                        <div class="resume-section-title" *ngIf="resumeData.skillsList.length !== 0">
+                            <h1>Compétences</h1>
+                            <div class="underline"></div>
                         </div>
                         
-                        <div *ngFor="let skill of resumeData.skillsList;">
-                            <div class="resume-article">
-                                <h2 class="skills-category-title mt-5">{{ skill.skillCategoryTitle }}</h2>
+                        <div class="skills-list">
+                            <article class="resume-article" *ngFor="let skill of resumeData.skillsList;">
+                                <h2 class="skills-category-title">{{ skill.skillCategoryTitle }}</h2>
                                 <ul class="skill-list list-inline">
-                                    <div *ngFor="let item of skill.items">
-                                        <li class="skill-item list-inline-item"><button class="btn btn-primary">{{ item }}</button></li>
-                                    </div>
+                                    <li class="skill-item list-inline-item" *ngFor="let item of skill.items"><button class="button3">{{ item }}</button></li>
                                 </ul>
-                            </div>
+                            </article>
                         </div>
 
                     </section>
         
                     <section class="resume-section">
         
-                        <div *ngIf="resumeData.hobbiesList.length !== 0">
-                            <div class="resume-section-title mb-5">
-                                <h1>Passions</h1>
-                                <div class="underline"></div>
-                            </div>
+                        <div class="resume-section-title mb-5" *ngIf="resumeData.hobbiesList.length !== 0">
+                            <h1>Passions</h1>
+                            <div class="underline"></div>
                         </div>
                         
-                        <div class="hobbies-list" *ngFor="let hobby of resumeData.hobbiesList;">
-                            <article class="resume-article">
+                        <div class="hobbies-list">
+                            <article class="resume-article" *ngFor="let hobby of resumeData.hobbiesList;">
                                 <h2 class="passion-title">{{ hobby.hobbyTitle }}</h2>
                                 <p class="passion-description">{{ hobby.hobbyDescription }}</p>
                             </article>

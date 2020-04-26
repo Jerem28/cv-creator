@@ -11,16 +11,32 @@ body { margin: 0; }
 // Only works in global CSS (cause we can't normally modify .mat-card-header-text style)
 .resume-content-card > .mat-card-header > .mat-card-header-text, .resume-card-title, 
 .resume-card-title > .mat-form-field,
-.header-form-field 
+.education-card > .mat-card-content > .mat-form-field,
+.experience-card > .mat-card-content > .mat-form-field,
+.hobby-description,
+.header-form-field
 {
     width:100%;
+}
+
+.delete-item-button > .mat-button-wrapper > .mat-icon {
+    vertical-align: unset !important;
+}
+
+.mat-mini-fab {
+    width: 30px !important;
+    height: 30px !important;
+
+    .mat-button-wrapper {
+        padding: 3px 0 !important;
+    }
 }
 
 .mat-card.mat-focus-indicator.resume-content-card {
     background-color: #FAFAFA;
 }
 
-.skillsList > .ng-star-inserted {
+.skillsList > .ng-star-inserted, .languagesList {
     display: inline-block;
 }
 

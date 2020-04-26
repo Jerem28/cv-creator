@@ -9,7 +9,7 @@
             <div formArrayName="experiencesList">
     
                 <div *ngFor="let experience of experiencesList.controls; let i = index" formGroupName="{{i}}">
-                    <mat-card class="resume-content-card">
+                    <mat-card class="resume-content-card experience-card">
 
                         <mat-card-header>
                             <mat-card-title class="resume-card-title">
@@ -37,22 +37,23 @@
                             </div>
                             
                             <div class="row">
-                                <div class="col-6">
-                                    <mat-form-field appearance="standard">
-                                        <mat-label for="workPlace">Work place</mat-label>
-                                        <input matInput type="text" formControlName="workPlace" placeholder="Ex. Carrefour">
-                                    </mat-form-field>
-                                    <mat-form-field appearance="standard">
-                                        <mat-label for="workPlaceDescription">Work place description</mat-label>
-                                        <textarea matInput type="text" formControlName="workPlaceDescription" placeholder="Ex. Groupe français de grande distribution"></textarea>
-                                    </mat-form-field>
-                                </div>
-                                    <mat-form-field appearance="standard" class="col-6">
-                                        <mat-label for="workAddress">Work address</mat-label>
-                                        <input matInput type="text" formControlName="workAddress" placeholder="Ex. 54 Allée des Espadons">
-                                    </mat-form-field>
+                                <mat-form-field appearance="standard" class="col-6">
+                                    <mat-label for="workPlace">Work place</mat-label>
+                                    <input matInput type="text" formControlName="workPlace" placeholder="Ex. Carrefour">
+                                </mat-form-field>
+                                <mat-form-field appearance="standard" class="col-6">
+                                    <mat-label for="workAddress">Work address</mat-label>
+                                    <input matInput type="text" formControlName="workAddress" placeholder="Ex. 54 Allée des Espadons">
+                                </mat-form-field>
                             </div> 
-        
+
+                            <!--<div class="row">-->
+                                <mat-form-field appearance="standard">
+                                    <mat-label for="workPlaceDescription">Work place description</mat-label>
+                                    <textarea matInput type="text" formControlName="workPlaceDescription" placeholder="Ex. Groupe français de grande distribution"></textarea>
+                                </mat-form-field>
+                            <!--</div>-->
+
                             <div formArrayName="items">
                                 <ul>
                                     <div *ngFor="let experienceItem of getExperienceItemList(i).controls; let j = index">
@@ -62,7 +63,7 @@
                                                     <input matInput type="text" formControlName="{{j}}" placeholder="Ex. Rangement de rayon">
                                                 </div>
                                                 <div class="col-1">
-                                                    <button type="button" mat-icon-button color="primary" (click)="callParentItemRemoved(['experiencesList', i, j])"><mat-icon>clear</mat-icon></button>
+                                                    <button class="delete-item-button" type="button" mat-mini-fab color="primary" (click)="callParentItemRemoved(['experiencesList', i, j])"><mat-icon>clear</mat-icon></button>
                                                 </div>
                                             </div>
                                         </li>

@@ -25,17 +25,17 @@
                                     <div *ngFor="let skillItem of getSkillItemList(i).controls; let j = index">
                                         <li>
                                             <div class="row">
-                                                <div class="col-10">
-                                                    <input matInput type="text" formControlName="{{j}}" placeholder="Ex. Management d'équipe">
+                                                <div class="col-9">
+                                                    <mat-form-field appearance="standard">
+                                                        <input matInput type="text" formControlName="{{j}}" placeholder="Ex. Management d'équipe">
+                                                    </mat-form-field>
                                                 </div>
-                                                <div class="col-1">
-                                                    <button type="button" mat-icon-button color="primary" (click)="callParentItemRemoved(['skillsList', i, j])"><mat-icon>clear</mat-icon></button>
-                                                </div>
+                                                <button class="delete-item-button" type="button" mat-mini-fab color="primary" (click)="callParentItemRemoved(['skillsList', i, j])"><mat-icon>clear</mat-icon></button>
                                             </div>
                                         </li>
                                     </div>
                                 </ul>
-                                <button type="button" mat-stroked-button color="primary" (click)="callParentItemAdded(['skillsList',i, item])">Add item</button>
+                                <button style="display: block;" type="button" mat-stroked-button color="primary" (click)="callParentItemAdded(['skillsList',i, item])">Add item</button>
                             </div>
                         </mat-card-content>
 

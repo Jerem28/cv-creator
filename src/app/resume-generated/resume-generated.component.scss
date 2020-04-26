@@ -90,12 +90,49 @@
     display: inline;
 }
 
-.skill-list {
+.skills-list {
     display: inline-block;
+    margin-top: 25px;
 }
 
 
 .skill-list > div {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.button3 {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color: cornflowerblue;
+    text-align:center;
+    box-sizing: border-box;
+    }
+    .button3:hover {
+        background-color:#4095c6;
+    }
+    @media all and (max-width:30em){
+        .button3 {
+            display:block;
+            margin:0.2em auto;
+        }
+    }
+
+.fas, .fa, .fab {
+    margin: 0 2px;
+}
+
+.languages-list > .language-name {
+    margin-right: 4px;
+}
+
+.languages-list > div {
+    margin-right: 4px;
+    display: inline-block;
 }
