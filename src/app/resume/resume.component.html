@@ -27,9 +27,9 @@
                         (click)="checkedSideResumePreviewOpened()">
                     <mat-icon>remove_red_eye</mat-icon>
                 </button>
-                <div [class.active]="isSideResumePreviewOpened" id="iframe-preview-container">
+                <div [class.active]="isSideResumePreviewOpened" id="div-iframe-resume-preview">
                     <iframe
-                        id="generated-resume-iframe"
+                        id="iframe-resume-preview"
                         [src]= "generatedResumeUrl | safeUrl">
                     </iframe>
                 </div>

@@ -1,5 +1,12 @@
+.container {
+    // CSS custom properties
+    --speed-transition: all 0.3s;
+    --side-preview-width: 500px;
+    --font-family: Lobster, sans-serif;
+}
+
 .mat-toolbar {
-    font-family: Lobster, sans-serif;
+    font-family: var(--font-family);
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -9,7 +16,7 @@
 }
 
 #labelProfilePicture {
-    padding-top:15px;
+    padding-top: 15px;
 }
 
 header {
@@ -20,13 +27,13 @@ header {
   
   h1 {
     padding-top: 40px;
-    font-family: Lobster, sans-serif;
+    font-family: var(--font-family);
     font-size: 77px;
     margin-left: 30px;
   }
 
   h2 {
-      font-family: Lobster, sans-serif;
+      font-family: var(--font-family);
       margin-left: 70px;
       margin-top: 30px;
   }
@@ -44,13 +51,13 @@ header {
     position: fixed;
     top: 50%;
     right: 510px;
-    transition: all 0.2s;
+    transition: var(--speed-transition);
 }
 
-#iframe-preview-container {
-    min-width: 500px;
+#div-iframe-resume-preview {
+    min-width: var(--side-preview-width);
     max-width: 768px;
-    width: 500px;
+    width: var(--side-preview-width);
     position: fixed;
     top: 0;
     right: 0;
@@ -58,35 +65,62 @@ header {
     z-index: 999;
     background: #7386D5;
     color: #fff;
-    transition: all 0.2s;
+    transition: var(--speed-transition);
 }
 
-#iframe-preview-container.active, #side-resume-preview-button.active {
-    margin-right: -500px;
+#div-iframe-resume-preview.active, #side-resume-preview-button.active {
+    margin-right: calc(var(--side-preview-width) * -1);
 }
 
 #resume-form.active, header.active {
-    transition: all 0.2s;
+    transition: var(--speed-transition);
     margin-right: 0;
 }
 
 #resume-form, header {
-    transition: all 0.2s;
-    margin-right: 500px;
+    transition: var(--speed-transition);
+    margin-right: var(--side-preview-width);
+}
+
+#side-resume-preview-button {
+    margin-left: var(--side-preview-width);
 }
 
 @media (max-width: 768px) {
-    #iframe-preview-container {
+    #div-iframe-resume-preview {
         margin-left: -250px;
     }
-    #sidebar.iframe-preview-container {
+    #sidebar.div-iframe-resume-preview {
         margin-left: 0;
     }
 }
 
-#generated-resume-iframe {
+@media (max-width: 992px) {
+    #side-resume-preview-button {
+        position: fixed;
+        right: 10px;
+        top: 20vh;
+    }
+
+    #iframe-resume-preview {
+        margin-left: var(--side-preview-width);
+    }
+
+    #div-iframe-resume-preview {
+        margin-right: calc(var(--side-preview-width) * -1);
+    }
+
+    #resume-form, header {
+        transition: var(--speed-transition);
+        margin-right: 0;
+    }
+}
+
+#iframe-resume-preview {
     width: 145vh;
     height: 200vh;
+
+    position: fixed;
 
     -ms-zoom: 0.5;
     -moz-transform: scale(0.5);
@@ -95,8 +129,4 @@ header {
     -o-transform-origin: 0 0;
     -webkit-transform: scale(0.5);
     -webkit-transform-origin: 0 0;
-}
-
-#side-resume-preview-button {
-    margin-left:500px;
 }
