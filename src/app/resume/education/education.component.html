@@ -3,8 +3,8 @@
     <mat-card>
         <mat-card-header>
             <div mat-card-avatar><mat-icon>grade</mat-icon></div>
-            <mat-card-title>Education</mat-card-title>
-            <mat-card-subtitle>Degrees, certifications, trainings you want to emphasize</mat-card-subtitle>
+            <mat-card-title>{{ "app-text.education-section-title" | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ "app-text.education-section-subtitle" | translate }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <div formArrayName="educationsList">
@@ -15,8 +15,8 @@
                         <mat-card-header>
                             <mat-card-title class="resume-card-title">
                                 <mat-form-field appearance="standard">
-                                    <mat-label for="educationTitle">Education title</mat-label>
-                                    <input matInput type="text" formControlName="educationTitle" placeholder="Ex. Diplome d'Ingénieur en Biomécanique">
+                                    <mat-label for="educationTitle">{{ "app-text.education-title" | translate }}</mat-label>
+                                    <input matInput type="text" formControlName="educationTitle">
                                 </mat-form-field>
                             </mat-card-title>
                         </mat-card-header>
@@ -24,26 +24,26 @@
                         <mat-card-content>
                             <div class=row>
                                 <mat-form-field appearance="outline" class="col-4">
-                                    <mat-label for="startDate">Start date</mat-label>
-                                    <input matInput [matDatepicker]="experienceStartDatePicker" type="text" formControlName="startDate" placeholder="Choose a start date">
+                                    <mat-label for="startDate">{{ "app-text.start-date" | translate }}</mat-label>
+                                    <input matInput [matDatepicker]="experienceStartDatePicker" type="text" formControlName="startDate">
                                     <mat-datepicker-toggle matSuffix [for]="experienceStartDatePicker"></mat-datepicker-toggle>
                                     <mat-datepicker #experienceStartDatePicker></mat-datepicker>
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" class="col-4">
-                                    <mat-label for="endDate">End date</mat-label>
-                                    <input matInput [matDatepicker]="experienceEndDatePicker" type="text" formControlName="endDate" placeholder="Choose an end date">
+                                    <mat-label for="endDate">{{ "app-text.end-date" | translate }}</mat-label>
+                                    <input matInput [matDatepicker]="experienceEndDatePicker" type="text" formControlName="endDate">
                                     <mat-datepicker-toggle matSuffix [for]="experienceEndDatePicker"></mat-datepicker-toggle>
                                     <mat-datepicker #experienceEndDatePicker></mat-datepicker>
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field appeareance="outline" class="col-6">
-                                    <mat-label for="workPlace">Work Place</mat-label>
-                                    <input matInput type="text" formControlName="workPlace" placeholder="Ex. Ecole de la Biomécanique">
+                                    <mat-label for="workPlace">{{ "app-text.work-place" | translate }}</mat-label>
+                                    <input matInput type="text" formControlName="workPlace">
                                 </mat-form-field>
                                 <mat-form-field appeareance="outline" class="col-6">
-                                    <mat-label for="workAddress">Work Address</mat-label>
-                                    <input matInput type="text" formControlName="workAddress" placeholder="Ex. 26 Rue des Abresseurs">
+                                    <mat-label for="workAddress">{{ "app-text.work-address" | translate }}</mat-label>
+                                    <input matInput type="text" formControlName="workAddress">
                                 </mat-form-field>
                             </div>
                         </mat-card-content>

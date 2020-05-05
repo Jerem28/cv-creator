@@ -2,8 +2,8 @@
     <mat-card>
         <mat-card-header>
             <div mat-card-avatar><mat-icon>rowing</mat-icon></div>
-            <mat-card-title>Experience</mat-card-title>
-            <mat-card-subtitle>Talk about your experiences, specific tasks in your previous jobs</mat-card-subtitle>
+            <mat-card-title>{{ "app-text.experience-section-title" | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ "app-text.experience-section-subtitle" | translate }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <div formArrayName="experiencesList">
@@ -14,8 +14,8 @@
                         <mat-card-header>
                             <mat-card-title class="resume-card-title">
                                 <mat-form-field appearance="standard">
-                                    <mat-label for="experienceTitle">Experience title</mat-label>
-                                    <input matInput type="text" formControlName="experienceTitle" placeholder="Ex. Dirigeant Marketing">
+                                    <mat-label for="experienceTitle">{{ "app-text.experience-title" | translate }}</mat-label>
+                                    <input matInput type="text" formControlName="experienceTitle">
                                 </mat-form-field>
                             </mat-card-title>
                         </mat-card-header>
@@ -23,14 +23,14 @@
                         <mat-card-content>
                             <div class=row>
                                 <mat-form-field appearance="outline" class="col-4">
-                                    <mat-label for="startDate">Start date</mat-label>
-                                    <input matInput [matDatepicker]="experienceStartDatePicker" type="text" formControlName="startDate" placeholder="Choose a start date">
+                                    <mat-label for="startDate">{{ "app-text.start-date" | translate }}</mat-label>
+                                    <input matInput [matDatepicker]="experienceStartDatePicker" type="text" formControlName="startDate">
                                     <mat-datepicker-toggle matSuffix [for]="experienceStartDatePicker"></mat-datepicker-toggle>
                                     <mat-datepicker #experienceStartDatePicker></mat-datepicker>
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" class="col-4">
-                                    <mat-label for="endDate">End date</mat-label>
-                                    <input matInput [matDatepicker]="experienceEndDatePicker" type="text" formControlName="endDate" placeholder="Choose an end date">
+                                    <mat-label for="endDate">{{ "app-text.start-date" | translate }}</mat-label>
+                                    <input matInput [matDatepicker]="experienceEndDatePicker" type="text" formControlName="endDate">
                                     <mat-datepicker-toggle matSuffix [for]="experienceEndDatePicker"></mat-datepicker-toggle>
                                     <mat-datepicker #experienceEndDatePicker></mat-datepicker>
                                 </mat-form-field>
@@ -38,19 +38,19 @@
                             
                             <div class="row">
                                 <mat-form-field appearance="standard" class="col-6">
-                                    <mat-label for="workPlace">Work place</mat-label>
-                                    <input matInput type="text" formControlName="workPlace" placeholder="Ex. Carrefour">
+                                    <mat-label for="workPlace">{{ "app-text.work-place" | translate }}</mat-label>
+                                    <input matInput type="text" formControlName="workPlace">
                                 </mat-form-field>
                                 <mat-form-field appearance="standard" class="col-6">
-                                    <mat-label for="workAddress">Work address</mat-label>
-                                    <input matInput type="text" formControlName="workAddress" placeholder="Ex. 54 Allée des Espadons">
+                                    <mat-label for="workAddress">{{ "app-text.work-address" | translate }}</mat-label>
+                                    <input matInput type="text" formControlName="workAddress">
                                 </mat-form-field>
                             </div> 
 
                             <!--<div class="row">-->
                                 <mat-form-field appearance="standard">
-                                    <mat-label for="workPlaceDescription">Work place description</mat-label>
-                                    <textarea matInput type="text" formControlName="workPlaceDescription" placeholder="Ex. Groupe français de grande distribution"></textarea>
+                                    <mat-label for="workPlaceDescription">{{ "app-text.work-place-description" | translate }}</mat-label>
+                                    <textarea matInput type="text" formControlName="workPlaceDescription"></textarea>
                                 </mat-form-field>
                             <!--</div>-->
 
@@ -60,7 +60,7 @@
                                         <li>
                                             <div class="row">
                                                 <div class="col-10">
-                                                    <input matInput type="text" formControlName="{{j}}" placeholder="Ex. Rangement de rayon">
+                                                    <input matInput type="text" formControlName="{{j}}">
                                                 </div>
                                                 <div class="col-1">
                                                     <button class="delete-item-button" type="button" mat-mini-fab color="primary" (click)="callParentItemRemoved(['experiencesList', i, j])"><mat-icon>clear</mat-icon></button>
@@ -69,7 +69,7 @@
                                         </li>
                                     </div>
                                 </ul>
-                                <button type="button" mat-stroked-button color="primary" (click)="callParentItemAdded(['experiencesList',i, item])">Add item</button>
+                                <button type="button" mat-stroked-button color="primary" (click)="callParentItemAdded(['experiencesList',i, item])">{{ "app-text.add-item" | translate }}</button>
                             </div>
                         </mat-card-content>
 

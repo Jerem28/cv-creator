@@ -5,6 +5,12 @@
             </mat-toolbar-row>
             <mat-toolbar-row>
                 <h2>{{ "app-text.subtitle" | translate }}</h2>
+                <mat-form-field id="app-language-selector">
+                    <mat-select (selectionChange)="onLanguageChange()" [(value)]="appLanguageSelected" >
+                      <mat-option value="en">{{ "app-text.english-lang" | translate }}</mat-option>
+                      <mat-option value="fr">{{ "app-text.french-lang" | translate }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
             </mat-toolbar-row>
         </mat-toolbar>
     </header>
@@ -36,12 +42,12 @@
 
                 <button type="button" mat-stroked-button color="primary">
                     <label id="labelImportJSON" for="importJSON" style="margin: auto">
-                        Import JSON
+                        {{ "app-text.button.import-json-label" | translate }}
                         <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
                     </label>
                 </button>
 
-                <button type="button" mat-stroked-button color="primary" (click)="resetForm()">Clear resume</button>
+                <button type="button" mat-stroked-button color="primary" (click)="resetForm()">{{ "app-text.button.clear-resume-label" | translate }}</button>
 
                 <form [class.active]="isSideResumePreviewOpened" id="resume-form" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
 
@@ -80,8 +86,8 @@
                         [resumeForm]="resumeForm">
                     </app-hobby>
             
-                    <button mat-stroked-button color="primary" type="submit">Generate resume</button>
-                    <a mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">Export as JSON</a>
+                    <button mat-stroked-button color="primary" type="submit">{{ "app-text.button.generate-resume-label" | translate }}</button>
+                    <a mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">{{ "app-text.button.export-json-label" | translate }}</a>
                 </form>
     
     </div>

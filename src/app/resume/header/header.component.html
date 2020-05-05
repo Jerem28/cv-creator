@@ -2,8 +2,8 @@
     <mat-card color="primary">
         <mat-card-header>
             <div mat-card-avatar><mat-icon>home</mat-icon></div>
-            <mat-card-title>Header</mat-card-title>
-            <mat-card-subtitle>Header of your resume, with main informations about you</mat-card-subtitle>
+            <mat-card-title>{{ "app-text.header-section-title" | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ "app-text.header-section-subtitle" | translate }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="header-content">
     
@@ -12,48 +12,48 @@
                 <div class="col-6">
                     <mat-form-field class="header-form-field" appearance="outline">
                         <mat-label for="fullname">
-                            Fullname
+                            {{ "app-text.fullname" | translate }}
                         </mat-label>
-                        <input matInput type="text" id="fullname" formControlName="fullname" placeholder="Ex. Rakotoarisoa Jérémy">
+                        <input matInput type="text" id="fullname" formControlName="fullname">
                     </mat-form-field>
         
                     <mat-form-field class="header-form-field" appearance="outline">
                         <mat-label for="descriptionSentence">
-                            Description sentence
+                            {{ "app-text.description-sentence" | translate }}
                         </mat-label>
-                        <input matInput type="text" id="descriptionSentence" formControlName="descriptionSentence" placeholder="Ex. Curieux, motivé">
+                        <input matInput type="text" id="descriptionSentence" formControlName="descriptionSentence">
                     </mat-form-field>
             
                     <div class=row>
                         <div class="col-6">
                             <mat-form-field class="header-form-field" appearance="outline">
                                 <mat-label for="phone">
-                                    Phone number
+                                    {{ "app-text.phone-number" | translate }}
                                 </mat-label>
-                                <input matInput type="text" id="phone" formControlName="phone" placeholder="Ex. +33 606060606">
+                                <input matInput type="text" id="phone" formControlName="phone">
                             </mat-form-field>
                     
                             <mat-form-field class="header-form-field" appearance="outline">
                                 <mat-label for="personalLink">
-                                    Personal link
+                                    {{ "app-text.personal-link" | translate }}
                                 </mat-label>
-                                <input matInput type="text" id="personalLink" formControlName="personalLink" placeholder="https://linkedin">
+                                <input matInput type="text" id="personalLink" formControlName="personalLink">
                             </mat-form-field>
                         </div>
                         
                         <div class="col-6">
                             <mat-form-field class="header-form-field" appearance="outline">
                                 <mat-label for="email">
-                                    Email
+                                    {{ "app-text.email" | translate }}
                                 </mat-label>
-                                <input matInput type="text" id="email" formControlName="email" placeholder="jeromeduboisfake@gmail.com">
+                                <input matInput type="text" id="email" formControlName="email">
                             </mat-form-field>
                     
                             <mat-form-field class="header-form-field" appearance="outline">
                                 <mat-label for="address">
-                                    Address
+                                    {{ "app-text.address" | translate }}
                                 </mat-label>
-                                <input matInput type="text" id="address" formControlName="address" placeholder="Ex. 26 Rue des Marroniers, 38506 Jossencourt">
+                                <input matInput type="text" id="address" formControlName="address">
                             </mat-form-field>
                         </div>
     
@@ -66,7 +66,7 @@
                         <img *ngIf="profilePictureUrl" [src]="profilePictureUrl">
                         <button type="button" class="header-photo-button" mat-raised-button>
                             <label id="labelProfilePicture" for="profilePicture" class="btn btn-default">
-                                Choose a CV photo
+                                {{ "app-text.profile-picture-label" | translate }}
                                 <input type="file" id="profilePicture" style="display: none;" (change)="readProfilePictureUrl($event)">
                                 <input type="text" formControlName="profilePicture" style="display: none;">
                             </label>

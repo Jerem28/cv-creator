@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 import { SafeUrlPipe } from './safe-url.pipe';
 
 // import ngx-translate and the http loader
@@ -64,6 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
+    MatSelectModule,
+
     // configure the imports
     HttpClientModule,
     TranslateModule.forRoot({

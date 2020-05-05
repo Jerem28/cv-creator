@@ -2,15 +2,15 @@
         <mat-card>
             <mat-card-header>
                 <div mat-card-avatar><mat-icon>language</mat-icon></div>
-                <mat-card-title>Language</mat-card-title>
-                <mat-card-subtitle>What are the languages you are able to talk ? For each of them, what is your true level ?</mat-card-subtitle>
+                <mat-card-title>{{ "app-text.language-section-title" | translate }}</mat-card-title>
+                <mat-card-subtitle>{{ "app-text.language-section-subtitle" | translate }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <div formArrayName="languagesList">
                     <div *ngFor="let language of languagesList.controls; let i = index;" formGroupName="{{i}}">
                         <mat-form-field appearance="standard">
-                            <mat-label for="languageTitle">Language title</mat-label>
-                            <input matInput type="text" formControlName="languageTitle" placeholder="Ex. Français">
+                            <mat-label for="languageTitle">{{ "app-text.language-title" | translate }}</mat-label>
+                            <input matInput type="text" formControlName="languageTitle">
                         </mat-form-field>
                             <div class="rating">
                                   <label>

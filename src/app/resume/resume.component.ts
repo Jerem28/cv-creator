@@ -7,6 +7,7 @@ import { LanguageComponent } from './language/language.component';
 import { HobbyComponent } from './hobby/hobby.component';
 import { Router } from '@angular/router';
 import { ResumeFormStructure, Experience, Education, Hobby, Skill } from '../resume-interfaces';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-resume',
@@ -34,8 +35,9 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   generatedResumeUrl: string;
 
   isSideResumePreviewOpened = false;
+  appLanguageSelected = 'en';
 
-  constructor(public formBuilder: FormBuilder, private router: Router) { }
+  constructor(public formBuilder: FormBuilder, private router: Router, private translate: TranslateService) { }
 
   get experienceComponentChild(): ExperienceComponent {
     return this.experienceComponent;
@@ -226,6 +228,17 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       };
 
       reader.readAsText(file);
+    }
+  }
+
+  onLanguageChange(){
+    console.log(this.appLanguageSelected);
+    switch (this.appLanguageSelected) {
+      case 'fr':
+        this.translate.setDefaultLang('fr');
+        break;
+      default:
+        this.translate.setDefaultLang('en');
     }
   }
 }
