@@ -30,9 +30,17 @@
             </section>
         </div>
     
-        <div id="main-photo-container">
-            <img id="main-photo" src="../../assets/img/avatar.png" alt="photo-cv">
+        <div *ngIf="resumeData.profilePicture !== null; else elseBlock">
+            <div id="main-photo-container">
+                <img id="main-photo" src="{{ resumeData.profilePicture }}" alt="photo-cv">
+            </div>
         </div>
+        <ng-template #elseBlock>
+            <div id="main-photo-container">
+                <img id="main-photo" src="../../assets/img/avatar.png" alt="photo-cv">
+            </div>
+        </ng-template>
+        
 
     </div>
 
