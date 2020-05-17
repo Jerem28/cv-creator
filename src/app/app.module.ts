@@ -30,6 +30,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { LangService } from './lang.service';
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient) {
@@ -77,7 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }
     }),
   ],
-  providers: [ MatDatepickerModule ],
+  providers: [ MatDatepickerModule, LangService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

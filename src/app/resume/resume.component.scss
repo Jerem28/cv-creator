@@ -2,11 +2,12 @@
     // CSS custom properties
     --speed-transition: all 0.3s;
     --side-preview-width: 500px;
-    --font-family: Lobster, sans-serif;
+    --font-family: 'Lobster', sans-serif;
 }
 
 .mat-toolbar {
-    font-family: var(--font-family);
+    font-family: 'Lobster', sans-serif; // var(--font-family) isn't recognized by mat-toolbar Angular Material in this file
+                                        // maybe in styles.scss
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -29,12 +30,12 @@ header {
     padding-top: 40px;
     font-family: var(--font-family);
     font-size: 77px;
-    margin-left: 30px;
+    margin-left: -10px;
   }
 
   h2 {
       font-family: var(--font-family);
-      margin-left: 70px;
+      margin-left: 30px;
       margin-top: 30px;
   }
 
@@ -135,4 +136,5 @@ header {
     position: absolute;
     right: 20px;
     width: 10%;
+    top: 20%;
 }

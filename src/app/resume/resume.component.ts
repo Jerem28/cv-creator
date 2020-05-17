@@ -7,6 +7,7 @@ import { LanguageComponent } from './language/language.component';
 import { HobbyComponent } from './hobby/hobby.component';
 import { Router } from '@angular/router';
 import { ResumeFormStructure, Experience, Education, Hobby, Skill } from '../resume-interfaces';
+import { LangService } from '../lang.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -37,7 +38,10 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   isSideResumePreviewOpened = false;
   appLanguageSelected = 'en';
 
-  constructor(public formBuilder: FormBuilder, private router: Router, private translate: TranslateService) { }
+  constructor(
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private lang: LangService) { }
 
   get experienceComponentChild(): ExperienceComponent {
     return this.experienceComponent;
@@ -99,6 +103,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
     this.generatedResumeUrl = window.location.href + '/generated-resume';
 
+    this.lang.getValue().subscribe(languageValue => this.appLanguageSelected = languageValue);
   }
 
   ngAfterViewInit(){
@@ -222,7 +227,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
       let jsonContent: string | ArrayBuffer;
 
-      reader.onloadend = (event) => {
+      reader.onloadend = () => {
         jsonContent = JSON.parse(reader.result as string);
         this.loadResumeForm(jsonContent as object);
       };
@@ -232,13 +237,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   }
 
   onLanguageChange(){
-    console.log(this.appLanguageSelected);
-    switch (this.appLanguageSelected) {
-      case 'fr':
-        this.translate.setDefaultLang('fr');
-        break;
-      default:
-        this.translate.setDefaultLang('en');
-    }
+    console.log('Language set : ' + this.appLanguageSelected);
+    this.lang.setValue(this.appLanguageSelected);
   }
 }

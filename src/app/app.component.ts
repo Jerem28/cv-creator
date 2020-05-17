@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LangService } from './lang.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'cv-creator';
+  langInfo = 'en';
 
-  constructor(translate: TranslateService) {
-    translate.setDefaultLang('en');
+  constructor(translate: TranslateService, lang: LangService) {
+    translate.setDefaultLang(this.langInfo);
+    lang.getValue().subscribe( (languageValue) => {
+        translate.use(languageValue);
+    });
   }
 }
