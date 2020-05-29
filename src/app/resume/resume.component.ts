@@ -8,7 +8,6 @@ import { HobbyComponent } from './hobby/hobby.component';
 import { Router } from '@angular/router';
 import { ResumeFormStructure, Experience, Education, Hobby, Skill } from '../resume-interfaces';
 import { LangService } from '../lang.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-resume',
@@ -33,10 +32,12 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   resumeFormValue: ResumeFormStructure;
   jsonFileURL: string;
 
-  generatedResumeUrl: string;
+  generatedResumeUrl = 'generated-resume';
 
   isSideResumePreviewOpened = false;
   appLanguageSelected = 'en';
+
+  opened = true;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -101,7 +102,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       localStorage.setItem('formValue', JSON.stringify(formValue));
     });
 
-    this.generatedResumeUrl = window.location.href + '/generated-resume';
+    this.generatedResumeUrl = window.location.href + 'generated-resume';
 
     this.lang.getValue().subscribe(languageValue => this.appLanguageSelected = languageValue);
   }
@@ -182,7 +183,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   onSubmit(){
     console.warn('[Submit] Value of resume data :', this.resumeForm.value);
-    this.router.navigateByUrl('/generated-resume', { state: this.resumeForm.value });
+    console.log('Redirect to ' + this.generatedResumeUrl);
+    this.router.navigateByUrl(this.generatedResumeUrl, { state: this.resumeForm.value });
   }
 
   addItemToCategory(event: Array<any>){
@@ -207,10 +209,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       const category = this.resumeForm.get(categoryName) as FormArray;
       const categoryItems = category.at(categoryIndex).get('items') as FormArray;
       categoryItems.removeAt(itemIndex);
-  }
-
-  checkedSideResumePreviewOpened(){
-    this.isSideResumePreviewOpened = !this.isSideResumePreviewOpened;
   }
 
   downloadResumeAsJSON(){
@@ -239,5 +237,9 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   onLanguageChange(){
     console.log('Language set : ' + this.appLanguageSelected);
     this.lang.setValue(this.appLanguageSelected);
+  }
+
+  toggleNav() {
+
   }
 }

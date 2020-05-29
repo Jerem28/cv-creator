@@ -1,110 +1,126 @@
-    <header [class.active]="isSideResumePreviewOpened">
-        <mat-toolbar color="primary">
-            <mat-toolbar-row>
-                <h1>ResumeBook</h1>
-            </mat-toolbar-row>
-            <mat-toolbar-row>
-                <h2>{{ "app-text.subtitle" | translate }}</h2>
+
+<div id="main-container">
+    <nav class='nav-bar'>
+        <ul id="menu">
+            <li class="menu-li-item">
+                <a href="/"><img id="main-logo" src="../../assets/img/logo.png" alt="ResumeBook"></a>
+            </li>
+            <li class="menu-li-item">
+                <button class="menu-button-item">
+                    <mat-icon class="menu-button-icon">insert_drive_file</mat-icon>
+                    <h1>New Resume</h1>
+                </button>
+            </li>
+            <li class="menu-li-item">
+                <button class="menu-button-item">
+                    <mat-icon class="menu-button-icon">folder</mat-icon>
+                    <h1>My Resumes</h1>
+                </button>
+            </li>
+            <li class="menu-li-item">
+                <button color="primary" class="menu-button-item">
+                    <mat-icon class="menu-button-icon">settings</mat-icon>
+                    <h1>Settings</h1>
+                </button>
+            </li>
+            <li class="menu-li-item">
                 <mat-form-field id="app-language-selector">
+                    <mat-label><mat-icon style="font-size: 1.5rem;">language</mat-icon></mat-label>
                     <mat-select (selectionChange)="onLanguageChange()" [(value)]="appLanguageSelected" >
-                      <mat-option value="en">English</mat-option>
-                      <mat-option value="fr">French</mat-option>
+                        <mat-option value="en">English</mat-option>
+                        <mat-option value="fr">French</mat-option>
                     </mat-select>
-                  </mat-form-field>
-            </mat-toolbar-row>
-        </mat-toolbar>
-    </header>
+                </mat-form-field>
+            </li>
+        </ul>   
+    </nav>
     
-    <div class="container resume">
+    <div class="container">
+        <div id="resume-container">
+            <button id="toggleSidenav" (click)="toggleNav()"><mat-icon>menu</mat-icon></button>
     
-        <!--
-        <div>
-            <p>{{ resumeForm.value | json }}</p>
+            <form id="resume-form" [class.active]="isSideResumePreviewOpened" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
+    
+                <app-header 
+                    [formBuilder]="formBuilder"
+                    [resumeForm]="resumeForm">
+                </app-header>
+        
+                <app-experience 
+                    [formBuilder]="formBuilder" 
+                    [resumeForm]="resumeForm" 
+                    (itemAddedEvent)="addItemToCategory($event)"
+                    (itemRemovedEvent)="removeItemFromCategory($event)">
+                </app-experience>
+        
+                <app-education
+                    [formBuilder]="formBuilder"
+                    [resumeForm]="resumeForm">
+                </app-education>
+        
+        
+                <app-language
+                    [formBuilder]="formBuilder"
+                    [resumeForm]="resumeForm">
+                </app-language>
+        
+                <app-skills
+                    [formBuilder]="formBuilder"
+                    [resumeForm]="resumeForm"
+                    (itemAddedEvent)="addItemToCategory($event)"
+                    (itemRemovedEvent)="removeItemFromCategory($event)">
+                </app-skills>
+        
+                <app-hobby
+                    [formBuilder]="formBuilder"
+                    [resumeForm]="resumeForm">
+                </app-hobby>
+    
+                <button mat-stroked-button color="primary" type="submit">{{ "app-text.button.generate-resume-label" | translate }}</button>
+        
+            </form>
         </div>
     
-        <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
-        -->
-
-                <button [class.active]="isSideResumePreviewOpened" 
-                        mat-fab
-                        color="primary" 
-                        type="button" 
-                        id="side-resume-preview-button" 
-                        (click)="checkedSideResumePreviewOpened()">
-                    <mat-icon>remove_red_eye</mat-icon>
-                </button>
-                <div [class.active]="isSideResumePreviewOpened" id="div-iframe-resume-preview">
-                    <iframe
-                        id="iframe-resume-preview"
-                        [src]= "generatedResumeUrl | safeUrl">
-                    </iframe>
-                </div>
-
-                <button type="button" mat-stroked-button color="primary">
-                    <label id="labelImportJSON" for="importJSON" style="margin: auto">
-                        {{ "app-text.button.import-json-label" | translate }}
-                        <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
-                    </label>
-                </button>
-
-                <button type="button" mat-stroked-button color="primary" (click)="resetForm()">{{ "app-text.button.clear-resume-label" | translate }}</button>
-
-                <form [class.active]="isSideResumePreviewOpened" id="resume-form" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
-
-                    <app-header 
-                        [formBuilder]="formBuilder"
-                        [resumeForm]="resumeForm">
-                    </app-header>
-            
-                    <app-experience 
-                        [formBuilder]="formBuilder" 
-                        [resumeForm]="resumeForm" 
-                        (itemAddedEvent)="addItemToCategory($event)"
-                        (itemRemovedEvent)="removeItemFromCategory($event)">
-                    </app-experience>
-            
-                    <app-education
-                        [formBuilder]="formBuilder"
-                        [resumeForm]="resumeForm">
-                    </app-education>
-            
-            
-                    <app-language
-                        [formBuilder]="formBuilder"
-                        [resumeForm]="resumeForm">
-                    </app-language>
-            
-                    <app-skills
-                        [formBuilder]="formBuilder"
-                        [resumeForm]="resumeForm"
-                        (itemAddedEvent)="addItemToCategory($event)"
-                        (itemRemovedEvent)="removeItemFromCategory($event)">
-                    </app-skills>
-            
-                    <app-hobby
-                        [formBuilder]="formBuilder"
-                        [resumeForm]="resumeForm">
-                    </app-hobby>
-            
-                    <button mat-stroked-button color="primary" type="submit">{{ "app-text.button.generate-resume-label" | translate }}</button>
-                    <a mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">{{ "app-text.button.export-json-label" | translate }}</a>
-                </form>
+        <div id="preview-container">
+                <iframe
+                allowfullscreen
+                id="iframe-resume-preview"
+                [src]= "generatedResumeUrl | safeUrl">
+                </iframe>
+        </div>
     
+        <div id="resume-button-list">
+            
+            <!--
+            <div>
+                <p>{{ resumeForm.value | json }}</p>
+            </div>
+        
+            <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
+            -->
+    
+            <button type="button" mat-stroked-button color="primary">
+                <label id="labelImportJSON" for="importJSON" style="margin: auto">
+                    {{ "app-text.button.import-json-label" | translate }}
+                    <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
+                </label>
+            </button>
+    
+            <button type="button" mat-stroked-button color="primary" (click)="resetForm()">{{ "app-text.button.clear-resume-label" | translate }}</button>
+    
+            <mat-form-field>
+                <mat-label>Resume template</mat-label>
+                <mat-select [(value)]="generatedResumeUrl" >
+                    <mat-option value="generated-resume">{{ "app-text.resume-preview-template.column" | translate }}</mat-option>
+                    <mat-option value="resume-classic">{{ "app-text.resume-preview-template.classic" | translate }}</mat-option>
+                    <mat-option value="resume-content-aside">{{ "app-text.resume-preview-template.aside" | translate }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <a mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">{{ "app-text.button.export-json-label" | translate }}</a>
+    
+        </div>
     </div>
-    
-    <footer>
-            <svg class="defs-only" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <symbol id="wave">
-                  <svg viewBox="0 0 100 50" preserveAspectRatio="none" >
-                      <g>
-                        <path d="M100,30 Q70,40 50,30 T0,30 v20 h100Z" 
-                            style="fill:#3f51b5; stroke-linejoin:round; stroke:#ffffff" stroke-width="0"/>
-                      </g>
-                  </svg>
-                </symbol>
-              </svg>
-            <svg width="50" height="50" style="width: 100%; height: 350px;">
-                <use xlink:href="#wave"/>
-            </svg>
-            <!--<p>2020 © All rights reserved.</p>-->
-    </footer>
+
+</div>
+   

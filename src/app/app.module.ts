@@ -31,6 +31,8 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { LangService } from './lang.service';
+import { ResumeClassicComponent } from './resume-classic/resume-classic.component';
+import { ResumeContentAsideComponent } from './resume-content-aside/resume-content-aside.component';
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,7 +50,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SkillsComponent,
     EducationComponent,
     ResumeGeneratedComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    ResumeClassicComponent,
+    ResumeContentAsideComponent
   ],
   imports: [
     BrowserModule,

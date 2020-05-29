@@ -41,6 +41,11 @@
         "work-place": "Work Place",
         "work-place-description": "Work Place description",
         "work-address": "Work Address",
-        "add-item": "Add item"
+        "add-item": "Add item",
+        "resume-preview-template": {
+            "column": "Column",
+            "classic": "Classic",
+            "aside": "Aside"
+        }
     }
 }

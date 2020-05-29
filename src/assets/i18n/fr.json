@@ -41,6 +41,11 @@
         "work-place": "Entreprise",
         "work-place-description": "Description de l'entreprise",
         "work-address": "Adresse de l'entreprise",
-        "add-item": "Ajouter un item"
+        "add-item": "Ajouter un item",
+        "resume-preview-template": {
+            "column": "Colonne",
+            "classic": "Classique",
+            "aside": "De côté"
+        }
     }
 }

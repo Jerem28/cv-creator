@@ -1,16 +1,15 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { ResumeFormStructure } from '../resume-interfaces';
 import { LangService } from '../lang.service';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { ResumeFormStructure } from '../resume-interfaces';
 
 @Component({
-  selector: 'app-resume-generated',
-  templateUrl: './resume-generated.component.html',
-  styleUrls: ['./resume-generated.component.scss'],
+  selector: 'app-resume-classic',
+  templateUrl: './resume-classic.component.html',
+  styleUrls: ['./resume-classic.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ResumeGeneratedComponent implements OnInit {
+export class ResumeClassicComponent implements OnInit {
 
   resumeData;
 
@@ -29,32 +28,6 @@ export class ResumeGeneratedComponent implements OnInit {
 
     this.lang.getValue().subscribe( value => {
     });
-
-    /*const pageStylesHTML = document.getElementsByTagName('style');
-    const stylesToRemove = [];
-    const headHTML = document.getElementsByTagName('head').item(0);
-
-    for(let i = 0; i < pageStylesHTML.length; i++) {
-      if(pageStylesHTML[i].textContent.search('.mat-toolbar')) {
-        stylesToRemove.push(pageStylesHTML[i]);
-      }
-    }
-
-    for (const style of stylesToRemove) {
-      headHTML.removeChild(style);
-    }
-
-    const scssFile = new File();
-
-    const reader = new FileReader();
-    let fileResult;
-    reader.onloadend = () => fileResult = reader.result;
-    reader.readAsText('./resume-generated.component.scss');
-
-    const link = document.createElement(
-      '<style>' +
-    );
-    headHTML.appendChild(); */
 
   }
 

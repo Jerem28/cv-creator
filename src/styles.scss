@@ -23,23 +23,10 @@ body { margin: 0; }
     vertical-align: unset !important;
 }
 
-.mat-mini-fab {
-    width: 30px !important;
-    height: 30px !important;
-
-    .mat-button-wrapper {
-        padding: 3px 0 !important;
-    }
-}
-
 .mat-card.mat-focus-indicator.resume-content-card {
     background-color: #FAFAFA;
 }
 
 .skillsList > .ng-star-inserted, .languagesList {
     display: inline-block;
-}
-
-.mat-expansion-panel-header {
-    height: 100px;
 }
