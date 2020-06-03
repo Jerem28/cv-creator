@@ -46,6 +46,14 @@
                 font-size: 1.3rem;
             }
 
+            #useful-infos {
+
+                .useful-info-text {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
             #main-photo-container {
                 border-radius: 50%;
                 width: 200px;
@@ -140,7 +148,7 @@
     }
 
     .date-range, 
-    .work-address, {
+    .work-address {
         margin-right: 0.5rem;
 
         .useful-info-icon {

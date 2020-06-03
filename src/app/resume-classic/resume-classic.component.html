@@ -1,6 +1,6 @@
-<div class="main-resume-container">    
+<div id="main-resume-container">    
 
-    <div class="header">
+    <div id="header">
 
         <div id="main-header-infos">
             <h1 id="fullname">{{ resumeData.fullname }}</h1>
@@ -30,7 +30,7 @@
             </section>
         </div>
     
-        <div *ngIf="resumeData.profilePicture !== null; else elseBlock">
+        <div id="main-photo-grid" *ngIf="resumeData.profilePicture !== null; else elseBlock">
             <div id="main-photo-container">
                 <img id="main-photo" src="{{ resumeData.profilePicture }}" alt="photo-cv">
             </div>
@@ -71,7 +71,7 @@
                     <p class="experience-work-place-description">{{ experience.workPlaceDescription }}</p>
                 </div>
                 <div class="experience-content">
-                    <ul id="experience-bulletpoints">
+                    <ul class="experience-bulletpoints">
                         <li class="experience-bulletpoint" *ngFor="let item of experience.items">{{ item }}</li>
                     </ul>
                 </div>
@@ -114,60 +114,62 @@
                 <div class="underline"></div>
             </div>
 
-            <div class="resume-article languages-list" *ngFor="let language of resumeData.languagesList;">
-                <span class="language-name">{{ language.languageTitle }}</span>
-                <div [ngSwitch]="language.languageLevel">
-                    <div *ngSwitchCase="1">
-                        <span class="dot skilled"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-
-                    <div *ngSwitchCase="2">
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-
-                    <div *ngSwitchCase="3">
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-
-                    <div *ngSwitchCase="4">
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot"></span>
-                    </div>
-
-                    <div *ngSwitchCase="5">
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                        <span class="dot skilled"></span>
-                    </div>
-
-                    <div *ngSwitchDefault>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-
+            <div class="languages-list">
+                <div class="resume-article language" *ngFor="let language of resumeData.languagesList;">
+                    <span class="language-name">{{ language.languageTitle }}</span>
+                    <span class="language-level" [ngSwitch]="language.languageLevel">
+                        <span *ngSwitchCase="1">
+                            <span class="dot skilled"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+    
+                        <span *ngSwitchCase="2">
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+    
+                        <span *ngSwitchCase="3">
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+    
+                        <span *ngSwitchCase="4">
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot"></span>
+                        </span>
+    
+                        <span *ngSwitchCase="5">
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                            <span class="dot skilled"></span>
+                        </span>
+    
+                        <span *ngSwitchDefault>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+    
+                    </span>
+                    
                 </div>
-                
-            </div>
+            </div>            
 
         </section>
 

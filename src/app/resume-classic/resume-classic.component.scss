@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@media screen, print {
+    @page {
+        size: 21cm 29.7cm;
+    }
+
+    #main-resume-container {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.8rem;
+        width: 100%;
+        height: 100%;
+    
+        #header {
+
+            display: grid;
+            grid-template-columns: 60% 30%;
+
+            #main-header-infos {
+                margin-left: 10%;
+                margin-right: auto;
+                margin-top: 10%;
+
+                .useful-info-text {
+                    display: inline;
+                    margin-left: 0.5rem;
+                }
+            }
+
+            #main-photo-grid {
+
+                height: min-content;
+                width: min-content;
+                align-self: center;
+                justify-self: center;
+                margin-top: 10%;
+
+                #main-photo-container {
+                
+                    border-radius: 50%;
+                    width: min-content;
+    
+                    #main-photo {
+                        width: 250px;
+                        height: 250px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+
+            }
+            
+        }
+
+        #experience-section {
+
+            .experience-header {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                margin-top: 2rem;
+
+                .experience-title {
+                    width: 100%;
+                }
+            }
+
+            .experience-content {
+
+                .experience-bulletpoints {
+                    margin: 0 20%;
+                }
+
+            }
+
+        }
+
+        #education-section {
+
+            .formation-header {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                margin-top: 2rem;
+
+                .formation-title {
+                    width: 100%;
+                }
+            }
+
+            .resume-article.formation {
+                margin-bottom: 2rem;
+            }
+
+        }
+
+        #skill-section {
+
+            .skills-list {
+
+                margin-top: 2rem;
+
+                .skill-list {
+                    list-style-type: none;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    .skill-item {
+                        margin-right: 1rem;
+                    }
+                }
+
+            }
+        }
+
+        #language-section {
+
+            .languages-list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-top: 2rem;
+
+                .language-name {
+                    margin-right: 1rem;
+                }
+
+            }
+
+            .dot {
+                height: 15px;
+                width: 15px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            
+            .dot.skilled {
+                background-color: black;
+            }
+
+        }
+
+        #hobby-section {
+
+            .hobbies-list {
+
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 2rem;
+
+                .resume-article {
+                    width: 20%;
+                }
+
+                .passion-description {
+                    text-align: center;
+                }
+
+            }
+        }
+
+        .resume-section-title, 
+        .experience-title,
+        .formation-title,
+        .skills-category-title,
+        .passion-title {
+            text-align: center;
+        }
+
+        .resume-section-title {
+            background-color: grey;
+            color: white;
+        }
+
+        #resume-description,
+        .work-place {
+            font-style: italic;
+        }
+
+        .resume-section {
+            margin-top: 5%;
+        }
+
+        .date-range, 
+        .work-address {
+            margin-right: 0.5rem;
+    
+            .useful-info-icon {
+                margin-right: 0.2rem;
+            }
+        }
+        
+    }
+    
+}
