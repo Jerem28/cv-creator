@@ -81,45 +81,50 @@
             </form>
         </div>
     
-        <div id="preview-container">
-                <iframe
-                allowfullscreen
-                id="iframe-resume-preview"
-                [src]= "generatedResumeUrl | safeUrl">
-                </iframe>
-        </div>
-    
-        <div id="resume-button-list">
-            
-            <!--
-            <div>
-                <p>{{ resumeForm.value | json }}</p>
-            </div>
+            <div id="right-container">
         
-            <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
-            -->
-    
-            <button type="button" mat-stroked-button color="primary">
-                <label id="labelImportJSON" for="importJSON" style="margin: auto">
-                    {{ "app-text.button.import-json-label" | translate }}
-                    <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
-                </label>
-            </button>
-    
-            <button type="button" mat-stroked-button color="primary" (click)="resetForm()">{{ "app-text.button.clear-resume-label" | translate }}</button>
-    
-            <mat-form-field>
-                <mat-label>Resume template</mat-label>
-                <mat-select [(value)]="generatedResumeUrl" >
-                    <mat-option value="generated-resume">{{ "app-text.resume-preview-template.column" | translate }}</mat-option>
-                    <mat-option value="resume-classic">{{ "app-text.resume-preview-template.classic" | translate }}</mat-option>
-                    <mat-option value="resume-content-aside">{{ "app-text.resume-preview-template.aside" | translate }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-    
-            <a mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">{{ "app-text.button.export-json-label" | translate }}</a>
-    
-        </div>
+                <div id="preview-container">
+                    <iframe
+                    allowfullscreen
+                    id="iframe-resume-preview"
+                    [src]= "generatedResumeUrl | safeUrl">
+                    </iframe>
+                </div>
+
+                <mat-form-field id="resume-template-selector">
+                    <mat-label>Resume template</mat-label>
+                    <mat-select [(value)]="generatedResumeUrl" >
+                        <mat-option value="generated-resume">{{ "app-text.resume-preview-template.column" | translate }}</mat-option>
+                        <mat-option value="resume-classic">{{ "app-text.resume-preview-template.classic" | translate }}</mat-option>
+                        <mat-option value="resume-content-aside">{{ "app-text.resume-preview-template.aside" | translate }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div id="resume-button-list">
+            
+                    <!--
+                    <div>
+                        <p>{{ resumeForm.value | json }}</p>
+                    </div>
+                
+                    <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
+                    -->
+            
+                    <button class="resume-button" type="button" mat-stroked-button color="primary">
+                        <label id="labelImportJSON" for="importJSON" style="margin: auto">
+                            {{ "app-text.button.import-json-label" | translate }}
+                            <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
+                        </label>
+                    </button>
+            
+                    <button class="resume-button" type="button" mat-stroked-button color="primary" (click)="resetForm()">{{ "app-text.button.clear-resume-label" | translate }}</button>
+            
+                    <a class="resume-button" mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">{{ "app-text.button.export-json-label" | translate }}</a>
+            
+                </div>
+
+            </div>
+            
     </div>
 
 </div>
