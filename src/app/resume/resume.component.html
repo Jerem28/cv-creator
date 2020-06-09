@@ -12,18 +12,6 @@
                 </button>
             </li>
             <li class="menu-li-item">
-                <button class="menu-button-item">
-                    <mat-icon class="menu-button-icon">folder</mat-icon>
-                    <h1>My Resumes</h1>
-                </button>
-            </li>
-            <li class="menu-li-item">
-                <button color="primary" class="menu-button-item">
-                    <mat-icon class="menu-button-icon">settings</mat-icon>
-                    <h1>Settings</h1>
-                </button>
-            </li>
-            <li class="menu-li-item">
                 <mat-form-field id="app-language-selector">
                     <mat-label><mat-icon style="font-size: 1.5rem;">language</mat-icon></mat-label>
                     <mat-select (selectionChange)="onLanguageChange()" [(value)]="appLanguageSelected" >
@@ -81,12 +69,12 @@
             </form>
         </div>
     
-            <div id="right-container">
+            <div id="preview-container">
         
-                <div id="preview-container">
+                <div id="preview-iframe-container">
                     <iframe
                     allowfullscreen
-                    id="iframe-resume-preview"
+                    id="preview-iframe"
                     [src]= "generatedResumeUrl | safeUrl">
                     </iframe>
                 </div>
@@ -106,20 +94,31 @@
                     <div>
                         <p>{{ resumeForm.value | json }}</p>
                     </div>
-                
+
                     <button class="btn btn-primary" type="button" (click)="resetForm()">Reset form</button>
                     -->
-            
-                    <button class="resume-button" type="button" mat-stroked-button color="primary">
+
+                    <button title='{{ "app-text.button.import-json-label" | translate }}' class="resume-button" type="button" mat-stroked-button color="primary">
                         <label id="labelImportJSON" for="importJSON" style="margin: auto">
-                            {{ "app-text.button.import-json-label" | translate }}
+                            <span class="resume-button-label">{{ "app-text.button.import-json-label" | translate }}</span>
                             <input type="file" id="importJSON" style="display: none;" onclick="value = null" (change)="importJSON($event)">
+                            <i class="fas fa-file-import resume-button-icon"></i>
                         </label>
                     </button>
             
-                    <button class="resume-button" type="button" mat-stroked-button color="primary" (click)="resetForm()">{{ "app-text.button.clear-resume-label" | translate }}</button>
+                    <button title='{{ "app-text.button.clear-resume-label" | translate }}' class="resume-button" type="button" mat-stroked-button color="primary" (click)="resetForm()">
+                        <span class="resume-button-label">{{ "app-text.button.clear-resume-label" | translate }}</span>
+                        <i class="fas fa-eraser resume-button-icon"></i>
+                    </button>
             
-                    <a class="resume-button" mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">{{ "app-text.button.export-json-label" | translate }}</a>
+                    <a title='{{ "app-text.button.export-json-label" | translate }}' class="resume-button" mat-stroked-button color="primary" (click)="downloadResumeAsJSON()" [href]="jsonFileURL | safeUrl" download="resume.json">
+                        <span class="resume-button-label">{{ "app-text.button.export-json-label" | translate }}</span>
+                        <i class="fas fa-file-export resume-button-icon"></i>
+                    </a>
+
+                    <button title='Preview' id="preview-button" class="resume-button" mat-stroked-button color="primary" type="button">
+                        <i class="far fa-eye"></i>
+                    </button>
             
                 </div>
 

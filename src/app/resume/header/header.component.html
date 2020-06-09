@@ -7,9 +7,9 @@
         </mat-card-header>
         <mat-card-content class="header-content">
     
-            <div class=row>
+            <div class="row">
     
-                <div class="col-6">
+                <div class="col-12">
                     <mat-form-field class="header-form-field" appearance="outline">
                         <mat-label for="fullname">
                             {{ "app-text.fullname" | translate }}
@@ -24,7 +24,7 @@
                         <input matInput type="text" id="descriptionSentence" formControlName="descriptionSentence">
                     </mat-form-field>
             
-                    <div class=row>
+                    <div class="row">
                         <div class="col-6">
                             <mat-form-field class="header-form-field" appearance="outline">
                                 <mat-label for="phone">
@@ -59,19 +59,19 @@
     
                     </div>
                     
-                </div>
-                
-                <div class="col-6" style="margin: auto;">
-                    <div class="profilePictureContainer">
-                        <img *ngIf="profilePictureUrl" [src]="profilePictureUrl">
-                        <button type="button" class="header-photo-button" mat-raised-button>
-                            <label id="labelProfilePicture" for="profilePicture" class="btn btn-default">
-                                {{ "app-text.profile-picture-label" | translate }}
-                                <input type="file" id="profilePicture" style="display: none;" (change)="readProfilePictureUrl($event)">
-                                <input type="text" formControlName="profilePicture" style="display: none;">
-                            </label>
-                        </button>
+                    <div style="margin: auto;">
+                        <div class="profilePictureContainer">
+                            <img *ngIf="profilePictureUrl" [src]="profilePictureUrl">
+                            <button type="button" class="header-photo-button" mat-raised-button>
+                                <label id="labelProfilePicture" for="profilePicture" class="btn btn-default">
+                                    {{ "app-text.profile-picture-label" | translate }}
+                                    <input type="file" id="profilePicture" style="display: none;" (change)="readProfilePictureUrl($event)">
+                                    <input type="text" formControlName="profilePicture" style="display: none;">
+                                </label>
+                            </button>
+                        </div>
                     </div>
+
                 </div>
     
             </div>
