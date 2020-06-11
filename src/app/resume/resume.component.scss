@@ -130,6 +130,7 @@
             }
 
             #resume-button-list {
+
                 position: fixed;
                 bottom: 0.5rem;
 
@@ -246,11 +247,37 @@
                         display: inline;
                     }
                 }
+                        
+                #preview-iframe-container {
+                    display: none;
+                }
+
+                #preview-iframe-container.lightbox-preview-iframe-container {
+                    content: "";
+                    position: fixed;
+                    z-index: 999;
+                    width: 200vh;
+                    height: 120%;
+                    text-align: center;
+                    top: -16px;
+                    left: -150px;
+                    background: rgba(0,0,0,0.8);
+
+                    #preview-iframe {
+                        max-width: 70%;
+                        max-height: 168%;
+                        margin: 2% auto;
+                    }
+                }
+
+                .lightbox-preview-iframe-container:target {
+                    /** Remove default browser outline */
+                    outline: none;
+
+                    /** Unhide lightbox **/
+                    display: block;
+                }
         
-            }
-        
-            #preview-iframe-container {
-                display: none;
             }
         
             #resume-container {

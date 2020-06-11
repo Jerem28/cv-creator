@@ -242,4 +242,11 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   toggleNav() {
 
   }
+
+  activatePreviewLightbox(previewContainerId: string) {
+    console.log('activatePreviewLightbox');
+    const previewIframeContainer = document.getElementById(previewContainerId);
+    previewIframeContainer.className = 'lightbox-preview-iframe-container';
+    previewIframeContainer.style.display = 'block';
+  }
 }

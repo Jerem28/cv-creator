@@ -25,8 +25,13 @@ body { margin: 0; }
 
 .mat-card.mat-focus-indicator.resume-content-card {
     background-color: #FAFAFA;
+    box-shadow: 1px 1px 3px grey, -1px 1px 3px grey;
 }
 
 .skillsList > .ng-star-inserted, .languagesList {
     display: inline-block;
+}
+
+.date-section {
+    justify-content: center;
 }
