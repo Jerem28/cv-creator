@@ -25,6 +25,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { MatChipsModule } from '@angular/material/chips';
 
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -71,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatNativeDateModule,
     MatExpansionModule,
     MatSelectModule,
+    MatChipsModule,
 
     // configure the imports
     HttpClientModule,
