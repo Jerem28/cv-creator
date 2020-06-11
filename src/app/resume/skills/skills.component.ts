@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Skill } from 'src/app/resume-interfaces';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+
 
 @Component({
   selector: 'app-skills',
@@ -14,6 +16,11 @@ export class SkillsComponent implements OnInit {
 
   @Output() itemAddedEvent = new EventEmitter<Array<any>>();
   @Output() itemRemovedEvent = new EventEmitter<Array<any>>();
+
+  selectable = true;
+  removable = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  addOnBlur = true;
 
   constructor() { }
 

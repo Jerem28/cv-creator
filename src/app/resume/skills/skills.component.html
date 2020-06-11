@@ -21,21 +21,26 @@
 
                         <mat-card-content>
                             <div formArrayName="items">
-                                <ul style="display: inline-block; list-style: none;" class="skillsList">
-                                    <div *ngFor="let skillItem of getSkillItemList(i).controls; let j = index">
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-9">
-                                                    <mat-form-field appearance="standard">
-                                                        <input matInput type="text" formControlName="{{j}}">
-                                                    </mat-form-field>
-                                                </div>
-                                                <button class="delete-item-button" type="button" mat-mini-fab color="primary" (click)="callParentItemRemoved(['skillsList', i, j])"><mat-icon>clear</mat-icon></button>
-                                            </div>
-                                        </li>
-                                    </div>
-                                </ul>
-                                <button style="display: block;" type="button" mat-stroked-button color="primary" (click)="callParentItemAdded(['skillsList',i, item])">{{ "app-text.add-skill-item" | translate }}</button>
+                                <mat-form-field appearance="standard" class="skill-items">
+
+                                    <mat-chip-list #chipList class="skillsList">
+                                        <mat-chip *ngFor="let skillItem of getSkillItemList(i).controls; let j = index"
+                                                [selectable]="selectable"
+                                                [removable]="removable" 
+                                                (removed)="callParentItemRemoved(['skillsList', i, j])">
+                                                    {{ skillItem.value }}
+                                                <input matInput type="text"
+                                                [matChipInputFor]="chipList"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                [matChipInputAddOnBlur]="addOnBlur"
+                                                (matChipInputTokenEnd)="callParentItemAdded(['skillsList',i, item])"
+                                                formControlName="{{ j }}">
+                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                        </mat-chip>
+                                        
+                                    </mat-chip-list>
+
+                                </mat-form-field>
                             </div>
                         </mat-card-content>
 
