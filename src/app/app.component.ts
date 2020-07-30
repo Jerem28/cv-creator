@@ -7,6 +7,7 @@ import { LangService } from './lang.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'cv-creator';
   langInfo = 'en';

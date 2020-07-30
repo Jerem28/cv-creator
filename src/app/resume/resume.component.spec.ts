@@ -21,7 +21,7 @@ describe('ResumeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [ 
+      imports : [
         ReactiveFormsModule,
         RouterTestingModule,
         EducationComponent,

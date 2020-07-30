@@ -27,9 +27,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { SafeUrlPipe } from './safe-url.pipe';
 
 // import ngx-translate and the http loader
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { LangService } from './lang.service';
 import { ResumeClassicComponent } from './resume-classic/resume-classic.component';
 import { ResumeContentAsideComponent } from './resume-content-aside/resume-content-aside.component';
@@ -83,6 +83,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   providers: [ MatDatepickerModule, LangService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

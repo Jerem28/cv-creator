@@ -16,7 +16,7 @@ export class ResumeClassicComponent implements OnInit {
   constructor(private lang: LangService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
+    if (!localStorage.getItem('formValue')) {
       this.resumeData = this.initializeResumeData();
     } else {
       this.resumeData = JSON.parse(localStorage.getItem('formValue'));

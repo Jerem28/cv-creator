@@ -16,7 +16,9 @@ export class ResumeContentAsideComponent implements OnInit {
   constructor(private lang: LangService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
+    console.log("POUR LES TESTS");
+    console.log(localStorage.getItem('formValue'));
+    if (!localStorage.getItem('formValue')) {
       this.resumeData = this.initializeResumeData();
     } else {
       this.resumeData = JSON.parse(localStorage.getItem('formValue'));
