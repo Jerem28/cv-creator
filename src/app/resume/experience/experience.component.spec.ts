@@ -1,4 +1,4 @@
-import { async, TestBed } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { ExperienceComponent } from './experience.component';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -9,10 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('ExperienceComponent', () => {
 
-  const experienceComponent = new ExperienceComponent();
+  let experienceComponent: ExperienceComponent;
+  let fixture: ComponentFixture<ExperienceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,13 +27,15 @@ describe('ExperienceComponent', () => {
         MatCardModule,
         MatIconModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        TranslateModule.forRoot()
       ],
       declarations: [ ExperienceComponent ]
     })
     .compileComponents();
+    fixture = TestBed.createComponent(ExperienceComponent);
+    experienceComponent = fixture.componentInstance;
   }));
-
 
   it('should create', () => {
     expect(experienceComponent).toBeTruthy();

@@ -1,4 +1,4 @@
-import { async, TestBed } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { SkillsComponent } from './skills.component';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -7,9 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('SkillsComponent', () => {
-  const skillComponent = new SkillsComponent();
+  let skillComponent: SkillsComponent;
+  let fixture: ComponentFixture<SkillsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,11 +22,14 @@ describe('SkillsComponent', () => {
         MatButtonModule,
         MatToolbarModule,
         MatCardModule,
-        MatIconModule
+        MatIconModule,
+        TranslateModule.forRoot()
       ],
       declarations: [ SkillsComponent ]
     })
     .compileComponents();
+    fixture = TestBed.createComponent(SkillsComponent);
+    skillComponent = fixture.componentInstance;
   }));
 
 

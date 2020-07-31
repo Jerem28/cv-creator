@@ -7,9 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('HobbyComponent', () => {
-  const hobbyComponent = new HobbyComponent();
+  let hobbyComponent = new HobbyComponent();
+  let fixture: ComponentFixture<HobbyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,10 +23,13 @@ describe('HobbyComponent', () => {
         MatToolbarModule,
         MatCardModule,
         MatIconModule,
+        TranslateModule.forRoot()
       ],
       declarations: [ HobbyComponent ]
     })
     .compileComponents();
+    fixture = TestBed.createComponent(HobbyComponent);
+    hobbyComponent = fixture.componentInstance;
   }));
 
 

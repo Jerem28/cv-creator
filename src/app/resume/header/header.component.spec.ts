@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('HeaderComponent', () => {
   let headerComponent: HeaderComponent;
@@ -21,34 +22,17 @@ describe('HeaderComponent', () => {
         MatButtonModule,
         MatToolbarModule,
         MatCardModule,
-        MatIconModule
+        MatIconModule,
+        TranslateModule.forRoot()
       ],
       declarations: [ HeaderComponent ]
     })
     .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     headerComponent = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  }));
 
-  // TODO: fix this test
-  /*it('should create', () => {
-    const formBuilder: FormBuilder = new FormBuilder();
-    headerComponent.formBuilder = formBuilder;
-    const resumeFormData =
-    {
-      fullName: '',
-      descriptionSentence: '',
-      phone: '',
-      personalLink: '',
-      email: '',
-      address: ''
-    };
-    const resumeForm: FormGroup = headerComponent.formBuilder.group(resumeFormData);
-    headerComponent.resumeForm = resumeForm;
+  it('should create', () => {
     expect(headerComponent).toBeTruthy();
-  });*/
+  });
 });
