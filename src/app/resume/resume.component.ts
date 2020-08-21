@@ -17,6 +17,15 @@ import { LangService } from '../lang.service';
 
 export class ResumeComponent implements OnInit, AfterViewInit {
 
+  resumeForm: FormGroup;
+  resumeFormValue: ResumeFormStructure;
+  jsonFileURL: string;
+
+  generatedResumeUrl = 'generated-resume';
+
+  isSideResumePreviewOpened = false;
+  appLanguageSelected = 'en';
+
   @ViewChild(ExperienceComponent)
   private experienceComponent: ExperienceComponent;
   @ViewChild(EducationComponent)
@@ -27,17 +36,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   private languageComponent: LanguageComponent;
   @ViewChild(SkillsComponent)
   private skillComponent: SkillsComponent;
-
-  resumeForm: FormGroup;
-  resumeFormValue: ResumeFormStructure;
-  jsonFileURL: string;
-
-  generatedResumeUrl = 'generated-resume';
-
-  isSideResumePreviewOpened = false;
-  appLanguageSelected = 'en';
-
-  opened = true;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -88,15 +86,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
     // Resume form initialization has to be in ngOnInit() lifecycle hook, not in constructor
 
-    let value: any;
-
-    if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
-      value = this.resumeFormValue;
-    } else {
-      value = JSON.parse(localStorage.getItem('formValue'));
-    }
-
-    this.initializeResumeForm(value);
+    this.initializeResumeForm();
 
     this.resumeForm.valueChanges.subscribe(formValue => {
       localStorage.setItem('formValue', JSON.stringify(formValue));
@@ -164,15 +154,15 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   }
 
-  initializeResumeForm(value) {
+  initializeResumeForm() {
     this.resumeForm = this.formBuilder.group({
-      fullname: [value && value.fullname] || '',
-      descriptionSentence: [value && value.descriptionSentence] || '',
-      phone: [value && value.phone] || '',
-      personalLink: [value && value.personalLink] || '',
-      email: [value && value.email] || '',
-      address: [value && value.address] || '',
-      profilePicture: [value && value.profilePicture] || '',
+      fullname: '',
+      descriptionSentence: '',
+      phone: '',
+      personalLink: '',
+      email: '',
+      address: '',
+      profilePicture: '',
       experiencesList: this.formBuilder.array([]),
       educationsList: this.formBuilder.array([]),
       languagesList: this.formBuilder.array([]),
