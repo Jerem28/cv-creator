@@ -39,26 +39,19 @@ export class SkillsComponent implements OnInit {
     return this.skillsList.at(skillIndex).get('items') as FormArray;
   }
 
-  addInputSkill(){
+  addEmptySkillToSkillsList(){
     this.skillsList.push(this.skill);
   }
 
-  removeSkill(skillIndex: number){
+  removeSkillFromSkillsList(skillIndex: number){
     this.skillsList.removeAt(skillIndex);
   }
 
-  createSkill(data: any){
-    for (let skillIndex = 0; skillIndex < data.skillsList.length; skillIndex++) {
-      console.log('Adding skill [' + skillIndex + '] to skillsList');
-      this.skillsList.push(this.skill);
-      if (data.skillsList[skillIndex].items.length > 0) {
-        const skillItemNumber = data.skillsList[skillIndex].items.length;
-        for (let itemIndex = 0; itemIndex < skillItemNumber; itemIndex++) {
-          console.log('Adding item [' + itemIndex + '] to experience [' + skillIndex + ']');
-          this.getSkillItemList(skillIndex).push(this.item);
-        }
-      }
-    }
+  createSkillsStructureFromLoadedList( { skillsList }: { skillsList: Array<any> }) {
+    skillsList.map( (skill, skillIndex) => {
+      this.addEmptySkillToSkillsList();
+      skill.items.map( () => { this.getSkillItemList(skillIndex).push(this.item); });
+    });
   }
 
   get item(): FormControl {

@@ -24,9 +24,7 @@ export class ExperienceComponent implements OnInit, OnChanges {
     console.log(this.resumeForm.value);
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   get experience(): FormGroup {
     const experience: Experience =
@@ -50,26 +48,19 @@ export class ExperienceComponent implements OnInit, OnChanges {
     return this.experiencesList.at(experienceIndex).get('items') as FormArray;
   }
 
-  addInputExperience(){
+  addEmptyExperienceToExperiencesList(){
     this.experiencesList.push(this.experience);
   }
 
-  removeExperience(experienceIndex: number){
+  removeExperienceFromExperiencesList(experienceIndex: number){
     this.experiencesList.removeAt(experienceIndex);
   }
 
-  createExperience(data: any) {
-    for (let experienceIndex = 0; experienceIndex < data.experiencesList.length; experienceIndex++){
-      console.log('Adding experience [' + experienceIndex + '] to experiencesList');
-      this.experiencesList.push(this.experience);
-      if (data.experiencesList[experienceIndex].items.length > 0) {
-        const experienceItemNumber = data.experiencesList[experienceIndex].items.length;
-        for (let itemIndex = 0; itemIndex < experienceItemNumber; itemIndex++) {
-          console.log('Adding item [' + itemIndex + '] to experience [' + experienceIndex + ']');
-          this.getExperienceItemList(experienceIndex).push(this.item);
-        }
-      }
-    }
+  createExperiencesStructureFromLoadedList({ experiencesList }: { experiencesList: Array<any> }) {
+    experiencesList.map( (exp, expIndex) => {
+      this.addEmptyExperienceToExperiencesList();
+      exp.items.map( () => { this.getExperienceItemList(expIndex).push(this.item); });
+    });
   }
 
   get item(): FormControl {

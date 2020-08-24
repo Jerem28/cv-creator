@@ -98,7 +98,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    let value: object;
+    let value: ResumeFormStructure;
 
     if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
       value = this.resumeFormValue;
@@ -124,7 +124,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     this.initializeResumeFormArrays(); // Clean all FormArrays, so they are empty
   }
 
-  loadResumeForm(value) {
+  loadResumeForm(value: ResumeFormStructure) {
 
       this.resetForm();
       console.log('[ResumeComponent] ');
@@ -139,19 +139,22 @@ export class ResumeComponent implements OnInit, AfterViewInit {
         console.log('[ResumeComponent] Creating resumeForm with following value data :');
         console.log(value);
 
-        this.experienceComponent.createExperience(value);
-        this.educationComponent.createEducation(value);
-        this.skillComponent.createSkill(value);
-        this.languageComponent.createLanguage(value);
-        this.hobbyComponent.createHobby(value);
+        this.createResumeCategoriesFromData(value);
 
         console.log('[ResumeComponent] Actual Resume form structure :');
         console.log(this.resumeForm.value);
 
         this.resumeForm.patchValue(value);
-
       }
 
+  }
+
+  private createResumeCategoriesFromData(resumeData: ResumeFormStructure) {
+    this.experienceComponent.createExperiencesStructureFromLoadedList(resumeData);
+    this.educationComponent.createEducationsStructureFromLoadedList(resumeData);
+    this.skillComponent.createSkillsStructureFromLoadedList(resumeData);
+    this.languageComponent.createLanguagesStructureFromLoadedList(resumeData);
+    this.hobbyComponent.createHobbiesStructureFromLoadedList(resumeData);
   }
 
   initializeResumeForm() {
@@ -213,11 +216,11 @@ export class ResumeComponent implements OnInit, AfterViewInit {
       const file = event.target.files[0];
       console.log(file);
 
-      let jsonContent: string | ArrayBuffer;
+      let jsonContent: any;
 
       reader.onloadend = () => {
         jsonContent = JSON.parse(reader.result as string);
-        this.loadResumeForm(jsonContent as object);
+        this.loadResumeForm(jsonContent as ResumeFormStructure);
       };
 
       reader.readAsText(file);

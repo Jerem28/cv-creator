@@ -30,18 +30,15 @@ export class HobbyComponent implements OnInit {
     return this.resumeForm.get('hobbiesList') as FormArray;
   }
 
-  createHobby(data: any) {
-    for (let hobbyIndex = 0; hobbyIndex < data.hobbiesList.length; hobbyIndex++) {
-      console.log('Adding hobby [' + hobbyIndex + '] to hobbiesList');
-      this.hobbiesList.push(this.hobby);
-    }
+  createHobbiesStructureFromLoadedList({ hobbiesList }: { hobbiesList: Array<any>}) {
+    hobbiesList.map( () => this.addEmptyHobbyToHobbiesList());
   }
 
-  addInputHobby(){
+  addEmptyHobbyToHobbiesList(){
     this.hobbiesList.push(this.hobby);
   }
 
-  removeHobby(hobbyIndex: number){
+  removeHobbyFromHobbiesList(hobbyIndex: number){
     this.hobbiesList.removeAt(hobbyIndex);
   }
 

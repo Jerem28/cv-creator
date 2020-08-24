@@ -30,18 +30,15 @@ export class LanguageComponent implements OnInit {
     return this.resumeForm.get('languagesList') as FormArray;
   }
 
-  createLanguage(data: any) {
-    for (let languageIndex = 0; languageIndex < data.languagesList.length; languageIndex++){
-        console.log('Adding language [' + languageIndex + '] to languagesList');
-        this.languagesList.push(this.language);
-    }
+  createLanguagesStructureFromLoadedList({ languagesList }: {languagesList: Array<any> } ) {
+    languagesList.map( () => this.addEmptyLanguageToLanguagesList() );
   }
 
-  addInputLanguage(){
+  addEmptyLanguageToLanguagesList(){
     this.languagesList.push(this.language);
   }
 
-  removeLanguage(languageIndex: number){
+  removeLanguageFromLanguagesList(languageIndex: number){
     this.languagesList.removeAt(languageIndex);
   }
 

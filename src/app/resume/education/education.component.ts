@@ -35,19 +35,15 @@ export class EducationComponent implements OnInit {
     return this.formBuilder.group(education);
   }
 
-  addInputEducation(){
-    const educationFormGroup: FormGroup = this.education;
-    this.educationsList.push(educationFormGroup);
+  addEmptyEducationToEducationsList(){
+    this.educationsList.push(this.education);
   }
 
-  removeEducation(educationIndex: number){
+  removeEducationFromEducationsList(educationIndex: number){
     this.educationsList.removeAt(educationIndex);
   }
 
-  createEducation(data: any){
-    for (let educationIndex = 0; educationIndex < data.educationsList.length; educationIndex++) {
-      console.log('Adding education [' + educationIndex + '] to educationsList');
-      this.educationsList.push(this.education);
-    }
+  createEducationsStructureFromLoadedList({ educationsList }: { educationsList: Array<any>  }) {
+    educationsList.map( () => { this.educationsList.push(this.education); });
   }
 }
