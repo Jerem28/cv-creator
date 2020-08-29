@@ -45,7 +45,7 @@ export class ExperienceComponent implements OnInit, OnChanges {
   }
 
   getExperienceItemList(experienceIndex: number): FormArray {
-    return this.experiencesList.at(experienceIndex).get('items') as FormArray;
+    return (this.experiencesList.length === 0) ? undefined : this.experiencesList.at(experienceIndex).get('items') as FormArray;
   }
 
   addEmptyExperienceToExperiencesList(){
@@ -59,7 +59,7 @@ export class ExperienceComponent implements OnInit, OnChanges {
   createExperiencesStructureFromLoadedList({ experiencesList }: { experiencesList: Array<any> }) {
     experiencesList.map( (exp, expIndex) => {
       this.addEmptyExperienceToExperiencesList();
-      exp.items.map( () => { this.getExperienceItemList(expIndex).push(this.item); });
+      if (exp.items) { exp.items.controls.map( () => this.getExperienceItemList(expIndex).push(this.item)); }
     });
   }
 

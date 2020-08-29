@@ -11,10 +11,26 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TranslateModule } from '@ngx-translate/core';
 
+/**
+ * Following test suites are written with Given-When-Then pattern
+ * One line spacing between each step
+ */
+
 describe('ExperienceComponent', () => {
 
   let experienceComponent: ExperienceComponent;
   let fixture: ComponentFixture<ExperienceComponent>;
+  const formBuilder: FormBuilder = new FormBuilder();
+
+  function initializeResumeFormWithEmptyExperiencesList(){
+    experienceComponent.formBuilder = formBuilder;
+    const resumeFormData =
+    {
+      experiencesList: formBuilder.array([]),
+    };
+    const resumeForm: FormGroup = experienceComponent.formBuilder.group(resumeFormData);
+    experienceComponent.resumeForm = resumeForm;
+  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -41,20 +57,104 @@ describe('ExperienceComponent', () => {
     expect(experienceComponent).toBeTruthy();
   });
 
-  it('should construct an experiences list', () => {
-    const formBuilder: FormBuilder = new FormBuilder();
-    experienceComponent.formBuilder = formBuilder;
-    const resumeFormData =
+  // Unit tests
+
+  it('should add 1 empty experience to resumeform experiences list [addEmptyExperienceToExperiencesList]', () => {
+    initializeResumeFormWithEmptyExperiencesList();
+    const expectedResult: Array<any> = [
     {
-      experiencesList: [],
-    };
-    const resumeForm: FormGroup = experienceComponent.formBuilder.group(resumeFormData);
-    experienceComponent.resumeForm = resumeForm;
+      experienceTitle: '',
+      workPlace: '',
+      workPlaceDescription: '',
+      startDate: '',
+      endDate: '',
+      workAddress: '',
+      items: []
+    }];
 
-    console.log('[TEST]');
-    console.log(experienceComponent.experiencesList);
+    experienceComponent.addEmptyExperienceToExperiencesList();
 
-    expect(experienceComponent.experiencesList).not.toBe(null);
+    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
+  });
+
+  it('should leave the experiences list empty [removeExperienceFromExperiencesList]', () => {
+    initializeResumeFormWithEmptyExperiencesList();
+    const expectedResult: Array<any> = [];
+
+    experienceComponent.removeExperienceFromExperiencesList(0);
+
+    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
+  });
+
+  it('should remove the added experience and return an empty experiences list [removeExperienceFromExperiencesList]', () => {
+    initializeResumeFormWithEmptyExperiencesList();
+    experienceComponent.addEmptyExperienceToExperiencesList();
+    const expectedResult: Array<any> = [];
+
+    experienceComponent.removeExperienceFromExperiencesList(0);
+
+    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
+  });
+
+  it('should return undefined since experiences list is empty [getExperienceItemList]', () => {
+    initializeResumeFormWithEmptyExperiencesList();
+
+    const result = experienceComponent.getExperienceItemList(0);
+
+    expect(result).toBeUndefined();
+  });
+
+  // Functionnal test
+
+  it('should create the same structure of experiences list controls as the one given [createExperiencesStructureFromLoadedList]', () => {
+    initializeResumeFormWithEmptyExperiencesList();
+    const newListValue: { experiencesList: Array<any> } = {
+      experiencesList: [
+        {
+          experienceTitle: '',
+          workPlace: '',
+          workPlaceDescription: '',
+          startDate: '',
+          endDate: '',
+          workAddress: '',
+          items: formBuilder.array(['', '', ''])
+        },
+        {
+          experienceTitle: '',
+          workPlace: '',
+          workPlaceDescription: '',
+          startDate: '',
+          endDate: '',
+          workAddress: '',
+          items: formBuilder.array(['', ''])
+        }
+    ]
+  };
+    const expectedResult: Array<any> = [
+        {
+          experienceTitle: '',
+          workPlace: '',
+          workPlaceDescription: '',
+          startDate: '',
+          endDate: '',
+          workAddress: '',
+          items: ['', '', '']
+        },
+        {
+          experienceTitle: '',
+          workPlace: '',
+          workPlaceDescription: '',
+          startDate: '',
+          endDate: '',
+          workAddress: '',
+          items: ['', '']
+        }
+    ];
+
+    experienceComponent.createExperiencesStructureFromLoadedList(newListValue);
+
+    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
 
   });
+
 });
