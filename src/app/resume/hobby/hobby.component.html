@@ -1,4 +1,4 @@
-<div [formGroup]="resumeForm">
+<div class="component-content" [formGroup]="resumeForm">
     <mat-card>
         <mat-card-header>
             <div mat-card-avatar><mat-icon>shop</mat-icon></div>
@@ -29,6 +29,8 @@
 
                         <mat-card-footer>
                             <button type="button" mat-icon-button color="primary" (click)="removeHobbyFromHobbiesList(i)"><mat-icon>delete</mat-icon></button>
+                            <button type="button" mat-icon-button color="primary" (click)="moveHobby(i, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button> 
+                            <button type="button" mat-icon-button color="primary" (click)="moveHobby(i, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> 
                         </mat-card-footer>
                     </mat-card>    
                            

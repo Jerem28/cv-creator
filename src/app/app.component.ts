@@ -10,7 +10,7 @@ import { LangService } from './lang.service';
 
 export class AppComponent {
   title = 'cv-creator';
-  langInfo = 'en';
+  langInfo = 'fr';
 
   constructor(translate: TranslateService, lang: LangService) {
     translate.setDefaultLang(this.langInfo);

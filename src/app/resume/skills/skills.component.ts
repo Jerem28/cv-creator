@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, AbstractControl } from '@angular/forms';
 import { Skill } from 'src/app/resume-interfaces';
 
 @Component({
@@ -64,6 +64,18 @@ export class SkillsComponent implements OnInit {
 
   callParentItemRemoved(argumentsArray) {
     this.itemRemovedEvent.next(argumentsArray);
+  }
+
+  moveSkill(index: number, direction: string){
+    const control: AbstractControl = this.skillsList.at(index);
+    const newIndex = direction === 'up' ? index - 1 : (direction === 'down' ? index + 1 : -1);
+    if (!this.checkSkillIndexIsInArrayLength(newIndex)) { return; }
+    this.skillsList.removeAt(index);
+    this.skillsList.insert(newIndex, control);
+  }
+
+  checkSkillIndexIsInArrayLength(index: number){
+    return index >= 0 && index < this.skillsList.length;
   }
 
 }

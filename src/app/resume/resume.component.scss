@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+.mlr-2vw {
+    margin-left: 2vw;
+    margin-right: 2vw; 
+}
+
 #main-container {
     // CSS custom properties
     --speed-transition: all 0.3s;
@@ -12,8 +17,6 @@
     height: 100%;
     display: grid;
     grid-template-columns: 20% 1fr;
-    flex-direction: row;
-    flex-wrap: wrap;
 
     .nav-bar {
         width: 250px;
@@ -32,7 +35,9 @@
 
             #main-logo {
                 display: block;
-                margin: auto;
+                margin: 0;
+                width: 200px;
+                height: 200px;
             }
 
             #app-language-selector {

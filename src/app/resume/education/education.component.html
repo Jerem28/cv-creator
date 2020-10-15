@@ -1,4 +1,4 @@
-<div [formGroup]="resumeForm">
+<div class="component-content" [formGroup]="resumeForm">
 
     <mat-card>
         <mat-card-header>
@@ -11,7 +11,7 @@
         
                 <div *ngFor="let education of educationsList.controls; let i = index" formGroupName="{{i}}">
                     <mat-card class="resume-content-card education-card">
-    
+
                         <mat-card-header>
                             <mat-card-title class="resume-card-title">
                                 <mat-form-field appearance="standard">
@@ -50,6 +50,8 @@
 
                         <mat-card-footer>
                             <button type="button" mat-icon-button color="primary" (click)="removeEducationFromEducationsList(i)"><mat-icon>delete</mat-icon></button>
+                            <button type="button" mat-icon-button color="primary" (click)="moveEducation(i, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button> 
+                            <button type="button" mat-icon-button color="primary" (click)="moveEducation(i, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> 
                         </mat-card-footer>
 
                     </mat-card>

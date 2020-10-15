@@ -20,9 +20,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   resumeForm: FormGroup;
   resumeFormValue: ResumeFormStructure;
   jsonFileURL: string;
-
-  generatedResumeUrl = 'generated-resume';
-
+  generatedResumeUrl = '/generated-resume';
   isSideResumePreviewOpened = false;
   appLanguageSelected = 'en';
 
@@ -42,46 +40,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     private router: Router,
     private lang: LangService) { }
 
-  get experienceComponentChild(): ExperienceComponent {
-    return this.experienceComponent;
-  }
-
-  set experienceComponentChild(experienceComponent: ExperienceComponent) {
-    this.experienceComponent = experienceComponent;
-  }
-
-  get educationComponentChild(): EducationComponent {
-    return this.educationComponent;
-  }
-
-  set educationComponentChild(educationComponent: EducationComponent) {
-    this.educationComponent = educationComponent;
-  }
-
-  get hobbyComponentChild(): HobbyComponent {
-    return this.hobbyComponent;
-  }
-
-  set hobbyComponentChild(hobbyComponent: HobbyComponent) {
-    this.hobbyComponent = hobbyComponent;
-  }
-
-  get languageComponentChild(): LanguageComponent {
-    return this.languageComponent;
-  }
-
-  set languageComponentChild(languageComponent: LanguageComponent) {
-    this.languageComponent = languageComponent;
-  }
-
-  get skillComponentChild(): SkillsComponent {
-    return this.skillComponent;
-  }
-
-  set skillComponentChild(skillComponent: SkillsComponent) {
-    this.skillComponent = skillComponent;
-  }
-
   ngOnInit(): void {
 
     // Resume form initialization has to be in ngOnInit() lifecycle hook, not in constructor
@@ -91,8 +49,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     this.resumeForm.valueChanges.subscribe(formValue => {
       localStorage.setItem('formValue', JSON.stringify(formValue));
     });
-
-    this.generatedResumeUrl = window.location.href + 'generated-resume';
 
     this.lang.getValue().subscribe(languageValue => this.appLanguageSelected = languageValue);
   }
@@ -127,23 +83,12 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   loadResumeForm(value: ResumeFormStructure) {
 
       this.resetForm();
-      console.log('[ResumeComponent] ');
-      console.log(this.resumeForm.value);
 
       // Only if we have value from a precedent resume form, we do the following
       if (value && Object.keys(value).length > 0) {
-        console.log('Patch with old form value');
       /* It's mandatory to have same object structure in data saved before reload and in actual resumeForm,
         that is why we push each blank object in this.experiencesList and so on */
-
-        console.log('[ResumeComponent] Creating resumeForm with following value data :');
-        console.log(value);
-
         this.createResumeCategoriesFromData(value);
-
-        console.log('[ResumeComponent] Actual Resume form structure :');
-        console.log(this.resumeForm.value);
-
         this.resumeForm.patchValue(value);
       }
 
@@ -176,31 +121,27 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   onSubmit(){
     console.warn('[Submit] Value of resume data :', this.resumeForm.value);
-    console.log('Redirect to ' + this.generatedResumeUrl);
+    console.warn('Redirect to ' + this.generatedResumeUrl);
     this.router.navigateByUrl(this.generatedResumeUrl, { state: this.resumeForm.value });
   }
 
   addItemToCategory(event: Array<any>){
-
-    // Get arguments from event fired up from child component
     const categoryName: string = event[0];
     const categoryIndex: number = event[1];
     const itemControl: AbstractControl = event[2];
-
     const category = this.resumeForm.get(categoryName) as FormArray;
     const categoryItems = category.at(categoryIndex).get('items') as FormArray;
+
     categoryItems.push(itemControl);
   }
 
   removeItemFromCategory(event: Array<any>){
-
-      // Get arguments from event fired up from child component
       const categoryName: string = event[0];
       const categoryIndex: number = event[1];
       const itemIndex: number = event[2];
-
       const category = this.resumeForm.get(categoryName) as FormArray;
       const categoryItems = category.at(categoryIndex).get('items') as FormArray;
+
       categoryItems.removeAt(itemIndex);
   }
 
@@ -230,10 +171,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   onLanguageChange(){
     console.log('Language set : ' + this.appLanguageSelected);
     this.lang.setValue(this.appLanguageSelected);
-  }
-
-  toggleNav() {
-
   }
 
   activatePreviewLightbox(previewContainerId: string) {

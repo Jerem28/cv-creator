@@ -25,8 +25,7 @@
     
     <div class="container">
         <div id="resume-container">
-            <button id="toggleSidenav" (click)="toggleNav()"><mat-icon>menu</mat-icon></button>
-    
+
             <form id="resume-form" [class.active]="isSideResumePreviewOpened" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
     
                 <app-header 
@@ -74,6 +73,7 @@
                 <div id="preview-iframe-container">
                     <iframe
                     allowfullscreen
+                    title="Preview of resume"
                     id="preview-iframe"
                     [src]= "generatedResumeUrl | safeUrl">
                     </iframe>

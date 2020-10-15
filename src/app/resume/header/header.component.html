@@ -1,4 +1,4 @@
-<div [formGroup]="resumeForm">
+<div class="component-content" [formGroup]="resumeForm">
     <mat-card color="primary">
         <mat-card-header>
             <div mat-card-avatar><mat-icon>home</mat-icon></div>
@@ -61,7 +61,7 @@
                     
                     <div style="margin: auto;">
                         <div class="profilePictureContainer">
-                            <img *ngIf="profilePictureUrl" [src]="profilePictureUrl">
+                            <img *ngIf="profilePictureUrl" [src]="profilePictureUrl" alt="profile-picture">
                             <button type="button" class="header-photo-button" mat-raised-button>
                                 <label id="labelProfilePicture" for="profilePicture" class="btn btn-default">
                                     {{ "app-text.profile-picture-label" | translate }}

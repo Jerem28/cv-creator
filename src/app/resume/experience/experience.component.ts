@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl, AbstractControl } from '@angular/forms';
 import { Experience } from '../../resume-interfaces';
 
 @Component({
@@ -59,7 +59,7 @@ export class ExperienceComponent implements OnInit, OnChanges {
   createExperiencesStructureFromLoadedList({ experiencesList }: { experiencesList: Array<any> }) {
     experiencesList.map( (exp, expIndex) => {
       this.addEmptyExperienceToExperiencesList();
-      if (exp.items) { exp.items.controls.map( () => this.getExperienceItemList(expIndex).push(this.item)); }
+      if (exp.items) { exp.items.map( () => this.getExperienceItemList(expIndex).push(this.item)); }
     });
   }
 
@@ -75,4 +75,15 @@ export class ExperienceComponent implements OnInit, OnChanges {
     this.itemRemovedEvent.next(argumentsArray);
   }
 
+  moveExperience(index: number, direction: string){
+    const control: AbstractControl = this.experiencesList.at(index);
+    const newIndex = direction === 'up' ? index - 1 : (direction === 'down' ? index + 1 : -1);
+    if (!this.checkLanguageIndexIsInArrayLength(newIndex)) { return; }
+    this.experiencesList.removeAt(index);
+    this.experiencesList.insert(newIndex, control);
+  }
+
+  checkLanguageIndexIsInArrayLength(index: number){
+    return index >= 0 && index < this.experiencesList.length;
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
 import { Language } from 'src/app/resume-interfaces';
 
 @Component({
@@ -40,6 +40,18 @@ export class LanguageComponent implements OnInit {
 
   removeLanguageFromLanguagesList(languageIndex: number){
     this.languagesList.removeAt(languageIndex);
+  }
+
+  moveLanguage(index: number, direction: string){
+    const control: AbstractControl = this.languagesList.at(index);
+    const newIndex = direction === 'up' ? index - 1 : (direction === 'down' ? index + 1 : -1);
+    if (!this.checkLanguageIndexIsInArrayLength(newIndex)) { return; }
+    this.languagesList.removeAt(index);
+    this.languagesList.insert(newIndex, control);
+  }
+
+  checkLanguageIndexIsInArrayLength(index: number){
+    return index >= 0 && index < this.languagesList.length;
   }
 
 }

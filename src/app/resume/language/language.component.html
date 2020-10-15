@@ -1,4 +1,4 @@
-<div [formGroup]="resumeForm">
+<div class="component-content" [formGroup]="resumeForm">
         <mat-card>
             <mat-card-header>
                 <div mat-card-avatar><mat-icon>language</mat-icon></div>
@@ -45,9 +45,12 @@
                                   </label>
                             </div>
                         <button type="button" mat-icon-button color="primary" (click)="removeLanguageFromLanguagesList(i)"><mat-icon>delete</mat-icon></button>
+                        <button type="button" mat-icon-button color="primary" (click)="moveLanguage(i, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button> 
+                        <button type="button" mat-icon-button color="primary" (click)="moveLanguage(i, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> 
                     </div>
                     <button type="button" mat-raised-button color="primary" (click)="addEmptyLanguageToLanguagesList()"><mat-icon>add_circle</mat-icon></button>
                 </div>
             </mat-card-content>
+
         </mat-card>
 </div>
