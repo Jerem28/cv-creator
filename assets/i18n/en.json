@@ -1,0 +1,51 @@
+{
+    "app-text": {
+        "lang": "Language",
+        "french-lang": "French",
+        "english-lang": "English",
+        "subtitle": "Handle different resumes with one tool !",
+        "button" : {
+            "import-json-label": "Import JSON",
+            "clear-resume-label": "Clear Resume",
+            "generate-resume-label": "Generate Resume",
+            "export-json-label": "Export as JSON"
+        },
+        "education-section-title": "Education",
+        "education-section-subtitle": "Degrees, certifications, trainings you want to emphasize",
+        "education-title": "Education title",
+        "experience-section-title": "Experience",
+        "experience-section-subtitle": "Talk about your experiences, specific tasks in your previous jobs",
+        "experience-title": "Job title",
+        "header-section-title": "Header",
+        "header-section-subtitle": "Header of your resume, with main informations about you",
+        "fullname": "Fullname",
+        "description-sentence": "Description sentence",
+        "phone-number": "Phone number",
+        "email": "Email",
+        "personal-link": "Personal link",
+        "address": "Address",
+        "profile-picture-label": "Choose a photo",
+        "hobby-section-title": "Hobbies",
+        "hobby-section-subtitle": "You certainly have passions, share them here ;)",
+        "hobby-title": "Hobby",
+        "language-section-title": "Languages",
+        "language-section-subtitle": "What are the languages you are able to talk ? For each of them, what is your true level ?",
+        "language-title": "Language",
+        "skill-section-title": "Skills",
+        "skill-section-subtitle": "You've build some skills on your journey, list them here !",
+        "skill-category-title": "Skill category",
+        "add-skill-item": "Add skill",
+        "description": "Description",
+        "start-date": "Start date",
+        "end-date": "End date",
+        "work-place": "Work Place",
+        "work-place-description": "Work Place description",
+        "work-address": "Work Address",
+        "add-item": "Add item",
+        "resume-preview-template": {
+            "column": "Column",
+            "classic": "Classic",
+            "aside": "Aside"
+        }
+    }
+}

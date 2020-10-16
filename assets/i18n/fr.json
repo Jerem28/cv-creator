@@ -1,0 +1,51 @@
+{
+    "app-text": {
+        "lang": "Langue",
+        "french-lang": "Francais",
+        "english-lang": "Anglais",
+        "subtitle": "Gérer plusieurs CVs avec un seul outil !",
+        "button" : {
+            "import-json-label": "Importer un JSON",
+            "clear-resume-label": "Effacer le CV",
+            "generate-resume-label": "Generer le CV",
+            "export-json-label": "Exporter en tant que JSON"
+        },
+        "education-section-title": "Formation",
+        "education-section-subtitle": "Les diplômes, certifications et autres formations que vous voulez mettre en avant",
+        "education-title": "Titre de la formation",
+        "experience-section-title": "Expérience",
+        "experience-section-subtitle": "Parlez de vos expériences, et des tâches spécifiques dans vos précédents postes",
+        "experience-title": "Intitulé du poste",
+        "header-section-title": "Entête",
+        "header-section-subtitle": "L'entête de votre CV, avec vos informations principales",
+        "fullname": "Nom complet",
+        "description-sentence": "Phrase de description",
+        "phone-number": "Téléphone",
+        "email": "Email",
+        "personal-link": "Page web personnel",
+        "address": "Adresse",
+        "profile-picture-label": "Choisir une photo",
+        "hobby-section-title": "Passions",
+        "hobby-section-subtitle": "Vous avez certainement des passions, partagez les ici ;)",
+        "hobby-title": "Passion",
+        "language-section-title": "Langues",
+        "language-section-subtitle": "Quelles sont les langues que vous êtes capable de parler ? Pour chacune d'entre elles, quel est votre vrai niveau ?",
+        "language-title": "Langue",
+        "skill-section-title": "Compétences",
+        "skill-section-subtitle": "Vous avez construit de nombreuses compétences durant votre parcours, listez les ici !",
+        "skill-category-title": "Titre des compétences",
+        "add-skill-item": "Ajouter une compétence",
+        "description": "Description",
+        "start-date": "Date de début",
+        "end-date": "Date de fin",
+        "work-place": "Entreprise",
+        "work-place-description": "Description de l'entreprise",
+        "work-address": "Adresse de l'entreprise",
+        "add-item": "Ajouter un item",
+        "resume-preview-template": {
+            "column": "Colonne",
+            "classic": "Classique",
+            "aside": "De côté"
+        }
+    }
+}
