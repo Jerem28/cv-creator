@@ -18,7 +18,7 @@ export class SkillsComponent extends CommonUtilsComponent {
   }
 
   init(){
-    this.categoryResumeListName = 'skillsList';
+    this.categoryListName = 'skillsList';
   }
 
   get categoryFromResume(): FormGroup {
@@ -35,7 +35,7 @@ export class SkillsComponent extends CommonUtilsComponent {
   }
 
   createCategoryResumeStructureFromLoadedList( resumeData: ResumeFormStructure) {
-    resumeData[this.categoryResumeListName].map( (skill, skillIndex) => {
+    resumeData[this.categoryListName].map( (skill, skillIndex) => {
       this.addEmptyCategoryToList();
       skill.items.map( () => { this.getSkillItemList(skillIndex).push(this.item); });
     });

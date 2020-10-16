@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Hobby } from 'src/app/resume/common-utils/resume-interfaces';
 import { CommonUtilsComponent } from '../common-utils/common-utils.component';
 
@@ -15,7 +15,7 @@ export class HobbyComponent extends CommonUtilsComponent {
   }
 
   init(){
-    this.categoryResumeListName = 'hobbiesList';
+    this.categoryListName = 'hobbiesList';
   }
 
   get categoryFromResume(): FormGroup {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, FormControl, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { Experience, ResumeFormStructure } from '../common-utils/resume-interfaces';
 import { CommonUtilsComponent } from '../common-utils/common-utils.component';
 
@@ -23,7 +23,7 @@ export class ExperienceComponent extends CommonUtilsComponent {
   }
 
   init(){
-    this.categoryResumeListName = 'experiencesList';
+    this.categoryListName = 'experiencesList';
   }
 
   get categoryFromResume(): FormGroup {
@@ -45,7 +45,7 @@ export class ExperienceComponent extends CommonUtilsComponent {
   }
 
   createCategoryResumeStructureFromLoadedList(resumeData: ResumeFormStructure) {
-    resumeData[this.categoryResumeListName].map( (exp, expIndex) => {
+    resumeData[this.categoryListName].map( (exp, expIndex) => {
       this.addEmptyCategoryToList();
       if (exp.items) { exp.items.map( () => this.getExperienceItemList(expIndex).push(this.item)); }
     });

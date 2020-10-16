@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Language } from 'src/app/resume/common-utils/resume-interfaces';
 import { CommonUtilsComponent } from '../common-utils/common-utils.component';
 
@@ -15,7 +15,7 @@ export class LanguageComponent extends CommonUtilsComponent {
   }
 
   init(){
-    this.categoryResumeListName = 'languagesList';
+    this.categoryListName = 'languagesList';
   }
 
   get categoryFromResume(): FormGroup {

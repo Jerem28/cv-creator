@@ -4,12 +4,11 @@ import { ResumeFormStructure } from 'src/app/resume/common-utils/resume-interfac
 
 @Component({
   selector: 'app-common-utils',
-  templateUrl: './common-utils.component.html',
-  styleUrls: ['./common-utils.component.scss']
+  template: ''
 })
 export class CommonUtilsComponent implements OnInit {
 
-  categoryResumeListName: string;
+  categoryListName: string;
   @Input() formBuilder: FormBuilder;
   @Input() resumeForm: FormGroup;
 
@@ -27,11 +26,11 @@ export class CommonUtilsComponent implements OnInit {
   }
 
   get categoryList(): FormArray {
-    return this.resumeForm.get(this.categoryResumeListName) as FormArray;
+    return this.resumeForm.get(this.categoryListName) as FormArray;
   }
 
   createCategoryResumeStructureFromLoadedList(resumeData: ResumeFormStructure){
-    resumeData[this.categoryResumeListName].map( () => this.addEmptyCategoryToList() );
+    resumeData[this.categoryListName].map( () => this.addEmptyCategoryToList() );
   }
 
   addEmptyCategoryToList(){

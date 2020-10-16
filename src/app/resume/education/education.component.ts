@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormArray } from '@angular/forms';
 import { Education } from 'src/app/resume/common-utils/resume-interfaces';
 import { CommonUtilsComponent } from '../common-utils/common-utils.component';
 
@@ -15,7 +15,7 @@ export class EducationComponent extends CommonUtilsComponent {
   }
 
   init(){
-    this.categoryResumeListName = 'educationsList';
+    this.categoryListName = 'educationsList';
   }
 
   get categoryList(): FormArray {
