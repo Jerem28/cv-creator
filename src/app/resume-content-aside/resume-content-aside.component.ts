@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { LangService } from '../lang.service';
-import { ResumeFormStructure } from '../resume/common-utils/resume-interfaces';
 import { fromEvent } from 'rxjs';
+import { ResumeFormStructure } from '../resume/common-utils/common-utils.component';
 
 @Component({
   selector: 'app-resume-content-aside',
@@ -16,8 +16,6 @@ export class ResumeContentAsideComponent implements OnInit {
   constructor(private lang: LangService) { }
 
   ngOnInit(): void {
-    console.log("POUR LES TESTS");
-    console.log(localStorage.getItem('formValue'));
     if (!localStorage.getItem('formValue')) {
       this.resumeData = this.initializeResumeData();
     } else {

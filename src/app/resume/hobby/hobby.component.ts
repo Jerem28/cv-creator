@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Hobby } from 'src/app/resume/common-utils/resume-interfaces';
-import { CommonUtilsComponent } from '../common-utils/common-utils.component';
+import { CommonUtilsComponent, Hobby } from '../common-utils/common-utils.component';
 
 @Component({
   selector: 'app-hobby',

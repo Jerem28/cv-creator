@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { Experience, ResumeFormStructure } from '../common-utils/resume-interfaces';
-import { CommonUtilsComponent } from '../common-utils/common-utils.component';
+import { CommonUtilsComponent, Experience, ResumeFormStructure } from '../common-utils/common-utils.component';
 
 @Component({
   selector: 'app-experience',

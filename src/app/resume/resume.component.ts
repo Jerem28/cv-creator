@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, AbstractControl, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
 import { ExperienceComponent } from './experience/experience.component';
 import { EducationComponent } from './education/education.component';
 import { SkillsComponent } from './skills/skills.component';
 import { LanguageComponent } from './language/language.component';
 import { HobbyComponent } from './hobby/hobby.component';
 import { Router } from '@angular/router';
-import { ResumeFormStructure, Experience, Education, Hobby, Skill } from './common-utils/resume-interfaces';
 import { LangService } from '../lang.service';
+import { ResumeFormStructure } from './common-utils/common-utils.component';
 
 @Component({
   selector: 'app-resume',

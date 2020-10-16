@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
-import { ResumeFormStructure, Skill } from 'src/app/resume/common-utils/resume-interfaces';
-import { CommonUtilsComponent } from '../common-utils/common-utils.component';
+import { CommonUtilsComponent, ResumeFormStructure, Skill } from '../common-utils/common-utils.component';
 
 @Component({
   selector: 'app-skills',

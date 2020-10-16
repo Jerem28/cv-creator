@@ -6,12 +6,6 @@
                 <a href="/"><img id="main-logo" src="../../assets/img/logo.png" alt="ResumeBook"></a>
             </li>
             <li class="menu-li-item">
-                <button class="menu-button-item">
-                    <mat-icon class="menu-button-icon">insert_drive_file</mat-icon>
-                    <h1>New Resume</h1>
-                </button>
-            </li>
-            <li class="menu-li-item">
                 <mat-form-field id="app-language-selector">
                     <mat-label><mat-icon style="font-size: 1.5rem;">language</mat-icon></mat-label>
                     <mat-select (selectionChange)="onLanguageChange()" [(value)]="appLanguageSelected" >
@@ -69,7 +63,6 @@
         </div>
     
             <div id="preview-container">
-        
                 <div id="preview-iframe-container">
                     <iframe
                     allowfullscreen

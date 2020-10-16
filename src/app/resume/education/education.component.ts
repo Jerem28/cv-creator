@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
-import { Education } from 'src/app/resume/common-utils/resume-interfaces';
-import { CommonUtilsComponent } from '../common-utils/common-utils.component';
+import { CommonUtilsComponent, Education } from '../common-utils/common-utils.component';
 
 @Component({
   selector: 'app-education',
