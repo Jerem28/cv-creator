@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { LangService } from '../../services/lang/lang.service';
 import { fromEvent } from 'rxjs';
-import { LangService } from '../lang.service';
-import { ResumeFormStructure } from '../resume/common-utils/common-utils.component';
+import { ResumeFormStructure } from '../../resume/common-utils/common-utils.component';
 
 @Component({
-  selector: 'app-resume-classic',
-  templateUrl: './resume-classic.component.html',
-  styleUrls: ['./resume-classic.component.scss'],
+  selector: 'app-resume-content-aside',
+  templateUrl: './resume-content-aside.component.html',
+  styleUrls: ['./resume-content-aside.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ResumeClassicComponent implements OnInit {
+export class ResumeContentAsideComponent implements OnInit {
 
   resumeData;
 
@@ -47,5 +47,4 @@ export class ResumeClassicComponent implements OnInit {
       hobbiesList: []
     };
   }
-
 }

@@ -1,22 +1,22 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { LangService } from '../lang.service';
-import { ResumeFormStructure } from '../resume/common-utils/common-utils.component';
+import { LangService } from '../../services/lang/lang.service';
+import { ResumeFormStructure } from '../../resume/common-utils/common-utils.component';
 
 @Component({
-  selector: 'app-resume-generated',
-  templateUrl: './resume-generated.component.html',
-  styleUrls: ['./resume-generated.component.scss'],
+  selector: 'app-resume-classic',
+  templateUrl: './resume-classic.component.html',
+  styleUrls: ['./resume-classic.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ResumeGeneratedComponent implements OnInit {
+export class ResumeClassicComponent implements OnInit {
 
   resumeData;
 
   constructor(private lang: LangService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('formValue') === '' || localStorage.getItem('formValue') === 'undefined') {
+    if (!localStorage.getItem('formValue')) {
       this.resumeData = this.initializeResumeData();
     } else {
       this.resumeData = JSON.parse(localStorage.getItem('formValue'));

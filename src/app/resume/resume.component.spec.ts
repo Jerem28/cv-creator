@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ResumeComponent } from './resume.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SafeUrlPipe } from '../safe-url.pipe';
+import { SafeUrlPipe } from '../pipes/safe-url/safe-url.pipe';
 import { ExperienceComponent } from './experience/experience.component';
 import { EducationComponent } from './education/education.component';
 import { HobbyComponent } from './hobby/hobby.component';

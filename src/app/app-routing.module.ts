@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ResumeComponent } from './resume/resume.component';
-import { ResumeGeneratedComponent } from './resume-generated/resume-generated.component';
-import { ResumeClassicComponent } from './resume-classic/resume-classic.component';
-import { ResumeContentAsideComponent } from './resume-content-aside/resume-content-aside.component';
+import { ResumeGeneratedComponent } from './resume-result/resume-generated/resume-generated.component';
+import { ResumeClassicComponent } from './resume-result/resume-classic/resume-classic.component';
+import { ResumeContentAsideComponent } from './resume-result/resume-content-aside/resume-content-aside.component';
 
 const routes: Routes = [
   {

@@ -6,7 +6,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { LanguageComponent } from './language/language.component';
 import { HobbyComponent } from './hobby/hobby.component';
 import { Router } from '@angular/router';
-import { LangService } from '../lang.service';
+import { LangService } from '../services/lang/lang.service';
 import { ResumeFormStructure } from './common-utils/common-utils.component';
 
 @Component({
