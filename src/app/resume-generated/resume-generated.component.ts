@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { ResumeFormStructure } from '../resume-interfaces';
+import { ResumeFormStructure } from '../resume/common-utils/resume-interfaces';
 import { LangService } from '../lang.service';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 

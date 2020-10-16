@@ -33,6 +33,7 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { LangService } from './lang.service';
 import { ResumeClassicComponent } from './resume-classic/resume-classic.component';
 import { ResumeContentAsideComponent } from './resume-content-aside/resume-content-aside.component';
+import { CommonUtilsComponent } from './resume/common-utils/common-utils.component';
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,7 +53,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResumeGeneratedComponent,
     SafeUrlPipe,
     ResumeClassicComponent,
-    ResumeContentAsideComponent
+    ResumeContentAsideComponent,
+    CommonUtilsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl, AbstractControl } from '@angular/forms';
-import { Experience } from '../../resume-interfaces';
+import { Experience, ResumeFormStructure } from '../common-utils/resume-interfaces';
+import { CommonUtilsComponent } from '../common-utils/common-utils.component';
 
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss']
 })
-export class ExperienceComponent implements OnInit, OnChanges {
+export class ExperienceComponent extends CommonUtilsComponent {
 
   // Variables passed from ResumeComponent parent component
   @Input() formBuilder: FormBuilder;
@@ -17,16 +18,15 @@ export class ExperienceComponent implements OnInit, OnChanges {
   @Output() itemAddedEvent = new EventEmitter<Array<any>>();
   @Output() itemRemovedEvent = new EventEmitter<Array<any>>();
 
-  constructor() { }
-
-  ngOnChanges(): void {
-    console.log('[ExperienceComponent]');
-    console.log(this.resumeForm.value);
+  constructor() {
+    super();
   }
 
-  ngOnInit(): void { }
+  init(){
+    this.categoryResumeListName = 'experiencesList';
+  }
 
-  get experience(): FormGroup {
+  get categoryFromResume(): FormGroup {
     const experience: Experience =
     {
       experienceTitle: '',
@@ -40,25 +40,13 @@ export class ExperienceComponent implements OnInit, OnChanges {
     return this.formBuilder.group(experience);
   }
 
-  get experiencesList(): FormArray {
-    return this.resumeForm.get('experiencesList') as FormArray;
-  }
-
   getExperienceItemList(experienceIndex: number): FormArray {
-    return (this.experiencesList.length === 0) ? undefined : this.experiencesList.at(experienceIndex).get('items') as FormArray;
+    return (this.categoryList.length === 0) ? undefined : this.categoryList.at(experienceIndex).get('items') as FormArray;
   }
 
-  addEmptyExperienceToExperiencesList(){
-    this.experiencesList.push(this.experience);
-  }
-
-  removeExperienceFromExperiencesList(experienceIndex: number){
-    this.experiencesList.removeAt(experienceIndex);
-  }
-
-  createExperiencesStructureFromLoadedList({ experiencesList }: { experiencesList: Array<any> }) {
-    experiencesList.map( (exp, expIndex) => {
-      this.addEmptyExperienceToExperiencesList();
+  createCategoryResumeStructureFromLoadedList(resumeData: ResumeFormStructure) {
+    resumeData[this.categoryResumeListName].map( (exp, expIndex) => {
+      this.addEmptyCategoryToList();
       if (exp.items) { exp.items.map( () => this.getExperienceItemList(expIndex).push(this.item)); }
     });
   }
@@ -75,15 +63,4 @@ export class ExperienceComponent implements OnInit, OnChanges {
     this.itemRemovedEvent.next(argumentsArray);
   }
 
-  moveExperience(index: number, direction: string){
-    const control: AbstractControl = this.experiencesList.at(index);
-    const newIndex = direction === 'up' ? index - 1 : (direction === 'down' ? index + 1 : -1);
-    if (!this.checkLanguageIndexIsInArrayLength(newIndex)) { return; }
-    this.experiencesList.removeAt(index);
-    this.experiencesList.insert(newIndex, control);
-  }
-
-  checkLanguageIndexIsInArrayLength(index: number){
-    return index >= 0 && index < this.experiencesList.length;
-  }
 }

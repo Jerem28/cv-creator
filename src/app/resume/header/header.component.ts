@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent {
 
   @Input() formBuilder: FormBuilder;
   @Input() resumeForm: FormGroup;
@@ -14,13 +14,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   profilePictureUrl = './../../assets/img/avatar.png';
 
   constructor() { }
-
-  ngOnInit(): void {
-
-  }
-
-  ngAfterViewInit(): void {
-  }
 
   readProfilePictureUrl(event: any) {
     if (event.target.files && event.target.files[0]) {

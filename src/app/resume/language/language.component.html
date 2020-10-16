@@ -7,7 +7,7 @@
             </mat-card-header>
             <mat-card-content>
                 <div formArrayName="languagesList">
-                    <div *ngFor="let language of languagesList.controls; let i = index;" formGroupName="{{i}}">
+                    <div *ngFor="let language of categoryList.controls; let i = index;" formGroupName="{{i}}">
                         <mat-form-field appearance="standard">
                             <mat-label for="languageTitle">{{ "app-text.language-title" | translate }}</mat-label>
                             <input matInput type="text" formControlName="languageTitle">
@@ -44,11 +44,11 @@
                                     <span class="icon">★</span>
                                   </label>
                             </div>
-                        <button type="button" mat-icon-button color="primary" (click)="removeLanguageFromLanguagesList(i)"><mat-icon>delete</mat-icon></button>
-                        <button type="button" mat-icon-button color="primary" (click)="moveLanguage(i, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button> 
-                        <button type="button" mat-icon-button color="primary" (click)="moveLanguage(i, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> 
+                        <button type="button" mat-icon-button color="primary" (click)="removeCategoryFromList(i)"><mat-icon>delete</mat-icon></button>
+                        <button type="button" mat-icon-button color="primary" (click)="moveCategory(i, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button> 
+                        <button type="button" mat-icon-button color="primary" (click)="moveCategory(i, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> 
                     </div>
-                    <button type="button" mat-raised-button color="primary" (click)="addEmptyLanguageToLanguagesList()"><mat-icon>add_circle</mat-icon></button>
+                    <button type="button" mat-raised-button color="primary" (click)="addEmptyCategoryToList()"><mat-icon>add_circle</mat-icon></button>
                 </div>
             </mat-card-content>
 

@@ -6,7 +6,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { LanguageComponent } from './language/language.component';
 import { HobbyComponent } from './hobby/hobby.component';
 import { Router } from '@angular/router';
-import { ResumeFormStructure, Experience, Education, Hobby, Skill } from '../resume-interfaces';
+import { ResumeFormStructure, Experience, Education, Hobby, Skill } from './common-utils/resume-interfaces';
 import { LangService } from '../lang.service';
 
 @Component({
@@ -68,11 +68,11 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   }
 
   initializeResumeFormArrays() {
-    this.experienceComponent.experiencesList.clear();
-    this.educationComponent.educationsList.clear();
-    this.languageComponent.languagesList.clear();
-    this.skillComponent.skillsList.clear();
-    this.hobbyComponent.hobbiesList.clear();
+    this.experienceComponent.categoryList.clear();
+    this.educationComponent.categoryList.clear();
+    this.languageComponent.categoryList.clear();
+    this.skillComponent.categoryList.clear();
+    this.hobbyComponent.categoryList.clear();
   }
 
   resetForm() {
@@ -95,11 +95,11 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   }
 
   private createResumeCategoriesFromData(resumeData: ResumeFormStructure) {
-    this.experienceComponent.createExperiencesStructureFromLoadedList(resumeData);
-    this.educationComponent.createEducationsStructureFromLoadedList(resumeData);
-    this.skillComponent.createSkillsStructureFromLoadedList(resumeData);
-    this.languageComponent.createLanguagesStructureFromLoadedList(resumeData);
-    this.hobbyComponent.createHobbiesStructureFromLoadedList(resumeData);
+    this.experienceComponent.createCategoryResumeStructureFromLoadedList(resumeData);
+    this.educationComponent.createCategoryResumeStructureFromLoadedList(resumeData);
+    this.skillComponent.createCategoryResumeStructureFromLoadedList(resumeData);
+    this.languageComponent.createCategoryResumeStructureFromLoadedList(resumeData);
+    this.hobbyComponent.createCategoryResumeStructureFromLoadedList(resumeData);
   }
 
   initializeResumeForm() {

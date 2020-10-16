@@ -8,7 +8,7 @@
 
         <mat-card-content>
             <div formArrayName="skillsList">
-                <div *ngFor="let skill of skillsList.controls; let i = index" formGroupName="{{i}}">
+                <div *ngFor="let skill of categoryList.controls; let i = index" formGroupName="{{i}}">
 
                     <mat-card class="resume-content-card">
                         
@@ -40,16 +40,16 @@
                         </mat-card-content>
 
                         <mat-card-footer>
-                            <button type="button" mat-icon-button color="primary" (click)="removeSkillFromSkillsList(i)"><mat-icon>delete</mat-icon></button>
-                            <button type="button" mat-icon-button color="primary" (click)="moveSkill(i, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button> 
-                            <button type="button" mat-icon-button color="primary" (click)="moveSkill(i, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> 
+                            <button type="button" mat-icon-button color="primary" (click)="removeCategoryFromList(i)"><mat-icon>delete</mat-icon></button>
+                            <button type="button" mat-icon-button color="primary" (click)="moveCategory(i, 'up')"><mat-icon>keyboard_arrow_up</mat-icon></button> 
+                            <button type="button" mat-icon-button color="primary" (click)="moveCategory(i, 'down')"><mat-icon>keyboard_arrow_down</mat-icon></button> 
                         </mat-card-footer>
                     </mat-card>
                 </div>
             </div>
         </mat-card-content>
 
-        <button type="button" mat-raised-button color="primary" (click)="addEmptySkillToSkillsList()"><mat-icon>add_circle</mat-icon></button>
+        <button type="button" mat-raised-button color="primary" (click)="addEmptyCategoryToList()"><mat-icon>add_circle</mat-icon></button>
 
     </mat-card>
 </div>

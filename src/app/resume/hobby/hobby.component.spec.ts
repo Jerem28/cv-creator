@@ -48,9 +48,9 @@ describe('HobbyComponent', () => {
     hobbyComponent.resumeForm = resumeForm;
 
     console.log('[TEST]');
-    console.log(hobbyComponent.hobbiesList);
+    console.log(hobbyComponent.categoryList);
 
-    expect(hobbyComponent.hobbiesList).not.toBe(null);
+    expect(hobbyComponent.categoryList).not.toBe(null);
 
   });
 });

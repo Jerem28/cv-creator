@@ -52,9 +52,9 @@ describe('EducationComponent', () => {
     educationComponent.resumeForm = resumeForm;
 
     console.log('[TEST]');
-    console.log(educationComponent.educationsList);
+    console.log(educationComponent.categoryList);
 
-    expect(educationComponent.educationsList).not.toBe(null);
+    expect(educationComponent.categoryList).not.toBe(null);
 
   });
 });

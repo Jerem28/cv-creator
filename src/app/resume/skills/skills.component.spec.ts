@@ -48,9 +48,9 @@ describe('SkillsComponent', () => {
     skillComponent.resumeForm = resumeForm;
 
     console.log('[TEST]');
-    console.log(skillComponent.skillsList);
+    console.log(skillComponent.categoryList);
 
-    expect(skillComponent.skillsList).not.toBe(null);
+    expect(skillComponent.categoryList).not.toBe(null);
 
   });
 });

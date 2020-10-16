@@ -1,28 +1,27 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, AbstractControl } from '@angular/forms';
-import { Skill } from 'src/app/resume-interfaces';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { ResumeFormStructure, Skill } from 'src/app/resume/common-utils/resume-interfaces';
+import { CommonUtilsComponent } from '../common-utils/common-utils.component';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
-export class SkillsComponent implements OnInit {
-
-  @Input() formBuilder: FormBuilder;
-  @Input() resumeForm: FormGroup;
+export class SkillsComponent extends CommonUtilsComponent {
 
   @Output() itemAddedEvent = new EventEmitter<Array<any>>();
   @Output() itemRemovedEvent = new EventEmitter<Array<any>>();
 
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log('[SkillsComponent]');
-    console.log(this.resumeForm.value);
+  constructor() {
+    super();
   }
 
-  get skill(): FormGroup {
+  init(){
+    this.categoryResumeListName = 'skillsList';
+  }
+
+  get categoryFromResume(): FormGroup {
     const skill: Skill =
     {
       skillCategoryTitle: '',
@@ -31,25 +30,13 @@ export class SkillsComponent implements OnInit {
     return this.formBuilder.group(skill);
   }
 
-  get skillsList(): FormArray {
-    return this.resumeForm.get('skillsList') as FormArray;
-  }
-
   getSkillItemList(skillIndex: number): FormArray {
-    return this.skillsList.at(skillIndex).get('items') as FormArray;
+    return this.categoryList.at(skillIndex).get('items') as FormArray;
   }
 
-  addEmptySkillToSkillsList(){
-    this.skillsList.push(this.skill);
-  }
-
-  removeSkillFromSkillsList(skillIndex: number){
-    this.skillsList.removeAt(skillIndex);
-  }
-
-  createSkillsStructureFromLoadedList( { skillsList }: { skillsList: Array<any> }) {
-    skillsList.map( (skill, skillIndex) => {
-      this.addEmptySkillToSkillsList();
+  createCategoryResumeStructureFromLoadedList( resumeData: ResumeFormStructure) {
+    resumeData[this.categoryResumeListName].map( (skill, skillIndex) => {
+      this.addEmptyCategoryToList();
       skill.items.map( () => { this.getSkillItemList(skillIndex).push(this.item); });
     });
   }
@@ -64,18 +51,6 @@ export class SkillsComponent implements OnInit {
 
   callParentItemRemoved(argumentsArray) {
     this.itemRemovedEvent.next(argumentsArray);
-  }
-
-  moveSkill(index: number, direction: string){
-    const control: AbstractControl = this.skillsList.at(index);
-    const newIndex = direction === 'up' ? index - 1 : (direction === 'down' ? index + 1 : -1);
-    if (!this.checkSkillIndexIsInArrayLength(newIndex)) { return; }
-    this.skillsList.removeAt(index);
-    this.skillsList.insert(newIndex, control);
-  }
-
-  checkSkillIndexIsInArrayLength(index: number){
-    return index >= 0 && index < this.skillsList.length;
   }
 
 }

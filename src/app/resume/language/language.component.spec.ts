@@ -48,9 +48,9 @@ describe('LanguageComponent', () => {
     languageComponent.resumeForm = resumeForm;
 
     console.log('[TEST]');
-    console.log(languageComponent.languagesList);
+    console.log(languageComponent.categoryList);
 
-    expect(languageComponent.languagesList).not.toBe(null);
+    expect(languageComponent.categoryList).not.toBe(null);
 
   });
 });

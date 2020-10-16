@@ -72,28 +72,28 @@ describe('ExperienceComponent', () => {
       items: []
     }];
 
-    experienceComponent.addEmptyExperienceToExperiencesList();
+    experienceComponent.addEmptyCategoryToList();
 
-    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
+    expect(experienceComponent.categoryList.getRawValue()).toEqual(expectedResult);
   });
 
   it('should leave the experiences list empty [removeExperienceFromExperiencesList]', () => {
     initializeResumeFormWithEmptyExperiencesList();
     const expectedResult: Array<any> = [];
 
-    experienceComponent.removeExperienceFromExperiencesList(0);
+    experienceComponent.removeCategoryFromList(0);
 
-    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
+    expect(experienceComponent.categoryList.getRawValue()).toEqual(expectedResult);
   });
 
   it('should remove the added experience and return an empty experiences list [removeExperienceFromExperiencesList]', () => {
     initializeResumeFormWithEmptyExperiencesList();
-    experienceComponent.addEmptyExperienceToExperiencesList();
+    experienceComponent.addEmptyCategoryToList();
     const expectedResult: Array<any> = [];
 
-    experienceComponent.removeExperienceFromExperiencesList(0);
+    experienceComponent.removeCategoryFromList(0);
 
-    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
+    expect(experienceComponent.categoryList.getRawValue()).toEqual(expectedResult);
   });
 
   it('should return undefined since experiences list is empty [getExperienceItemList]', () => {
@@ -151,9 +151,9 @@ describe('ExperienceComponent', () => {
         }
     ];
 
-    experienceComponent.createExperiencesStructureFromLoadedList(newListValue);
+    //experienceComponent.createCategoryResumeStructureFromLoadedList(newListValue);
 
-    expect(experienceComponent.experiencesList.getRawValue()).toEqual(expectedResult);
+    //expect(experienceComponent.categoryList.getRawValue()).toEqual(expectedResult);
 
   });
 
