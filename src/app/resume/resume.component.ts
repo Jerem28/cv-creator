@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, AbstractControl, Validators } from '@angular/forms';
 import { ExperienceComponent } from './experience/experience.component';
 import { EducationComponent } from './education/education.component';
 import { SkillsComponent } from './skills/skills.component';
@@ -104,11 +104,11 @@ export class ResumeComponent implements OnInit, AfterViewInit {
 
   initializeResumeForm() {
     this.resumeForm = this.formBuilder.group({
-      fullname: '',
+      fullname: this.formBuilder.control('', [Validators.required]),
       descriptionSentence: '',
-      phone: '',
+      phone: this.formBuilder.control('', [Validators.pattern('[0-9]{10}')]),
       personalLink: '',
-      email: '',
+      email: this.formBuilder.control('', [Validators.email]),
       address: '',
       profilePicture: '',
       experiencesList: this.formBuilder.array([]),
