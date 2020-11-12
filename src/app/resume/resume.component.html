@@ -68,13 +68,13 @@
                     allowfullscreen
                     title="Preview of resume"
                     id="preview-iframe"
-                    [src]= "generatedResumeUrl | safeUrl">
+                    [src]="getPreviewUrl() | safeUrl">
                     </iframe>
                 </div>
 
                 <mat-form-field id="resume-template-selector">
                     <mat-label>Resume template</mat-label>
-                    <mat-select [(value)]="generatedResumeUrl" >
+                    <mat-select [(value)]="previewComponent" >
                         <mat-option value="generated-resume">{{ "app-text.resume-preview-template.column" | translate }}</mat-option>
                         <mat-option value="resume-classic">{{ "app-text.resume-preview-template.classic" | translate }}</mat-option>
                         <mat-option value="resume-content-aside">{{ "app-text.resume-preview-template.aside" | translate }}</mat-option>

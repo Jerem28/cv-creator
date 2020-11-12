@@ -20,7 +20,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   resumeForm: FormGroup;
   resumeFormValue: ResumeFormStructure;
   jsonFileURL: string;
-  generatedResumeUrl = '/generated-resume';
+  generatedResumeUrl = '';
+  previewComponent = 'generated-resume';
   isSideResumePreviewOpened = false;
   appLanguageSelected = 'en';
 
@@ -51,6 +52,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     });
 
     this.lang.getValue().subscribe(languageValue => this.appLanguageSelected = languageValue);
+    this.generatedResumeUrl = this.router.url + this.previewComponent;
   }
 
   ngAfterViewInit(){
@@ -65,6 +67,10 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     // so it updates ASYNCHRONOUSLY and we can use @ViewChild components (otherwise they are undefined)
     setTimeout( () => this.loadResumeForm(value), 0 );
 
+  }
+
+  getPreviewUrl(){
+    return this.router.url + this.previewComponent;
   }
 
   initializeResumeFormArrays() {
