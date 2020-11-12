@@ -1,0 +1,5 @@
+# Redirects from what the browser requests to what we serve
+/                                   /
+/generated-resume                   /generated-resume
+/resume-classic                     /resume-classic
+/resume-content-aside               /resume-content-aside
