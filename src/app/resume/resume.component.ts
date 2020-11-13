@@ -128,7 +128,8 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   onSubmit(){
     console.warn('[Submit] Value of resume data :', this.resumeForm.value);
     console.warn('Redirect to ' + this.generatedResumeUrl);
-    this.router.navigateByUrl(this.generatedResumeUrl, { state: this.resumeForm.value });
+    document.getElementById();
+    this.router.navigateByUrl('generated-resume', { state: this.resumeForm.value });
   }
 
   addItemToCategory(event: Array<any>){
@@ -185,4 +186,10 @@ export class ResumeComponent implements OnInit, AfterViewInit {
     previewIframeContainer.className = 'lightbox-preview-iframe-container';
     previewIframeContainer.style.display = 'block';
   }
+
+  isFormListEmpty(listName: string){
+    const list: FormArray = this.resumeForm.get(listName).value as FormArray;
+    return list.length === 0;
+  }
+
 }
