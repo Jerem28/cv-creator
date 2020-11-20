@@ -22,6 +22,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   jsonFileURL: string;
   generatedResumeUrl = '';
   previewComponent = 'generated-resume';
+  previewStyle = 'resume-column';
   isSideResumePreviewOpened = false;
   appLanguageSelected = 'en';
 
@@ -128,7 +129,6 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   onSubmit(){
     console.warn('[Submit] Value of resume data :', this.resumeForm.value);
     console.warn('Redirect to ' + this.generatedResumeUrl);
-    document.getElementById();
     this.router.navigateByUrl('generated-resume', { state: this.resumeForm.value });
   }
 

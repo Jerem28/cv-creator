@@ -63,234 +63,235 @@
         </div>
     
             <div id="preview-container">
-                <div id="preview-iframe-container">
-                    
-                            <div class="main-resume-container">    
-
-                                <div class="header">
-                            
-                                    <div id="main-header-infos">
-                                        <h1 id="fullname">{{ resumeForm.get('fullname').value }}</h1>
-                                        <p id="resume-description">{{ resumeForm.get('descriptionSentence').value }}</p>
-                                        <section id="useful-infos">
-                                        
-                                            <div class="useful-info-item">
-                                                <i class="useful-info-icon fas fa-phone-square-alt"></i>
-                                                <p class="useful-info-text">{{ resumeForm.get('phone').value }}</p>
-                                            </div>
-                                
-                                            <div class="useful-info-item">
-                                                <i class="useful-info-icon fab fa-linkedin"></i>
-                                                <p class="useful-info-text">{{ resumeForm.get('personalLink').value }}</p>
-                                            </div>
-                                        
-                                            <div class="useful-info-item">
-                                                <i class="useful-info-icon fas fa-at"></i>
-                                                <p class="useful-info-text">{{ resumeForm.get('email').value }}</p>
-                                            </div>
-                                
-                                            <div class="useful-info-item">
-                                                <i class="useful-info-icon fas fa-map-marked"></i>
-                                                <p class="useful-info-text">{{ resumeForm.get('address').value }}</p>
-                                            </div>
-                                
-                                        </section>
-                                    </div>
-                                
-                                    <div *ngIf="resumeForm.get('profilePicture') !== null; else elseBlock">
-                                        <div id="main-photo-container">
-                                            <img id="main-photo" src="{{ resumeForm.get('profilePicture').value }}" alt="photo-cv">
-                                        </div>
-                                    </div>
-                                    <ng-template #elseBlock>
-                                        <div id="main-photo-container">
-                                            <img id="main-photo" src="../../assets/img/avatar.png" alt="photo-cv">
-                                        </div>
-                                    </ng-template>
-                                    
-                            
-                                </div>
-
-                                <!-- resume content-->
-
-                                <div id="resume-content">
+                
+                    <div id="preview-iframe-container" [ngClass]="previewStyle">
                         
-                                    <section id="experience-section" class="resume-section">
-                                
-                                        <div class="resume-section-title" *ngIf="!isFormListEmpty('experiencesList')">
-                                            <h1>{{ "app-text.experience-section-title" | translate }}</h1>
-                                            <div class="underline"></div>
+                        <div class="main-resume-container">    
+
+                            <div class="header">
+                        
+                                <div id="main-header-infos">
+                                    <h1 id="fullname">{{ resumeForm.get('fullname').value }}</h1>
+                                    <p id="resume-description">{{ resumeForm.get('descriptionSentence').value }}</p>
+                                    <section id="useful-infos">
+                                    
+                                        <div class="useful-info-item">
+                                            <i class="useful-info-icon fas fa-phone-square-alt"></i>
+                                            <p class="useful-info-text">{{ resumeForm.get('phone').value }}</p>
                                         </div>
+                            
+                                        <div class="useful-info-item">
+                                            <i class="useful-info-icon fab fa-linkedin"></i>
+                                            <p class="useful-info-text">{{ resumeForm.get('personalLink').value }}</p>
+                                        </div>
+                                    
+                                        <div class="useful-info-item">
+                                            <i class="useful-info-icon fas fa-at"></i>
+                                            <p class="useful-info-text">{{ resumeForm.get('email').value }}</p>
+                                        </div>
+                            
+                                        <div class="useful-info-item">
+                                            <i class="useful-info-icon fas fa-map-marked"></i>
+                                            <p class="useful-info-text">{{ resumeForm.get('address').value }}</p>
+                                        </div>
+                            
+                                    </section>
+                                </div>
+                            
+                                <div *ngIf="resumeForm.get('profilePicture') !== null; else elseBlock">
+                                    <div id="main-photo-container">
+                                        <img id="main-photo" src="{{ resumeForm.get('profilePicture').value }}" alt="photo-cv">
+                                    </div>
+                                </div>
+                                <ng-template #elseBlock>
+                                    <div id="main-photo-container">
+                                        <img id="main-photo" src="../../assets/img/avatar.png" alt="photo-cv">
+                                    </div>
+                                </ng-template>
                                 
-                                        <article class="resume-article" *ngFor="let experience of resumeForm.get('experiencesList').value;">
-                                            <div class="experience-header">
-                                                <h2 class="experience-title">{{ experience.experienceTitle }}</h2>
-                                                <h3 class="work-place">{{ experience.workPlace }}</h3>
+                        
+                            </div>
+
+                            <!-- resume content-->
+
+                            <div id="resume-content">
+                    
+                                <section id="experience-section" class="resume-section">
+                            
+                                    <div class="resume-section-title" *ngIf="!isFormListEmpty('experiencesList')">
+                                        <h1>{{ "app-text.experience-section-title" | translate }}</h1>
+                                        <div class="underline"></div>
+                                    </div>
+                            
+                                    <article class="resume-article" *ngFor="let experience of resumeForm.get('experiencesList').value;">
+                                        <div class="experience-header">
+                                            <h2 class="experience-title">{{ experience.experienceTitle }}</h2>
+                                            <h3 class="work-place">{{ experience.workPlace }}</h3>
+                                            <div class="date-range">
+                                                <i class="useful-info-icon fas fa-calendar-alt"></i>
+                                                <span class="experience-date-start">{{ experience.startDate | date:'MM/y'}}</span>
+                                                <span class="date-separator">-</span>
+                                                <span class="experience-date-end">{{ experience.endDate | date:'MM/y'}}</span>
+                                            </div>
+                                            <div class="work-address">
+                                                <i class="useful-info-icon fas fa-map-marker-alt"></i>
+                                                <span id="experience-work-address">{{ experience.workAddress }}</span>
+                                            </div>
+                                            <p class="experience-work-place-description">{{ experience.workPlaceDescription }}</p>
+                                        </div>
+                                        <div class="experience-content">
+                                            <ul id="experience-bulletpoints">
+                                                <li class="experience-bulletpoint" *ngFor="let item of experience.items">{{ item }}</li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                        
+                                </section>
+                            
+                                <section id="education-section" class="resume-section">
+                            
+                                    <div class="resume-section-title" *ngIf="!isFormListEmpty('educationsList')">
+                                        <h1>{{ "app-text.education-section-title" | translate }}</h1>
+                                        <div class="underline"></div>
+                                    </div>
+                            
+                                    <div class="educations-list">
+                                        <article class="resume-article formation" *ngFor="let education of resumeForm.get('educationsList').value;">
+                                            <div class="formation-header">
+                                                <h2 class="formation-title">{{ education.educationTitle }}</h2>
+                                                <h3 class="work-place">{{ education.workPlace }}</h3>
                                                 <div class="date-range">
                                                     <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                                    <span class="experience-date-start">{{ experience.startDate | date:'MM/y'}}</span>
+                                                    <span class="formation-date-start">{{ education.startDate | date:'MM/y'}}</span>
                                                     <span class="date-separator">-</span>
-                                                    <span class="experience-date-end">{{ experience.endDate | date:'MM/y'}}</span>
+                                                    <span class="formation-date-end">{{ education.endDate | date:'MM/y'}}</span>
                                                 </div>
                                                 <div class="work-address">
                                                     <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                                    <span id="experience-work-address">{{ experience.workAddress }}</span>
+                                                    <span id="formation-work-address">{{ education.workAddress }}</span>
                                                 </div>
-                                                <p class="experience-work-place-description">{{ experience.workPlaceDescription }}</p>
-                                            </div>
-                                            <div class="experience-content">
-                                                <ul id="experience-bulletpoints">
-                                                    <li class="experience-bulletpoint" *ngFor="let item of experience.items">{{ item }}</li>
-                                                </ul>
-                                            </div>
+                                            </div>  
                                         </article>
-                                            
-                                    </section>
-                                
-                                    <section id="education-section" class="resume-section">
-                                
-                                        <div class="resume-section-title" *ngIf="!isFormListEmpty('educationsList')">
-                                            <h1>{{ "app-text.education-section-title" | translate }}</h1>
-                                            <div class="underline"></div>
-                                        </div>
-                                
-                                        <div class="educations-list">
-                                            <article class="resume-article formation" *ngFor="let education of resumeForm.get('educationsList').value;">
-                                                <div class="formation-header">
-                                                    <h2 class="formation-title">{{ education.educationTitle }}</h2>
-                                                    <h3 class="work-place">{{ education.workPlace }}</h3>
-                                                    <div class="date-range">
-                                                        <i class="useful-info-icon fas fa-calendar-alt"></i>
-                                                        <span class="formation-date-start">{{ education.startDate | date:'MM/y'}}</span>
-                                                        <span class="date-separator">-</span>
-                                                        <span class="formation-date-end">{{ education.endDate | date:'MM/y'}}</span>
-                                                    </div>
-                                                    <div class="work-address">
-                                                        <i class="useful-info-icon fas fa-map-marker-alt"></i>
-                                                        <span id="formation-work-address">{{ education.workAddress }}</span>
-                                                    </div>
-                                                </div>  
-                                            </article>
-                                        </div>
-                                            
-                                    </section>
-                                
-                                    <section id="language-section" class="resume-section">
+                                    </div>
                                         
-                                        <div id="language-title" class="resume-section-title" *ngIf="!isFormListEmpty('languagesList')">
-                                            <h1>{{ "app-text.language-section-title" | translate }}</h1>
-                                            <div class="underline"></div>
-                                        </div>
-                                
-                                        <div class="resume-article languages-list" *ngFor="let language of resumeForm.get('languagesList').value;">
-                                            <span class="language-name">{{ language.languageTitle }}</span>
-                                            <div [ngSwitch]="language.languageLevel">
-                                                <div *ngSwitchCase="1">
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                </div>
-                                
-                                                <div *ngSwitchCase="2">
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                </div>
-                                
-                                                <div *ngSwitchCase="3">
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                </div>
-                                
-                                                <div *ngSwitchCase="4">
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot"></span>
-                                                </div>
-                                
-                                                <div *ngSwitchCase="5">
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                    <span class="dot skilled"></span>
-                                                </div>
-                                
-                                                <div *ngSwitchDefault>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                </div>
-                                
+                                </section>
+                            
+                                <section id="language-section" class="resume-section">
+                                    
+                                    <div id="language-title" class="resume-section-title" *ngIf="!isFormListEmpty('languagesList')">
+                                        <h1>{{ "app-text.language-section-title" | translate }}</h1>
+                                        <div class="underline"></div>
+                                    </div>
+                            
+                                    <div class="resume-article languages-list" *ngFor="let language of resumeForm.get('languagesList').value;">
+                                        <span class="language-name">{{ language.languageTitle }}</span>
+                                        <div [ngSwitch]="language.languageLevel">
+                                            <div *ngSwitchCase="1">
+                                                <span class="dot skilled"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
                                             </div>
-                                            
-                                        </div>
-                                
-                                    </section>
-                                
-                                    <section id="skill-section" class="resume-section">
-                                
-                                        <div class="resume-section-title" *ngIf="!isFormListEmpty('skillsList')">
-                                            <h1>{{ "app-text.skill-section-title" | translate }}</h1>
-                                            <div class="underline"></div>
+                            
+                                            <div *ngSwitchCase="2">
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                            </div>
+                            
+                                            <div *ngSwitchCase="3">
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                            </div>
+                            
+                                            <div *ngSwitchCase="4">
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot"></span>
+                                            </div>
+                            
+                                            <div *ngSwitchCase="5">
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                                <span class="dot skilled"></span>
+                                            </div>
+                            
+                                            <div *ngSwitchDefault>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                            </div>
+                            
                                         </div>
                                         
-                                        <div class="skills-list">
-                                            <article class="resume-article" *ngFor="let skill of resumeForm.get('skillsList').value;">
-                                                <h2 class="skills-category-title">{{ skill.skillCategoryTitle }}</h2>
-                                                <ul class="skill-list">
-                                                    <li class="skill-item" *ngFor="let item of skill.items"><button class="button3">{{ item }}</button></li>
-                                                </ul>
-                                            </article>
-                                        </div>
-                                
-                                    </section>
-                                
-                                    <section id="hobby-section" class="resume-section">
-                                
-                                        <div class="resume-section-title" *ngIf="!isFormListEmpty('hobbiesList')">
-                                            <h1>{{ "app-text.hobby-section-title" | translate }}</h1>
-                                            <div class="underline"></div>
-                                        </div>
-                                        
-                                        <div class="hobbies-list">
-                                            <article class="resume-article" *ngFor="let hobby of resumeForm.get('hobbiesList').value;">
-                                                <h2 class="passion-title">{{ hobby.hobbyTitle }}</h2>
-                                                <p class="passion-description">{{ hobby.hobbyDescription }}</p>
-                                            </article>
-                                        </div>
-                                        
-                                    </section>
-                                
-                                </div>
-
+                                    </div>
+                            
+                                </section>
+                            
+                                <section id="skill-section" class="resume-section">
+                            
+                                    <div class="resume-section-title" *ngIf="!isFormListEmpty('skillsList')">
+                                        <h1>{{ "app-text.skill-section-title" | translate }}</h1>
+                                        <div class="underline"></div>
+                                    </div>
+                                    
+                                    <div class="skills-list">
+                                        <article class="resume-article" *ngFor="let skill of resumeForm.get('skillsList').value;">
+                                            <h2 class="skills-category-title">{{ skill.skillCategoryTitle }}</h2>
+                                            <ul class="skill-list">
+                                                <li class="skill-item" *ngFor="let item of skill.items"><button class="button-item">{{ item }}</button></li>
+                                            </ul>
+                                        </article>
+                                    </div>
+                            
+                                </section>
+                            
+                                <section id="hobby-section" class="resume-section">
+                            
+                                    <div class="resume-section-title" *ngIf="!isFormListEmpty('hobbiesList')">
+                                        <h1>{{ "app-text.hobby-section-title" | translate }}</h1>
+                                        <div class="underline"></div>
+                                    </div>
+                                    
+                                    <div class="hobbies-list">
+                                        <article class="resume-article" *ngFor="let hobby of resumeForm.get('hobbiesList').value;">
+                                            <h2 class="passion-title">{{ hobby.hobbyTitle }}</h2>
+                                            <p class="passion-description">{{ hobby.hobbyDescription }}</p>
+                                        </article>
+                                    </div>
+                                    
+                                </section>
+                            
                             </div>
-                        
-                       
-                        
-                        
-                           
-                        
-                        
-                        
 
-            </div>
+                        </div>
+                    
+                   
+                    
+                    
+                       
+                    
+                    
+                    
+
+        </div>
 
                 <mat-form-field id="resume-template-selector">
                     <mat-label>Resume template</mat-label>
-                    <mat-select [(value)]="previewComponent" >
-                        <mat-option value="generated-resume">{{ "app-text.resume-preview-template.column" | translate }}</mat-option>
+                    <mat-select [(value)]="previewStyle" >
+                        <mat-option value="resume-column">{{ "app-text.resume-preview-template.column" | translate }}</mat-option>
                         <mat-option value="resume-classic">{{ "app-text.resume-preview-template.classic" | translate }}</mat-option>
                         <mat-option value="resume-content-aside">{{ "app-text.resume-preview-template.aside" | translate }}</mat-option>
                     </mat-select>
