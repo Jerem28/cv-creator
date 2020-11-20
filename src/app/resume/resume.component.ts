@@ -22,6 +22,7 @@ export class ResumeComponent implements OnInit, AfterViewInit {
   jsonFileURL: string;
   generatedResumeUrl = '';
   previewComponent = 'generated-resume';
+  previewStyle = 'resume-column';
   isSideResumePreviewOpened = false;
   appLanguageSelected = 'en';
 

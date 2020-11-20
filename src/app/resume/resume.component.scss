@@ -99,7 +99,7 @@
 
             #preview-iframe-container {
                 width: 100%;
-                overflow-y: visible;
+                overflow-y: scroll;
                 position: sticky;
                 top: 1rem;
                 height: 100vh;
@@ -118,8 +118,8 @@
 
                 .main-resume-container {
                     position: absolute;
-                    width: 180%;
-                    height: 180%;
+                    width: 200%;
+                    height: 200%;
                     left: 0;
                     top: 0;
                     border: 0;
@@ -333,192 +333,552 @@
         size: 21cm 29.7cm;
     }
 
-    .main-resume-container {
-        font-size: 14px;
-        font-family: 'Roboto Slab', sans-serif;
-        font-weight: 300;
-        margin: 5%;
-    }
-    
-    .header {
-    
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 100%;
-        margin-bottom: 4vh;
-    
-        #fullname {
-            font-size: 36px;
-            font-weight: bold;
+    ///////////////////////////////////////////
+        ///// Resume Column //////
+
+    #preview-iframe-container.resume-column {
+
+        .main-resume-container {
+            font-size: 14px;
+            font-family: 'Roboto Slab', sans-serif;
+            font-weight: 300;
+            padding: 5%;
+        }
+        
+        .header {
+        
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 100%;
+            margin-bottom: 4vh;
+        
+            #fullname {
+                font-size: 36px;
+                font-weight: bold;
+            }
+        
+            #resume-description {
+                font-size: 24px;
+            }
+        
+        }
+        
+        #useful-infos {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 25% 25%;
+        }
+        
+        .useful-info-icon, .useful-info-text, .date-range, .work-address, .skill-item, .languages-list {
+            display: inline;
+        }
+        
+        #main-photo-container {
+            justify-self: center;
+            border: black solid;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            margin: auto;
+        }
+        
+        #main-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        #resume-content {
+            column-count: 2;
+            column-fill: balance;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .resume-section {
+            height: min-content;
+            // break-inside: avoid-column;
+            margin-bottom: 2vh;
+        
+            h1 {
+                font-size: 27px;
+            }
+        
+            h2 {
+                font-size: 21px;
+                margin-top: 2vh;
+            }
+        
+            h3 {
+                font-size: 17px;
+            }
+        }
+        
+        .underline {
+            width: 100%;
+            border-bottom: 3px solid black;
+        }
+        
+        .resume-section-title > h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+        
+        #experience-bulletpoints {
+            width: 80%;
+        }
+        
+        .useful-info-icon, .resume-description, .work-place {
+            color: cornflowerblue;
+        }
+        
+        .dot {
+            height: 15px;
+            width: 15px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .dot.skilled {
+            background-color: cornflowerblue;
+        }
+        
+        .experience-title, .formation-title, .skills-title {
+            font-weight: 400;
+        }
+        
+        .date-range {
+            margin-right: 10px;
+        }
+        
+        .button-item {
+            -webkit-print-color-adjust: exact;
+            background-color: cornflowerblue;
+            border: none;
+            border-radius: 4%;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .hobbies-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        
+        .skill-list {
+            margin-top: 20px;
+            list-style-type: none;
+            display: contents;
+        }
+        
+        .skill-list > div {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .button-item {
+            padding: 0.3em 1.2em;
+            margin: 0 0.3em 0.3em 0;
+            border-radius: 2em;
+            text-decoration: none;
+            font-family: 'Roboto',sans-serif;
+            font-weight: 300;
+            color: white;
+            background-color: cornflowerblue;
+            text-align: center;
+            box-sizing: border-box;
+            }
+            @media all and (max-width:30em){
+                .button-item {
+                    display: block;
+                    margin: 0.2em auto;
+                }
+            }
+        
+        .fas, .fa, .fab {
+            margin: 0 2px;
         }
     
-        #resume-description {
-            font-size: 24px;
+        #language-title {
+            margin-bottom: 20px;
         }
     
-    }
-    
-    #useful-infos {
-        width: 100%;
-        height: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 25% 25%;
-    }
-    
-    .useful-info-icon, .useful-info-text, .date-range, .work-address, .skill-item, .languages-list {
-        display: inline;
-    }
-    
-    #main-photo-container {
-        justify-self: center;
-        border: black solid;
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        padding: 10px;
-        margin: auto;
-    }
-    
-    #main-photo {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-    
-    #resume-content {
-        column-count: 2;
-        column-fill: balance;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .resume-section {
-        height: min-content;
-        // break-inside: avoid-column;
-        margin-bottom: 2vh;
-    
-        h1 {
-            font-size: 27px;
+        .languages-list {
+            margin-right: 20px;
         }
     
-        h2 {
-            font-size: 21px;
-            margin-top: 2vh;
+        .languages-list > .language-name {
+            margin-right: 4px;
+        }
+        
+        .languages-list > div {
+            margin-right: 4px;
+            display: inline-block;
+        }
+
+    }
+
+    ///////////////////////////////////////////
+        ///// Resume Classic //////
+
+
+    #preview-iframe-container.resume-classic {
+
+        .main-resume-container {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+        }
+        
+    
+        .header {
+
+            display: grid;
+            grid-template-columns: 60% 30%;
+
+            #main-header-infos {
+                margin-left: 10%;
+                margin-right: auto;
+                margin-top: 10%;
+
+                .useful-info-text {
+                    display: inline;
+                    margin-left: 0.5rem;
+                }
+            }
+
+            #main-photo-container {
+            
+                border-radius: 50%;
+                width: min-content;
+
+                #main-photo {
+                    width: 250px;
+                    height: 250px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+            
+        }
+
+        #experience-section {
+
+            .experience-header {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                margin-top: 2rem;
+
+                .experience-title {
+                    width: 100%;
+                }
+            }
+
+            .experience-content {
+
+                .experience-bulletpoints {
+                    margin: 0 20%;
+                }
+
+            }
+
+        }
+
+        #education-section {
+
+            .formation-header {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                margin-top: 2rem;
+
+                .formation-title {
+                    width: 100%;
+                }
+            }
+
+            .resume-article.formation {
+                margin-bottom: 2rem;
+            }
+
+        }
+
+        #skill-section {
+
+            .skills-list {
+
+                margin-top: 2rem;
+
+                .skill-list {
+                    list-style-type: none;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    .skill-item {
+                        margin-right: 1rem;
+                    }
+                }
+
+            }
+        }
+
+        #language-section {
+
+            .languages-list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-top: 2rem;
+
+                .language-name {
+                    margin-right: 1rem;
+                }
+
+            }
+
+            .dot {
+                height: 15px;
+                width: 15px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            
+            .dot.skilled {
+                background-color: black;
+            }
+
+        }
+
+        #hobby-section {
+
+            .hobbies-list {
+
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 2rem;
+
+                .resume-article {
+                    width: 20%;
+                }
+
+                .passion-description {
+                    text-align: center;
+                }
+
+            }
+        }
+
+        .resume-section-title, 
+        .experience-title,
+        .formation-title,
+        .skills-category-title,
+        .passion-title {
+            text-align: center;
+        }
+
+        .resume-section-title {
+            background-color: grey;
+            color: white;
+        }
+
+        #resume-description,
+        .work-place {
+            font-style: italic;
+        }
+
+        .resume-section {
+            margin-top: 5%;
+        }
+
+        .date-range,
+        .work-address {
+            margin-right: 0.5rem;
+    
+            .useful-info-icon {
+                margin-right: 0.2rem;
+            }
+        }
+        
+    }
+
+    ///// Resume Content Aside //////
+
+    #preview-iframe-container.resume-content-aside {
+
+        .main-resume-container {
+            font-size: 0.8rem;
+            font-family: 'Roboto Slab', sans-serif;
+            font-weight: 300;
         }
     
-        h3 {
-            font-size: 17px;
-        }
-    }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 35%;
+            float: left;
+            background-color: #8EC5FC;
+            color: white;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: repeat(3, 1fr);
+            align-items: center;
+            font-size: 1.1rem;
     
-    .underline {
-        width: 100%;
-        border-bottom: 3px solid black;
-    }
+            #main-header-infos {
+                text-align: center;
+                margin-top: 5%;
+                order: 2;
     
-    .resume-section-title > h1 {
-        text-transform: uppercase;
-        font-weight: 900;
-    }
+                #fullname {
+                    font-size: 2.7rem;
+                }
     
-    #experience-bulletpoints {
-        width: 80%;
-    }
+                #resume-description {
+                    font-style: italic;
+                    font-size: 1.3rem;
+                }
     
-    .useful-info-icon, .resume-description, .work-place {
-        color: cornflowerblue;
-    }
+                #useful-infos {
     
-    .dot {
-        height: 15px;
-        width: 15px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-    }
+                    .useful-info-text {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
     
-    .dot.skilled {
-        background-color: cornflowerblue;
-    }
+            }
+
+            #main-photo-container {
+                border-radius: 50%; 
+                width: 200px;
+                height: 200px;
+                padding: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                order: 1;
     
-    .experience-title, .formation-title, .skills-title {
-        font-weight: 400;
-    }
-    
-    .date-range {
-        margin-right: 10px;
-    }
-    
-    .button {
-        -webkit-print-color-adjust: exact;
-        background-color: cornflowerblue;
-        border: none;
-        border-radius: 4%;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
-    
-    .hobbies-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-    
-    .skill-list {
-        margin-top: 20px;
-        list-style-type: none;
-        display: contents;
-    }
-    
-    .skill-list > div {
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-    
-    .button3 {
-        padding: 0.3em 1.2em;
-        margin: 0 0.3em 0.3em 0;
-        border-radius: 2em;
-        text-decoration: none;
-        font-family: 'Roboto',sans-serif;
-        font-weight: 300;
-        color: white;
-        background-color: cornflowerblue;
-        text-align: center;
-        box-sizing: border-box;
-        }
-        @media all and (max-width:30em){
-            .button3 {
-                display: block;
-                margin: 0.2em auto;
+                #main-photo {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
             }
         }
     
-    .fas, .fa, .fab {
-        margin: 0 2px;
-    }
+        #language-section, #hobby-section {
+            color: white;
+            text-align: center;
+        }
 
-    #language-title {
-        margin-bottom: 20px;
-    }
+        #language-section {
 
-    .languages-list {
-        margin-right: 20px;
-    }
-
-    .languages-list > .language-name {
-        margin-right: 4px;
-    }
+            #languages-list {
+                .dot {
+                    height: 15px;
+                    width: 15px;
+                    background-color: white;
+                    border-radius: 50%;
+                    display: inline-block;
+                }
+                
+                .dot.skilled {
+                    background-color: rgb(84, 132, 180);
+                }
+            }
+        }
+        
     
-    .languages-list > div {
-        margin-right: 4px;
-        display: inline-block;
+        #resume-content {
+    
+            margin-top: 5%;
+            margin-left: 5%;
+    
+            h2 {
+                font-size: 1.4rem;
+            }
+    
+            h3 {
+                font-size: 1.1rem;
+            }
+    
+            #skill-section {
+    
+                .skills-list {
+                    
+                    .skill-list {
+                        list-style-type: none;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+    
+                        .skill-item {
+                            margin-right: 1rem;
+    
+                            .button-item {
+                                color: white;
+                                background: #8EC5FC;
+                                border-radius: 7%;
+                                padding: 0 0.5rem;
+                                border: 1px solid rgb(77, 143, 209);
+                                border-style: dashed;
+                            }
+                        }
+                    }
+    
+                }
+    
+            }
+    
+            .resume-section,
+            .resume-article {
+                margin-top: 1rem;
+            }
+    
+        }
+                
+        #experience-section, #education-section, #skill-section {
+            width: 65%;
+            float: right;
+        }
+    
+        .date-range, 
+        .work-address {
+            margin-right: 0.5rem;
+    
+            .useful-info-icon {
+                margin-right: 0.2rem;
+            }
+        }
+    
+        /* Font criterias */
+    
+        .resume-section-title > h1 {
+            font-size: 2.5rem;
+        }
+
     }
 
 }
